@@ -1,0 +1,8 @@
+h2{
+	color: #f00
+	font-size : 20px;
+	border-bottom: dashed 1px #f00;
+}
+p{
+	font_style: italic;
+}
