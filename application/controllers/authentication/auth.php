@@ -23,7 +23,7 @@ class Auth extends CI_Controller
     else {
       //membuat session dengan nama userdata
       $userData = array(
-        'username' => $query->username,
+        'username' => $query->id_user,
         'status' => $query->status,
         'logged_in' => TRUE
       );

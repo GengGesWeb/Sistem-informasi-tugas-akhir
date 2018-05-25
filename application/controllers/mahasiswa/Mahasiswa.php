@@ -8,7 +8,7 @@ class Mahasiswa extends MY_Controller{
   $this->cekLogin();
 
   //validasi jika session dengan level manager mengakses halaman ini maka akan dialihkan ke halaman manager
-    if ($this->session->userdata('level') == "dosen") {
+    if ($this->session->userdata('status') == "dosen") {
       redirect('dosen/dosen');
  }
 }
