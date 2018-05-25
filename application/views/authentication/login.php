@@ -3,7 +3,7 @@
   
 <head>
     <meta charset="utf-8">
-    <title>Login - Bootstrap Admin Template</title>
+    <title>Sistem informasi tugas akhir</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes"> 
@@ -33,8 +33,9 @@
 				<span class="icon-bar"></span>
 			</a>
 			
-			<a class="brand" href="index.html">
-				SISTEM INFORMASI TUGAS AKHIR				
+			<a class="brand">
+				<img src="<?php echo base_url('assets/img/logo2.png')?>" width='400' />
+								
 			</a>		
 			
 			<div class="nav-collapse">
@@ -49,7 +50,6 @@
 					
 					<li class="">						
 						<a href="index.html" class="">
-							<i class="icon-chevron-left"></i>
 							Back to Homepage
 						</a>
 						
