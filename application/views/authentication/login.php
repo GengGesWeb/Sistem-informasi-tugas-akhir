@@ -70,7 +70,7 @@
 	
 	<div class="content clearfix">
 		
-		<form method="post" action="<?php echo site_url('authentication/auth/login'); ?>" role="login">
+		<form method="post" action="<?php echo base_url('authentication/auth/login'); ?>" role="login">
 		<?php
       	//menampilkan error menggunakan alert javascript
         if(isset($error)){
@@ -80,20 +80,20 @@
         }
       	?>
 		
-			<h1>Member Login</h1>		
+			<h1>Login</h1>		
 			
 			<div class="login-fields">
 				
-				<p>Please provide your details</p>
+				<p>Masukkan Username dan password anda</p>
 				
 				<div class="field">
 					<label for="username">Username</label>
-					<input type="text" id="username" name="username" placeholder="Username" class="login username-field" />
+					<input type="text" id="username" name="username" placeholder="Username" class="login username-field" required/>
 				</div> <!-- /field -->
 				
 				<div class="field">
 					<label for="password">Password:</label>
-					<input type="password" id="password" name="password" placeholder="Password" class="login password-field"/>
+					<input type="password" id="password" name="password" placeholder="Password" class="login password-field" required/>
 				</div> <!-- /password -->
 				
 			</div> <!-- /login-fields -->
@@ -105,7 +105,7 @@
 					<label class="choice" for="Field">Keep me signed in</label>
 				</span>
 									
-				<button class="button btn btn-success btn-large">Sign In</button>
+				<button class="button btn btn-success btn-large" name="submit" type="submit" value="login">Sign In</button>
 				
 			</div> <!-- .actions -->
 			

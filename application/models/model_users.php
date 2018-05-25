@@ -7,7 +7,7 @@
     public function cekAkun($username, $password)
     {
       //cari username lalu lakukan validasi
-      $this->db->where(username, $username);
+      $this->db->where('id_user', $username);
       $query = $this->db->get($this->table)->row();
 
       //jika bernilai 1 maka user tidak ditemukan
