@@ -15,7 +15,9 @@ class Dosen extends MY_Controller{
 
   public function index()
   {
+    $this->load->view('Dosen/header');
     $this->load->view('Dosen/Beranda');
+    $this->load->view('Dosen/footer');
   }
 }
 ?>

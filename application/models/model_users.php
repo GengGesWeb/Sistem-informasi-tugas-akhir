@@ -13,7 +13,7 @@
       //jika bernilai 1 maka user tidak ditemukan
       if (!$query) return 1;
 
-      //jika bernilai 3 maka password salah
+      //jika bernilai 2 maka password salah
       $hash = $query->password;
       if (md5($password) != $hash) return 2;
 
