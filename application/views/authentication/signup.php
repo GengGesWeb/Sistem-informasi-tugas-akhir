@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   
-<head>
+ <head>
     <meta charset="utf-8">
-    <title>Sistem informasi tugas akhir</title>
+    <title>Signup - Bootstrap Admin Template</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes"> 
@@ -36,20 +36,19 @@
 			<a class="brand">
 				<img src="<?php echo base_url('assets/img/logo2.png')?>" width='400' />
 								
-			</a>		
+			</a>	
 			
 			<div class="nav-collapse">
 				<ul class="nav pull-right">
-					
 					<li class="">						
-						<a href="<?php echo site_url('authentication/auth/signup'); ?>" class="">
-							Don't have an account?
+						<a href="<?php echo site_url('authentication/auth/login') ?>" class="">
+							Sudah Punya Akun? Masuk Sekarang
 						</a>
 						
 					</li>
-					
 					<li class="">						
 						<a href="index.html" class="">
+							<i class="icon-chevron-left"></i>
 							Back to Homepage
 						</a>
 						
@@ -66,50 +65,61 @@
 
 
 
-<div class="account-container">
+<div class="account-container register">
 	
 	<div class="content clearfix">
 		
-		<form method="post" action="<?php echo base_url('authentication/auth/login'); ?>" role="login">
-		<?php
-      	//menampilkan error menggunakan alert javascript
-        if(isset($error)){
-        echo '<script>
-        alert("'.$error.'");
-        </script>';
-        }
-      	?>
+		<form action="<?php echo site_url('authentication/auth/proses_signup'); ?>" method="post">
 		
-			<h1>Login</h1>		
+			<h1>Pendaftaran khusus mahasiswa</h1>			
 			
 			<div class="login-fields">
 				
-				<p>Masukkan Username dan password anda</p>
+				<p>Isi dengan data yang benar</p>
 				
 				<div class="field">
-					<label for="username">Username</label>
-					<input type="text" id="username" name="username" placeholder="NIP/NIM" class="login username-field" required/>
+					<label for="NIM">NIM:</label>
+					<input type="text" id="NIM" name="NIM" value="" placeholder="NIM" class="login" required />
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<label for="Nama">Nama:</label>	
+					<input type="text" id="Nama" name="Nama" value="" placeholder="Nama" class="login" required />
+				</div> <!-- /field -->
+
+				<div class="select">
+					<label for="prodi">Program Studi:</label>
+					<select name="prodi">
+						<option value="MIF" selected="selected">MIF</option>
+						<option value="TKK">TKK</option>
+						<option value="TIF">TIF</option>
+					</select>
+				</div>
+				
+				
+				<div class="field">
+					<label for="golongan">Golongan:</label>
+					<input type="text" id="golongan" name="golongan" value="" placeholder="golongan" class="login" required />
 				</div> <!-- /field -->
 				
 				<div class="field">
 					<label for="password">Password:</label>
-					<input type="password" id="password" name="password" placeholder="Password" class="login password-field" required/>
-				</div> <!-- /password -->
+					<input type="password" id="password" name="password" value="" placeholder="Password" class="login" required/>
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<label for="confirm_password">Ulangi password:</label>
+					<input type="password" id="confirm_password" name="confirm_password" value="" placeholder="Confirm Password" class="login" required />
+				</div> <!-- /field -->
 				
 			</div> <!-- /login-fields -->
 			
 			<div class="login-actions">
 				
-				<span class="login-checkbox">
-					<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
-					<label class="choice" for="Field">Keep me signed in</label>
-				</span>
-									
-				<button class="button btn btn-success btn-large" name="submit" type="submit" value="login">Sign In</button>
+				
+				<button class="button btn btn-primary btn-large" type="submit" name="submit" value="proses_signup">Daftar</button>
 				
 			</div> <!-- .actions -->
-			
-			
 			
 		</form>
 		
@@ -118,13 +128,17 @@
 </div> <!-- /account-container -->
 
 
+<!-- Text Under Box -->
+<div class="login-extra">
+	Sudah punya akun? <a href='<?php echo site_url('authentication/auth/login') ?>'>Masuk ke akun anda</a>
+</div> <!-- /login-extra -->
 
 
 <script src="<?php echo base_url('assets/js/jquery-1.7.2.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.js')?>"></script>
 
 <script src="<?php echo base_url('assets/js/signin.js')?>"></script>
-
+<script src="<?php echo base_url('assets/js/passwordvalidation.js')?>"></script>
 </body>
 
-</html>
+ </html>

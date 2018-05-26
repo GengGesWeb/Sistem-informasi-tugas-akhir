@@ -31,6 +31,19 @@ class Auth extends CI_Controller
       return TRUE;
     }
   }
+  public function cekNIM()
+  {
+      $this->load->model('model_signup');
+      $NIM = $this->input->post('NIM');
+      $query = $this->model_signup->cekNIM($NIM);
+      //CEk apakah nim sudah digunakan
+      if($query === 1){
+        return "NIM sudah didaftarkan, tidak bisa didaftarkan kembali";
+      }
+      else {
+        return FALSE;
+      }
+  }
 
   public function login()
   {
@@ -65,6 +78,47 @@ class Auth extends CI_Controller
     //Jika tidak maka alihkan kembali ke halaman login
     else{
       $this->load->view('authentication/login');
+    }
+  }
+
+  public function signup()
+  {
+   $this->load->view('authentication/signup');
+  }
+
+  
+  public function proses_signup()
+  {
+    if ($this->input->post('submit'))
+    {
+      $exist = $this ->cekNIM();
+      if($exist === FALSE) {
+        
+        $signup_user= array(
+          'id_user' => $this->input->post('NIM') , 
+          'password' => md5($this->input->post('password')),
+          'status' => 'mahasiswa',
+        );
+
+        $signup_mahasiswa= array(
+          'NIM' => $this->input->post('NIM') ,
+          'id_user' => $this ->input->post('NIM'),
+          'Nama'=> $this->input->post('Nama'),
+          'prodi' => $this->input->post('prodi'),
+          'golongan' => $this->input->post('golongan') ,
+        );
+        $this ->load-> model('model_daftar');
+        $this ->model_daftar->input_user($signup_user);
+        $this ->model_daftar->input_mahasiswa($signup_mahasiswa);
+        
+         $this->load->view('authentication/login');
+
+      }
+      else {
+        $data['exist']=$exist;
+        $this->load->view('authentication/signup',$data);
+      }
+    
     }
   }
 
