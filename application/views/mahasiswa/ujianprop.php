@@ -49,12 +49,17 @@
 										</div> <!-- /control-group -->
 										
 										
-										<div class="control-group">											
-											<label class="control-label" for="lastname">Program Studi</label>
-											<div class="controls">
-												<input type="text" class="span6" id="Nama" value="" placeholder="Program Studi">
-											</div> <!-- /controls -->				
-										</div> <!-- /control-group -->
+										<div class="form-group">                     
+				                       <label class="form-label">Program Studi</label>
+				                          <div class="form">
+				                             <select class="dropdown">
+				                                 <option value"pilih">Program Studi</option>
+				                                  <option value"1">Manjemen Informatika (MIF)</option>
+				                                   <option value"2">Teknik Komputer (TKK)</option>  
+				                                   <option value"3">Teknik Informatika (TIF)</option>      
+				                            </select>
+				                        </div> <!-- /form -->       
+				                    </div> <!-- /form-group -->
 										
 										
 										<div class="control-group">											
@@ -73,23 +78,16 @@
 										</div> <!-- /control-group -->
 										
 										
-										<div class="control-group">											
-											<label class="control-label" for="password2">Dosen Pembimbing</label>
-											 <div class="control-group">											
-											
-                                              <div class="btn-group">
-                                              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> Dosen Pembimbing</a>
-                                              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                                              <ul class="dropdown-menu">
-                                                <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-                                                <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-                                                <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#"><i class="i"></i> Make admin</a></li>
-                                              </ul>
-                                            </div>
-                                              </div>	<!-- /controls -->			
-										</div> <!-- /control-group -->
+										<div class="form-group">                     
+                       <label class="form-label">Dosen Pembimbing</label>
+                          <div class="form">
+                             <select class="dropdown">
+                                 <option value"pilih">Pilih Dosen Pembimbing</option>
+                                  <option value"1">Wahyu Kurnia Dewanto S.Kom, M.Kom</option>
+                                   <option value"2">Betty Etikasari S.Pd, M.Pd</option>        
+                            </select>
+                        </div> <!-- /form -->       
+                    </div> <!-- /form-group -->
 
 										<br>
 
