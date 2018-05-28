@@ -1,17 +1,22 @@
-
-
 <div class="main">
   
   <div class="main-inner">
 
-      <div class="container">
+    <div class="container">
         
        <div class="row">
           
           <div class="span12">
         
+            <div class="widget ">
+              
+              <div class="widget-header">
+                <i class="icon-user"></i>
+                <h3>Input Judul Usulan</h3>
+              </div> <!-- /widget-header -->
+          
+<div class="widget-content">
           <div class="info-box">
-
             <div class="row-fluid stats-box">
     <form>
       <fieldset>
@@ -68,16 +73,15 @@
                     <div class="form-group">                     
                        <label class="form-label">Kuota Mahasiswa</label>
                           <div class="form">
-                             <div class="dropdown">
-                           <a class="btn btn-primary" href="#">Pilih</a>
-                                           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                            </ul>
-                            </div> 
+                             <select class="dropdown">
+                           <!--<a class="btn btn-primary" href="#">Pilih</a>
+                           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>-->
+                                 <option value"pilih">Pilih Jumlah Kuota</option>
+                                  <option value"1">1</option>
+                                   <option value"2">2</option>
+                                    <option value"3">3</option>
+                                     <option value"4">4</option>          
+                            </select>
                         </div> <!-- /form -->       
                     </div> <!-- /form-group -->
 
@@ -90,7 +94,10 @@
                     </div> <!-- /form-actions -->
         </fieldset>
      </form>
-  </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
