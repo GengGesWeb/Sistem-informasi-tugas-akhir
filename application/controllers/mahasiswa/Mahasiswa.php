@@ -25,7 +25,7 @@ public function ujianproposal()
   {
     $this->load->view('Mahasiswa/Header');
     $this->load->view('Mahasiswa/ujianprop');
-    
+    $this->load->view('Mahasiswa/Footer');
   }
 
 public function upload()
