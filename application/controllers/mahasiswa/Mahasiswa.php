@@ -3,6 +3,7 @@ class Mahasiswa extends MY_Controller{
 
  public function __construct(){
   parent::__construct();
+  $this->load->helper(array('form', 'url')); 
 
 
   //memanggil function dari controller MY_Controller
@@ -24,27 +25,32 @@ class Mahasiswa extends MY_Controller{
 public function ujianproposal()
   {
     $this->load->view('Mahasiswa/Header');
-    $this->load->view('Mahasiswa/ujianprop');
+    $this->load->view('Mahasiswa/ujianprop', array('error' => '' )); 
     $this->load->view('Mahasiswa/Footer');
+    
+    
   }
 
-public function upload()
-{
-  $config['upload_path']= './upload/files';
-  $config['allowed_types'] = 'pdf';
 
-  $this->load->library('upload',$config);
-  if(!$this->upload->do_upload('file'))
-  {
-  $error = $this->upload->display_errors();
-  print_r($error);  
-  }
-  $result = $this->upload->data();
-  echo "<pre>";
-  print_r($result);
-  echo "<pre>";
+public function uploadImage() { 
+
+
+      $config['upload_path']   = './uploads/'; 
+      $config['allowed_types'] = 'gif|jpg|png|pdf'; 
+      $config['max_size']      = 1024;
+      $this->load->library('upload', $config);
+
+
+      if ( ! $this->upload->do_upload('image')) {
+         $error = array('error' => $this->upload->display_errors()); 
+         $this->load->view('Mahasiswa/ujianprop', $error); 
+      }else { 
+         print_r('Image Uploaded Successfully.');
+         exit;
+      } 
+   }
+
 }
 
-}
 
 ?>

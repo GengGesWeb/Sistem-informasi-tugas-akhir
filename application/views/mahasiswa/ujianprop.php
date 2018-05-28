@@ -97,12 +97,11 @@
 											<div class="controls">
 
 
-												<?php
-												echo form_open_multipart('mahasiswa/mahasiswa/upload');
-												 ?>
-												 <input type="file" name="file"><br>
-												 <button type="submit" class="btn"> Upload File</button>
-												 <?php form_close(); ?>
+												<?php echo $error;?> 
+  <?php echo form_open_multipart('image-upload/post');?> 
+     <input type="file" name="image" size="20" />
+     <input type="submit" value="upload" /> 
+  </form> 
 
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group --> 
@@ -148,11 +147,7 @@
 	</div> <!-- /main-inner -->
     
 </div> <!-- /main -->
-    
-    
-    
  
-
 
 <script src="js/jquery-1.7.2.min.js"></script>
 	
