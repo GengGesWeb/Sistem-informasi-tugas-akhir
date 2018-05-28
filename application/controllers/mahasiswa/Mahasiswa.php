@@ -40,7 +40,7 @@ public function ujianproposal()
       }else { 
 
         $data = array('upload' => $this->upload->data());
-        $this->load->view('Mahasiswa/ujianprop', $data);
+        
 
          //print_r('Image Uploaded Successfully.');
          
