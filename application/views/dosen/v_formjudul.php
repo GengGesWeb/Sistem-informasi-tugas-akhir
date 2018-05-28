@@ -17,19 +17,30 @@
       <fieldset>
 
                   <div class="form-group">                     
-                    <label class="form-label" for="username">Username</label>
+                    <label class="form-label" for="username">NIP</label>
                       <div class="form">
                         <input type="text" class="span6 disabled" id="username" value="<?php echo $this->session->userdata('username'); ?>" disabled>
-                        <p class="help-block">Your username is for logging in and cannot be changed.</p>
+                        <p class="help-block">Your NIP is for logging in and cannot be changed.</p>
                       </div> <!-- /form -->       
                   </div> <!-- /form-group -->
+
+<br > 
+
+                    <div class="form-group">                     
+                      <label class="form-label" for="namadosen">Nama Dosen</label>
+                        <div class="form">
+                          <input type="text" class="span6" id="namadosen"  value="" placeholder="Nama Dosen">
+                        </div> <!-- /form -->       
+                    </div> <!-- /form-group -->
+
+
 
  <br > 
 
                     <div class="form-group">                     
                       <label class="form-label" for="judul_usulan">Judul Usulan</label>
                         <div class="form">
-                          <input type="text" class="span6" id="judul_usulan">
+                          <input type="text" class="span6" id="judul_usulan"   value="" placeholder="Judul Usulan">
                         </div> <!-- /form -->       
                     </div> <!-- /form-group -->
 
