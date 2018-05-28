@@ -12,6 +12,7 @@
           <div class="info-box">
 
             <div class="row-fluid stats-box">
+
       <center>
         <h1>Silahkan replace file ini jika sudah punya desain</h1><br />
         <h2>SELAMAT DATANG ANDA TELAH BERHASIL LOGIN SEBAGAI Mahasiswa</h2>
