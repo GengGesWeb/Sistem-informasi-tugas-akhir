@@ -19,5 +19,13 @@ class Mahasiswa extends MY_Controller{
     $this->load->view('Mahasiswa/Beranda');
     $this->load->view('Mahasiswa/Footer');
   }
+
+public function ujianproposal()
+  {
+    $this->load->view('Mahasiswa/Header');
+    $this->load->view('Mahasiswa/ujianprop');
+    
+  }
+
 }
 ?>

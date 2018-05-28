@@ -53,11 +53,11 @@
         <div class="subnavbar-inner">
             <div class="container">
                 <ul class="mainnav">
-                    <li><a href="index.html"><i class="icon-dashboard"></i><span>Beranda</span> </a>
+                    <li><a href="<?php echo site_url ('mahasiswa/mahasiswa/index') ?>"><i class="icon-dashboard"></i><span>Beranda</span> </a>
                     </li>
                     <li><a href="reports.html"><i class="icon-edit"></i><span>Input Judul Tugas Akhir</span> </a>
                     </li>
-                    <li ><a href="guidely.html"><i class="icon-list-alt"></i><span>Pendaftaran Ujian Proposal</span>
+                    <li ><a href="<?php echo site_url ('mahasiswa/mahasiswa/ujianproposal') ?>"><i class="icon-list-alt"></i><span>Pendaftaran Ujian Proposal</span>
                     </a></li>
                     <li><a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Hasil Review</span> </a>
                     </li>
