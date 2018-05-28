@@ -102,7 +102,7 @@
 												<?php
 												echo form_open_multipart('mahasiswa/mahasiswa/upload');
 												 ?>
-												 <input type="file" name="file">
+												 <input type="file" name="file"><br>
 												 <button type="submit"> Upload File</button>
 												 <?php form_close(); ?>
 

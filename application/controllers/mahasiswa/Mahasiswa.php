@@ -44,8 +44,7 @@ public function upload()
   print_r($result);
   echo "<pre>";
 }
-  
-  
+
 }
 
 ?>
