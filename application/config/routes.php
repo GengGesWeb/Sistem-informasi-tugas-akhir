@@ -53,4 +53,4 @@ $route['default_controller'] = 'authentication/auth/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['image-upload'] = 'mahasiswa/ujianprop';
-$route['image-upload/post']['post'] = "mahasiswa/Mahasiswa/uploadImage";
+$route['image-upload/post']['post'] = "mahasiswa/Mahasiswa/ujianproposal";

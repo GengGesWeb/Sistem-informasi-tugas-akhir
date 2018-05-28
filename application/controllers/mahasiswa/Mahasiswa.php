@@ -28,14 +28,7 @@ public function ujianproposal()
     $this->load->view('Mahasiswa/ujianprop', array('error' => '' )); 
     $this->load->view('Mahasiswa/Footer');
     
-    
-  }
-
-
-public function uploadImage() { 
-
-
-      $config['upload_path']   = './uploads/'; 
+    $config['upload_path']   = './uploads/'; 
       $config['allowed_types'] = 'gif|jpg|png|pdf'; 
       $config['max_size']      = 1024;
       $this->load->library('upload', $config);
@@ -45,12 +38,18 @@ public function uploadImage() {
          $error = array('error' => $this->upload->display_errors()); 
          $this->load->view('Mahasiswa/ujianprop', $error); 
       }else { 
-         print_r('Image Uploaded Successfully.');
-         exit;
+
+        $data = array('upload' => $this->upload->data());
+        $this->load->view('Mahasiswa/ujianprop', $data);
+
+         //print_r('Image Uploaded Successfully.');
+         
       } 
    }
 
 }
+    
+ 
 
 
 ?>
