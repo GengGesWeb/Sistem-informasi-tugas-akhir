@@ -19,5 +19,14 @@ class Dosen extends MY_Controller{
     $this->load->view('Dosen/Beranda');
     $this->load->view('Dosen/footer');
   }
+
+   public function formjudul()
+    {
+          $this->load->view('Dosen/header');
+          $this->load->view('Dosen/v_formjudul'); 
+          $this->load->view('Dosen/footer');
+               
+        
+    }
 }
 ?>

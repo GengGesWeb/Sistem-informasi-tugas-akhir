@@ -4,23 +4,28 @@
       <div class="row">
                     <div class="span3">
                         <h4>
-                            About Free Admin Template</h4>
+                            About Team</h4>
                         <ul>
-                            <li><a href="javascript:;">EGrappler.com</a></li>
-                            <li><a href="javascript:;">Web Development Resources</a></li>
-                            <li><a href="javascript:;">Responsive HTML5 Portfolio Templates</a></li>
-                            <li><a href="javascript:;">Free Resources and Scripts</a></li>
+                            <li><a href="javascript:;">Muhammad Fauzan</a></li>
+                            <li><a href="javascript:;">Dimas Fatah Hilla</a></li>
+                            <li><a href="javascript:;">Vira Nanda Firmansyah</a></li>
+                            <li><a href="javascript:;">Faiqotul Hikmah</a></li>
+                            <li><a href="javascript:;">Meliana Monica Devi</a></li>
+                            <li><a href="javascript:;">Nadiyah Neswari</a></li>
+                            <li><a href="javascript:;">Muhammad Afan</a></li>
                         </ul>
                     </div>
                     <!-- /span3 -->
                     <div class="span3">
                         <h4>
-                            Support</h4>
+                            Instagram</h4>
                         <ul>
                             <li><a href="javascript:;">Frequently Asked Questions</a></li>
                             <li><a href="javascript:;">Ask a Question</a></li>
-                            <li><a href="javascript:;">Video Tutorial</a></li>
-                            <li><a href="javascript:;">Feedback</a></li>
+                            <li><a href="javascript:;">@vrnf_</a></li>
+                            <li><a href="javascript:;">@faiqotulhikmah</a></li>
+                            <li><a href="javascript:;">@meliana_md</a></li>
+                            <li><a href="javascript:;">@neswarii</a></li>
                         </ul>
                     </div>
                     <!-- /span3 -->
