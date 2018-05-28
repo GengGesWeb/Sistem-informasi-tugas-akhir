@@ -97,18 +97,17 @@
 										<div class="control-group">											
 											<label class="control-label" for="password1">Upload file proposal Tugas Akhir</label>
 											<div class="controls">
-												<form method="post" enctype="multipart/form-data">
-												 <div>
-												   <input type="file" id="file" name="file" multiple>
-												 </div>
-												 <div>
-												  <button type="submit" class="btn">Submit</button>
-												 </div>
-												</form>
 
+
+												<?php
+												echo form_open_multipart('mahasiswa/mahasiswa/upload');
+												 ?>
+												 <input type="file" name="file">
+												 <button type="submit"> Upload File</button>
+												 <?php form_close(); ?>
 
 											</div> <!-- /controls -->				
-										</div> <!-- /control-group -->
+										</div> <!-- /control-group --> 
            
             
 									
