@@ -55,16 +55,17 @@
                 <ul class="mainnav">
                     <li><a href="index.html"><i class="icon-dashboard"></i><span>Beranda</span> </a>
                     </li>
-                    <li><a href="reports.html"><i class="icon-edit"></i><span>Input Judul</span> </a>
+                    <li><a href="reports.html"><i class="icon-edit"></i><span>Input Judul Tugas Akhir</span> </a>
                     </li>
-                    <li ><a href="guidely.html"><i class="icon-list-alt"></i><span>Usulan Judul</span>
+                    <li ><a href="guidely.html"><i class="icon-list-alt"></i><span>Pendaftaran Ujian Proposal</span>
                     </a></li>
+                    <li><a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Hasil Review</span> </a>
+                    </li>
+                    <!--
                     <li ><a href="charts.html"><i class="icon-check"></i><span>Penentuan Bimbingan</span> </a>
                     </li>
-                    <li><a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Grafik & Cetak Laporan</span> </a>
-                    </li>
                     <li><a href="shortcodes.html"><i class="icon-user"></i><span>List Dosen</span> </a>
-                    </li>
+                    </li> -->
                     
                 </ul>
             </div>
