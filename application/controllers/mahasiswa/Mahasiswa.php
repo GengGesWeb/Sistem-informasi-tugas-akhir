@@ -36,7 +36,7 @@ public function ujianproposal()
 
       if ( ! $this->upload->do_upload('image')) {
          $error = array('error' => $this->upload->display_errors()); 
-         $this->load->view('Mahasiswa/ujianprop', $error); 
+         
       }else { 
 
         $data = array('upload' => $this->upload->data());
