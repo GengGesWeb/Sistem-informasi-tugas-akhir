@@ -23,6 +23,7 @@
             <div class="container">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
                     class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            
                 </a><a class="brand" href="index.html">SISTEM INFORMASI TUGAS AKHIR</a>
                 <div class="nav-collapse">
                     <ul class="nav pull-right">
@@ -53,9 +54,9 @@
         <div class="subnavbar-inner">
             <div class="container">
                 <ul class="mainnav">
-                    <li><a href="index.html"><i class="icon-dashboard"></i><span>Beranda</span> </a>
+                    <li><a href="<?php echo site_url('dosen/dosen/index') ?>"><i class="icon-dashboard"></i><span>Beranda</span> </a>
                     </li>
-                    <li><a href="reports.html"><i class="icon-edit"></i><span>Input Judul</span> </a>
+                    <li><a href="<?php echo site_url('dosen/dosen/formjudul') ?>"><i class="icon-edit"></i><span>Input Judul</span> </a>
                     </li>
                     <li ><a href="guidely.html"><i class="icon-list-alt"></i><span>Usulan Judul</span>
                     </a></li>
