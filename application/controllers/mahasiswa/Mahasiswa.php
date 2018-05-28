@@ -15,7 +15,9 @@ class Mahasiswa extends MY_Controller{
 
   public function index()
   {
+    $this->load->view('Mahasiswa/Header');
     $this->load->view('Mahasiswa/Beranda');
+    $this->load->view('Mahasiswa/Footer');
   }
 }
 ?>
