@@ -19,7 +19,7 @@
                   <div class="form-group">                     
                     <label class="form-label" for="username">Username</label>
                       <div class="form">
-                        <input type="text" class="span6 disabled" id="username" value="Example" disabled>
+                        <input type="text" class="span6 disabled" id="username" value="<?php echo $this->session->userdata('username'); ?>" disabled>
                         <p class="help-block">Your username is for logging in and cannot be changed.</p>
                       </div> <!-- /form -->       
                   </div> <!-- /form-group -->
@@ -53,14 +53,23 @@
                     </div> <!-- /form-group -->
 
  <br > 
-<br > 
 
-                       <div class="form-group">                     
-                      <label class="form-label" for="kuota_mhs">Kuota Mahasiswa</label>
-                        <div class="form">
-                          <input type="text" class="span6" id="kuota_mhs">
+                    <div class="form-group">                     
+                       <label class="form-label">Kuota Mahasiswa</label>
+                          <div class="form">
+                             <div class="dropdown">
+                           <a class="btn btn-primary" href="#">Pilih</a>
+                                           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                            </ul>
+                            </div> 
                         </div> <!-- /form -->       
                     </div> <!-- /form-group -->
+
 
  <br />                  
                       
