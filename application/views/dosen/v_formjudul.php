@@ -60,7 +60,7 @@
                                             </label>
                                             
                                             <label class="checkbox inline">
-                                              <input type="checkbox" id="prodi" name="prodi" value="Teknologi Informatika"> Teknologi Informatika
+                                              <input type="checkbox" id="prodi" name="prodi" value="Teknik Informatika"> Teknik Informatika
                                             </label>
                          </div> <!-- /form -->       
                     </div> <!-- /form-group -->

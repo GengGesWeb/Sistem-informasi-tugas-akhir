@@ -23,5 +23,10 @@
  		return $query;
  	}
  	
+ 	public function get_namadosen() 
+  	{
+	    $query = $this->db->get('tb_dosen')->row();
+	    return $query;
+  	}
  }
 ?>
