@@ -34,28 +34,42 @@ class Mahasiswa extends MY_Controller{
 
 public function ujianproposal()
   {
-    $this->load->view('Mahasiswa/Header');
-    $this->load->view('Mahasiswa/ujianprop', array('error' => '' )); 
-    $this->load->view('Mahasiswa/Footer');
-    
-    $config['upload_path']   = './uploads/'; 
+    if ($this->input->post('filesubmit'))
+    {
+      $config['upload_path']   = './uploads/'; 
       $config['allowed_types'] = 'pdf'; 
       $config['max_size']      = 1024;
       $this->load->library('upload', $config);
 
 
-      if ( ! $this->upload->do_upload('image')) {
-         $error = array('error' => $this->upload->display_errors()); 
+      if (!$this->upload->do_upload('file')) {
+         $error = array('error' => $this->upload->display_errors());
+         $this->load->view('Mahasiswa/Header');
+         $this->load->view('Mahasiswa/ujianprop',$error);
+         $this->load->view('Mahasiswa/Footer');
          
-      }else { 
+      } else { 
 
-        $data = array('upload' => $this->upload->data());
+        $data = array('upload_data' => $this->upload->data());
+        $nama = $this->upload->data('file_name');
+        
+        $this->load->view('Mahasiswa/Header');
+        $this->load->view('Mahasiswa/ujianprop',array('error' => "File Telah di Upload"));
+        $this->load->view('Mahasiswa/Footer');
         
 
-         //print_r('Image Uploaded Successfully.');
          
-      } 
-   }
+      }  
+    }
+    else 
+    {
+      $dosen= $this->model_signup->get_namadosen();
+      $this->load->view('Mahasiswa/Header',$dosen);
+      $this->load->view('Mahasiswa/ujianprop', array('error' => '' )); 
+      $this->load->view('Mahasiswa/Footer');
+    }
+    }
+    
 
 }
     

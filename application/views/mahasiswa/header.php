@@ -29,8 +29,8 @@
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                             class="icon-cog"></i> Akun <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:;">Pengaturan</a></li>
-                                <li><a href="javascript:;">Ganti Password</a></li>
+                                <li><a href="<?php echo base_url('authentication/auth/ganti_username'); ?>">Ganti Username</a></li>
+                                <li><a href="<?php echo base_url('authentication/auth/ganti_password'); ?>">Ganti Password</a></li>
                             </ul>
                         </li>
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i

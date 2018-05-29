@@ -83,8 +83,11 @@
                           <div class="form">
                              <select class="dropdown">
                                  <option value"pilih">Pilih Dosen Pembimbing</option>
-                                  <option value"1">Wahyu Kurnia Dewanto S.Kom, M.Kom</option>
-                                   <option value"2">Betty Etikasari S.Pd, M.Pd</option>        
+                                  <?php foreach($dosen as $row) { ?>
+                                  <option value="<?php echo $row->id_dosen ;?>"> <?php echo $row->nama ?> </option>
+            					  <?php } ?>
+
+                                          
                             </select>
                         </div> <!-- /form -->       
                     </div> <!-- /form-group -->
@@ -93,15 +96,15 @@
 
 
 										<div class="control-group">											
-											<label class="control-label" for="password1">Upload file proposal Tugas Akhir</label>
+											<label class="control-label" for="">Upload file proposal Tugas Akhir (format : NIM_nama maks 1MB)</label>
 											<div class="controls">
 
 
-												<?php echo $error;?> 
-  <?php echo form_open_multipart('image-upload/post');?> 
-     <input type="file" name="image" size="20" />
-     <input type="submit" value="upload" /> 
-  </form> 
+											<?php echo $error;?> 
+  											<?php echo form_open_multipart('mahasiswa/mahasiswa/ujianproposal');?> 
+										    <input type="file" name="file" size="1024" />
+										    <input type="submit" name="filesubmit" value="upload" /> 
+  											</form> 
 
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group --> 

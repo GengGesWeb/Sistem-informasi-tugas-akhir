@@ -12,6 +12,8 @@
       $query = $this->db->get($this->table)->row();
       return $query;
     }
+
+    
  	
  }
 ?>
