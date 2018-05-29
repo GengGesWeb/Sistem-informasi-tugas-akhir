@@ -35,8 +35,34 @@ class Dosen extends MY_Controller{
           $this->load->view('Dosen/header');
           $this->load->view('Dosen/v_formjudul'); 
           $this->load->view('Dosen/footer');
+        }
                
+//==============================================PROSES INPUT=======================================================
+
+    public function proses_inputjudul()
+  {
+    if ($this->input->post('submit'))
+    {
+        $inputjudul= array(
+          'id_dosen' => $this->input->post('username') , 
+          'judul_dosen' => $this->input->post('judul_dosen'),
+          'prodi' => $this->input->post('prodi'),
+          'kuota' => $this->input->post('kuota')
+        );
+
+        $this ->load-> model('m_doseninput');
+        $this ->m_doseninput->input_judul($inputjudul);
         
+          $this->load->view('Dosen/header');
+          $this->load->view('Dosen/v_alerts');
+          $this->load->view('Dosen/v_formjudul'); 
+          $this->load->view('Dosen/footer');
+      }
+      else {
+        $data['exist']=$exist;
+        $this->load->view('dosen/v_formjudul',$data);
+      }
+    
     }
-}
+  }
 ?>
