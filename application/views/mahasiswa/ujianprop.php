@@ -33,18 +33,18 @@
 										<fieldset>
 										
 										<div class="control-group">											
-											<label class="control-label" for="username">NIM</label>
+											<label class="control-label" for="NIM">NIM</label>
 											<div class="controls">
-												<input type="text" class="span6 disabled" id="NIM" value="<?php echo $this->session->userdata('username'); ?>" disabled>
+												<input type="text" class="span6 disabled" id="NIM" value="<?php echo $this->session->userdata('NIM'); ?>" disabled>
 												
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
 										
 										<div class="control-group">											
-											<label class="control-label" for="firstname">Nama</label>
+											<label class="control-label" for="Nama">Nama</label>
 											<div class="controls">
-												<input type="text" class="span6" id="Nama" value="" placeholder="Nama">
+												<input type="text" class="span6" id="Nama" value="<?php echo $this->session->userdata('nama') ?>" placeholder="Nama" disabled>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -54,9 +54,9 @@
 				                          <div class="form">
 				                             <select class="dropdown">
 				                                 <option value"pilih">Program Studi</option>
-				                                  <option value"1">Manjemen Informatika (MIF)</option>
-				                                   <option value"2">Teknik Komputer (TKK)</option>  
-				                                   <option value"3">Teknik Informatika (TIF)</option>      
+				                                  <option value"MIF">Manjemen Informatika (MIF)</option>
+				                                   <option value"TKK">Teknik Komputer (TKK)</option>  
+				                                   <option value"TIF">Teknik Informatika (TIF)</option>      
 				                            </select>
 				                        </div> <!-- /form -->       
 				                    </div> <!-- /form-group -->
@@ -148,11 +148,6 @@
     
 </div> <!-- /main -->
  
-
-<script src="js/jquery-1.7.2.min.js"></script>
-	
-<script src="js/bootstrap.js"></script>
-<script src="js/base.js"></script>
 
 
   </body>

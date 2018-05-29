@@ -15,6 +15,13 @@
 
  		return $query;
  	}
+
+ 	public function cekuser($id_user)
+ 	{
+ 		$this->db->where('id_user',$id_user);
+ 		$query = $this->db->get($this->table)->row();
+ 		return $query;
+ 	}
  	
  }
 ?>

@@ -24,8 +24,8 @@
                   <div class="form-group">                     
                     <label class="form-label" for="username">NIP</label>
                       <div class="form">
-                        <input type="text" class="span6 disabled" id="username" value="<?php echo $this->session->userdata('username'); ?>" disabled>
-                        <p class="help-block">Your NIP is for logging in and cannot be changed.</p>
+                        <input type="text" class="span6 disabled" id="username" value="<?php echo $this->session->userdata('NIP'); ?>" disabled>
+                        <p class="help-block">NIP Tidak bisa diubah</p>
                       </div> <!-- /form -->       
                   </div> <!-- /form-group -->
 
@@ -34,7 +34,7 @@
                     <div class="form-group">                     
                       <label class="form-label" for="namadosen">Nama Dosen</label>
                         <div class="form">
-                          <input type="text" class="span6" id="namadosen"  value="" placeholder="Nama Dosen">
+                          <input type="text" class="span6" id="namadosen"  value="<?php echo $this->session->userdata('nama') ?>" placeholder="Nama Dosen" disabled>
                         </div> <!-- /form -->       
                     </div> <!-- /form-group -->
 

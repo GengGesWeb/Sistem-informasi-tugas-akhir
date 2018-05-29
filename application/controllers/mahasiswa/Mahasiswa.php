@@ -5,11 +5,21 @@ class Mahasiswa extends MY_Controller{
   parent::__construct();
   $this->load->helper(array('form', 'url')); 
 
-
+  $this->load->model('model_signup');
+  $id_user = $this->session->userdata('username');
+  $mahasiswa = $this->model_signup->cekuser($id_user);
+  $data_mahasiswa = array(
+    'NIM' =>$mahasiswa->NIM ,
+    'nama'=>$mahasiswa->Nama,
+    'prodi' =>$mahasiswa->prodi,
+    'golongan' =>$mahasiswa->golongan
+     );
+  $this->session->set_userdata($data_mahasiswa);
+  return TRUE;
   //memanggil function dari controller MY_Controller
   $this->cekLogin();
 
-  //validasi jika session dengan level manager mengakses halaman ini maka akan dialihkan ke halaman manager
+  //validasi jika session dengan level dosen mengakses halaman ini maka akan dialihkan ke halaman manager
     if ($this->session->userdata('status') == "dosen") {
       redirect('dosen/dosen');
  }
@@ -29,7 +39,7 @@ public function ujianproposal()
     $this->load->view('Mahasiswa/Footer');
     
     $config['upload_path']   = './uploads/'; 
-      $config['allowed_types'] = 'gif|jpg|png|pdf'; 
+      $config['allowed_types'] = 'pdf'; 
       $config['max_size']      = 1024;
       $this->load->library('upload', $config);
 
