@@ -13,7 +13,6 @@
       return $query;
     }
 
-    
  	
  }
 ?>

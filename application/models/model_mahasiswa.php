@@ -2,7 +2,7 @@
  /**
  * 
  */
- class model_signup extends CI_Model
+ class model_mahasiswa extends CI_Model
  {
  	public $table = 'tb_mahasiswa';
 
@@ -23,10 +23,17 @@
  		return $query;
  	}
  	
- 	public function get_namadosen() 
-  	{
-	    $query = $this->db->get('tb_dosen')->row();
-	    return $query;
-  	}
+ 	public function get_datadosen()
+ 	{
+ 		$query = $this->db->query('Select * from tb_dosen');
+ 		$result =  $query->result_array();
+ 		return $result;
+ 	}
+
+ 	public function input_proposal($inputproposal){
+		$this->db->insert('tb_proposal',$inputproposal);
+	}
+
+
  }
 ?>
