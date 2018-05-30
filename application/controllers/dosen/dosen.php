@@ -3,6 +3,7 @@ class Dosen extends MY_Controller{
 
  public function __construct(){
   parent::__construct();
+  $this->load->database();
 
   //memanggil function dari controller MY_Controller
   $this->cekLogin();
@@ -31,13 +32,53 @@ class Dosen extends MY_Controller{
   }
 
    public function formjudul()
-    {
-          $this->load->view('Dosen/header');
-          $this->load->view('Dosen/v_formjudul'); 
-          $this->load->view('Dosen/footer');
+      {
+        $this->load->view('Dosen/header');
+        $this->load->view('Dosen/v_formjudul'); 
+        $this->load->view('Dosen/footer');
+      }
+
+//===================================================Controller CO==============================================
+      
+        public function pembimbingfix()
+          {
+
+            $this->db->query('SELECT * FROM tb_final');
+
+            // apakah ada pencarian data spesifik dengan kata kunci tertentu?
+            $search = $this->input->get('search');
+              if (!empty($search)) {
+                $this->db->like('NIM', $search, 'both'); 
+                $this->db->or_like('kategori', $search, 'both'); 
         }
+
+        $pemfix = $this->db->get('tb_final');
+        $data['result'] = $pemfix->result_array();
+        $data['num_rows'] = $pemfix->num_rows();
+        
+            $this->load->view('Dosen/header');
+            $this->load->view('Dosen/v_pembimbingfix', $data); 
+            $this->load->view('Dosen/footer');
+          }
+
+          public function form_terima()
+            {
+              $this->load->view('Dosen/header');
+              $this->load->view('Dosen/v_formterima'); 
+              $this->load->view('Dosen/footer');
+            }
+
+            public function form_tolak()
+              {
+                $this->load->view('Dosen/header');
+                $this->load->view('Dosen/v_formtolak'); 
+                $this->load->view('Dosen/footer');
+              }
+
+
+
                
-//==============================================PROSES INPUT=======================================================
+//==========================================PROSES INPUT JUDUL DOSEN ======================================
 
     public function proses_inputjudul()
   {

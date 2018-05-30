@@ -33,7 +33,7 @@
                     <label class="form-label" for="username">NIP</label>
                       <div class="form">
                         <input type="text" class="span6 disabled" id="username" name="username" value="<?php echo $this->session->userdata('NIP'); ?>">
-                        <p class="help-block">NIP Tidak bisa diubah</p>
+                        <p class="help-block">NIP Tidak Bisa Diubah</p>
                       </div> <!-- /form -->       
                   </div> <!-- /form-group -->
 
