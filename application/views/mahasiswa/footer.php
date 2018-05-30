@@ -4,23 +4,26 @@
       <div class="row">
                     <div class="span3">
                         <h4>
-                            About Free Admin Template</h4>
+                            About Team</h4>
                         <ul>
-                            <li><a href="javascript:;">EGrappler.com</a></li>
-                            <li><a href="javascript:;">Web Development Resources</a></li>
-                            <li><a href="javascript:;">Responsive HTML5 Portfolio Templates</a></li>
-                            <li><a href="javascript:;">Free Resources and Scripts</a></li>
+                            <li><a href="https://www.instagram.com/">Muhammad Fauzan</a></li>
+                            <li><a href="https://www.instagram.com/dimas_fatahhilla">Dimas Fatah Hilla</a></li>
+                            <li><a href="https://www.instagram.com/vrnf_">Vira Nanda Firmansyah</a></li>
+                            <li><a href="https://www.instagram.com/faiqotulhikmah">Faiqotul Hikmah</a></li>
+                            
+                           
                         </ul>
                     </div>
                     <!-- /span3 -->
                     <div class="span3">
                         <h4>
-                            Support</h4>
+                        </h4>
                         <ul>
-                            <li><a href="javascript:;">Frequently Asked Questions</a></li>
-                            <li><a href="javascript:;">Ask a Question</a></li>
-                            <li><a href="javascript:;">Video Tutorial</a></li>
-                            <li><a href="javascript:;">Feedback</a></li>
+                            <li><a href="https://www.instagram.com/meliana_md">Meliana Monica Devi</a></li>
+                             <li><a href="https://www.instagram.com/neswarii">Nadiyah Neswari</a></li>
+                            <li><a href="https://www.instagram.com/">Muhammad Afan</a></li>
+                            <li><a href="https://www.instagram.com/">Donny Pratama Yunior</a></li>
+                         
                         </ul>
                     </div>
                     <!-- /span3 -->
