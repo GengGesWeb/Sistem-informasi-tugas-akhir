@@ -33,9 +33,9 @@ class Auth extends CI_Controller
   }
   public function cekNIM()
   {
-      $this->load->model('model_signup');
+      $this->load->model('model_mahasiswa');
       $NIM = $this->input->post('NIM');
-      $query = $this->model_signup->cekNIM($NIM);
+      $query = $this->model_mahasiswa->cekNIM($NIM);
       //CEk apakah nim sudah digunakan
       if($query === 1){
         return "NIM sudah didaftarkan, tidak bisa didaftarkan kembali";

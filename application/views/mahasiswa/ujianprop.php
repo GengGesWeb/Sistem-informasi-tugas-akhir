@@ -78,7 +78,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="judul">Judul Proposal</label>
 											<div class="controls">
-												<input type="text" class="span6" id="judul" name="judul" value="" placeholder="Judul Proposal">
+												<input type="text" class="span6" id="judul" name="judul" value="" placeholder="Judul Proposal" required>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 
@@ -88,7 +88,7 @@
 										<div class="form-group">                     
                        					 <label class="form-label">Dosen Pembimbing</label>
                           				  <div class="form">
-                             				<select class="dropdown span3" name="dospem">
+                             				<select class="dropdown span3" name="dospem" required>
                                  				<option value"pilih">Pilih Dosen Pembimbing</option>
                                   				<?php foreach ($data_dosen as $row) { ?>
                                   				<option value="<?php echo $row['id_user']; ?>"> <?php echo $row['nama']; ?></option>';
