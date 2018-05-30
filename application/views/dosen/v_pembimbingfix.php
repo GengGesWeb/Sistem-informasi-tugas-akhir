@@ -14,26 +14,23 @@
        <div class="row">
           
           <div class="span12">
-        
+            <div class="widget">
 
-    <div class="card">
-        <div class="card-body">
-            <form method="get" action="<?php echo site_url('/dosen/dosen/pembimbingfix') ?>" class="form-inline">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="search" id="search" placeholder="Kata Kunci Pencarian">
-                  </div>  
-                <button type="submit" class="btn btn-primary">Cari</button>
-            </form>
-        </div>
-    </div>
+                    <div class="widget-header">
+                        <i class="icon-signin"></i>
+                        <h3>Permintaan menjadi pembimbing</h3>
+                    </div> <!-- /widget-header -->
 
-    <div class="alert alert-info">Ditemukan data dalam jumlah <strong><?php echo $num_rows ?></strong></div>
+                    <div class="widget-content">
+                    <div class="tabbable">
+                    <ul class="nav nav-tabs">
+
+    <div class="alert alert-info">Kuota Bimbingan Anda <strong><?php echo $num_rows ?></strong></div>
     <table class="table table-bordered">
        
         <tr>
             <th>NIM</th>
             <th>Judul Tugas Akhir</th>
-            <th>NIP</th>
             <th>Deskripsi</th>
             <th>Kategori</th>
             <th style="width: 1%;"> </th><th style="width: 1%;"> </th>
@@ -47,7 +44,7 @@
         }
         ?>
     </table>
-
+</div>
 </div>
 </div>
 </div>
