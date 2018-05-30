@@ -25,30 +25,70 @@
                     <div class="tabbable">
                     <ul class="nav nav-tabs">
 
-    <div class="alert alert-info">Kuota Bimbingan Anda <strong><?php echo $num_rows ?></strong></div>
-    <table class="table table-bordered">
-       
-        <tr>
-            <th>NIM</th>
-            <th>Judul Tugas Akhir</th>
-            <th>Deskripsi</th>
-            <th>Kategori</th>
-            <th style="width: 1%;"> </th><th style="width: 1%;"> </th>
-        </tr>
-        <?php foreach ($result as $r) {
-            echo '<tr>';
-            echo '<td>'.$r['NIM'].'</td><td>'.$r['judul'].'</td><td>'.$r['id_dosen'].'</td><td>'.$r['deskripsi'].'</td><td>'.$r['kategori'].'</td>';
-            echo '<td><a href="'.site_url('/dosen/dosen/form_terima/'.$r['NIM']).'" class="btn btn-primary">Terima</a></td>';
-            echo '<td><a href="'.site_url('/dosen/dosen/form_tolak/'.$r['NIM']).'" class="btn btn-danger">Tolak</a></td>';
-            echo '</tr>';
-        }
-        ?>
-    </table>
+                        <fieldset>
+                             <div class="form-group">                                         
+                              <label class="form-label" for="username">NIP</label>
+                                            <div class="form">
+                                <input type="text" class="span6 disabled" id="username" value="<?php echo $this->session->userdata('username');?>" disabled>
+                                <p class="help-block">Your NIP is for logging in and cannot to be changed.</p>
+
+                                            </div> <!-- /controls -->               
+                                        </div> <!-- /control-group --> 
+
+    <br>
+
+<!--
+<div class="row">
+                    <div class="col-lg-8">
+                    <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th width="40px" style="text-align: center ;">No</th>
+                            <th width="40px" style="text-align: center ;">Action</th>
+                            <th width="40px" style="text-align: center ;">id_usulan_pemb</th>
+                            <th width="40px" style="text-align: center ;">NIM</th>
+                            <th width="40px" style="text-align: center ;">id_dosen</th>
+                            <th width="40px" style="text-align: center ;">Judul</th>
+                        </tr>
+                        <?php 
+                        $no = 1;
+                        foreach($bimbingan as $row){ 
+                        ?>
+                        <tr>
+                            <td><?php echo $no++ ?> </td>
+                            <td>
+                                <?php echo anchor(''.$row-> id_dosen,'Terima');?>
+                                <?php echo anchor(''.$row-> id_dosen,'Tolak');?>
+                            </td>
+                        <td><?php echo $row->id_usulan_pemb ?></td>
+                        <td><?php echo $row->NIM ?></td>
+                        <td><?php echo $row->id_dosen ?></td>
+                        <td><?php echo $row->judul ?></td>
+                        </tr>
+                        <?php } ?>
+                        </thead>
+                        
+                        </table> -->
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+
+ <br />                  
+                      
+                   
+        </fieldset>
+     </form>
 </div>
 </div>
 </div>
 </div>
 </div>
+</div> 
 </div>
 </div>
-</div>
+</div> 
+
+    
