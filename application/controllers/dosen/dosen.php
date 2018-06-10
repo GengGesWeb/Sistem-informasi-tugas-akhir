@@ -6,6 +6,7 @@ class Dosen extends MY_Controller{
   $this->cekLogin();
   $this->load->database();
   $this->load->model('model_bimbingan');
+  $this->load->model('Model_koordinator');
 
  
 
@@ -78,8 +79,56 @@ class Dosen extends MY_Controller{
     
     }
 	
+		//==========================================PROSES mengatur jumlah kuota pembimbing ======================================
+	public function kuotadosen()
+      {
+		$data = array(
+				'list_kuota'=>$this->Model_koordinator->data_kuota(),
+				'list_data'=>$this->Model_koordinator->data_kuota_isi(),
+				'edit_data'=>$this->Model_koordinator->edit_kuota_isi(@$_GET['id'])
+				);
+        $this->load->view('Dosen/header');
+		if(isset($_GET['id']) && isset($_GET['r']) && $_GET['r'] =='1'){
+				$this->load->view('Dosen/v_edit_kuotadosen',$data); 
+		}elseif(isset($_GET['id']) && isset($_GET['r']) && $_GET['r'] =='0'){
+				$insert = $this->Model_koordinator->update_kuota(array(
+				'kuota_bimbingan' => 0
+            ), $_GET['id']);
+			redirect('Dosen/dosen/kuotadosen');
+		}
+		else{
+			$this->load->view('Dosen/v_kuotadosen',$data); 
+        }
+		$this->load->view('Dosen/v_isi_kuotadosen',$data); 
+        $this->load->view('Dosen/footer');
+      }
+	  public function isi_kuotadosen()
+      {
+       if(isset($_POST['submit'])){
+			$id = $this->input->post('nama');
+			$insert = $this->Model_koordinator->update_kuota(array(
+				'kuota_bimbingan' => $this->input->post('jumlah_kuota')
+            ), $id);
+			redirect('Dosen/dosen/kuotadosen');
+		}
+		else{
+			echo"gagal";
+		}
+      }
+	  public function edit_kuotadosen(){
+		if(isset($_POST['submit'])){
+			$id = $this->input->post('idya');
+			$insert = $this->Model_koordinator->update_kuota(array(
+				'kuota_bimbingan' => $this->input->post('jumlah_kuota')
+            ), $id);
+			redirect('Dosen/dosen/kuotadosen');
+		}
+		else{
+			echo"gagal";
+		}
+	  }
 	
-	}
+}
 	
   
 ?>
