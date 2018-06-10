@@ -7,6 +7,7 @@ class Dosen extends MY_Controller{
   $this->load->database();
   $this->load->model('model_bimbingan');
   $this->load->model('Model_koordinator');
+  $this->load->model('Model_grafik');
 
  
 
@@ -127,7 +128,20 @@ class Dosen extends MY_Controller{
 			echo"gagal";
 		}
 	  }
+	//==========================================grafik total usulan ======================================
 	
+	function grafik(){
+		$data = array(
+				'jumlah_siswa'=>$this->Model_grafik->jumlah_siswa(),
+				'jumlah_usulan'=>$this->Model_grafik->jumlah_usulan(), 
+				'belum_input'=>$this->Model_grafik->belum_input() 
+				);
+			//var_dump($data['jumlah_siswa']);
+		$this->load->view('grafik/header');
+		//$this->load->view('grafik/beranda');
+		$this->load->view('grafik/grafik_usulan',$data);
+		$this->load->view('grafik/footer');		
+	}
 }
 	
   
