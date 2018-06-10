@@ -3,20 +3,11 @@ class Dosen extends MY_Controller{
 
  public function __construct(){
   parent::__construct();
-  $this->load->database();
-
-  //memanggil function dari controller MY_Controller
   $this->cekLogin();
-  $this->load->model('model_dosen');
-  $id_user = $this->session->userdata('username');
-  $dosen = $this->model_dosen->datadosen($id_user);
-  $data_dosen = array(
-    'NIP' =>$dosen->id_dosen ,
-    'nama'=>$dosen->nama,
-    'hak_akses' =>$dosen->hak_akses
-     );
-  $this->session->set_userdata($data_dosen);
-  return TRUE;
+  $this->load->database();
+  $this->load->model('model_bimbingan');
+
+ 
 
   //validasi jika session dengan level manager mengakses halaman ini maka akan dialihkan ke halaman manager
     if ($this->session->userdata('status') == "mahasiswa") {
@@ -39,43 +30,24 @@ class Dosen extends MY_Controller{
       }
 
 //===================================================Controller CO==============================================
-      
-        public function pembimbingfix()
-          {
-
-            $this->db->query('SELECT * FROM tb_final');
-
-            // apakah ada pencarian data spesifik dengan kata kunci tertentu?
-            $search = $this->input->get('search');
-              if (!empty($search)) {
-                $this->db->like('NIM', $search, 'both'); 
-                $this->db->or_like('kategori', $search, 'both'); 
-        }
-
-        $pemfix = $this->db->get('tb_final');
-        $data['result'] = $pemfix->result_array();
-        $data['num_rows'] = $pemfix->num_rows();
-        
-            $this->load->view('Dosen/header');
-            $this->load->view('Dosen/v_pembimbingfix', $data); 
-            $this->load->view('Dosen/footer');
-          }
-
-          public function form_terima()
-            {
-              $this->load->view('Dosen/header');
-              $this->load->view('Dosen/v_formterima'); 
-              $this->load->view('Dosen/footer');
-            }
-
-            public function form_tolak()
-              {
-                $this->load->view('Dosen/header');
-                $this->load->view('Dosen/v_formtolak'); 
-                $this->load->view('Dosen/footer');
-              }
+     
+	  public function bimbingan()
+  {
+    $this->load->view('Dosen/header');
+    $this->load->view('Dosen/bimbingan');
+    $this->load->view('Dosen/footer');
+  }
 
 
+	 public function lihat_bimbingan(){
+	
+		$where = array('id_dosen' =>$this->session->userdata('username'));
+		$data['bimbingan'] = $this->model_bimbingan->tampil_data($where)->result();
+		
+		
+		$this->load->view('dosen/bimbingan',$data);
+       
+}
 
                
 //==========================================PROSES INPUT JUDUL DOSEN ======================================
@@ -105,5 +77,9 @@ class Dosen extends MY_Controller{
       }
     
     }
-  }
+	
+	
+	}
+	
+  
 ?>

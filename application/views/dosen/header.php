@@ -60,7 +60,7 @@
                     </li>
                     <li ><a href="guidely.html"><i class="icon-list-alt"></i><span>Usulan Judul</span>
                     </a></li>
-                    <li ><a href="<?php echo site_url('dosen/dosen/pembimbingfix') ?>"><i class="icon-check"></i><span>Penentuan Bimbingan</span> </a>
+                    <li ><a href="<?php echo site_url('dosen/dosen/lihat_bimbingan') ?>"><i class="icon-check"></i><span>Penentuan Bimbingan</span> </a>
                     </li>
                     <li><a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Grafik & Cetak Laporan</span> </a>
                     </li>
