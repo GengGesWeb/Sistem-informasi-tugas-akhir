@@ -9,7 +9,7 @@ class Model_grafik extends CI_Model {
 		return $query->row();
 	}
 	function belum_input(){
-		$query = $this->db->query("SELECT tb_mahasiswa.nim,tb_mahasiswa.nama,tb_mahasiswa.prodi,tb_mahasiswa.golongan FROM `tb_mahasiswa` inner join tb_judul_usulan on tb_mahasiswa.nim != tb_judul_usulan.nim");
+		$query = $this->db->query("SELECT * FROM tb_mahasiswa WHERE NOT EXISTS (SELECT * FROM tb_judul_usulan WHERE tb_mahasiswa.nim = tb_judul_usulan.nim)");
 		return $query->result();
 	}
 	function t_judul_siswa(){

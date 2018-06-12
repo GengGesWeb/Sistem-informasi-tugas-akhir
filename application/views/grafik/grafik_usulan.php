@@ -66,8 +66,8 @@ chart.render();
 			  foreach ($belum_input as $data1){
 				echo"<tr>
 				  <td>$no</td>
-				  <td>$data1->nim</td>
-				  <td>$data1->nama</td>
+				  <td>$data1->NIM</td>
+				  <td>$data1->Nama</td>
 				  <td>$data1->prodi - $data1->golongan</td>
 				  </tr>";
 				$no++;
