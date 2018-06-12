@@ -142,6 +142,30 @@ class Dosen extends MY_Controller{
 		$this->load->view('grafik/grafik_usulan',$data);
 		$this->load->view('grafik/footer');		
 	}
+	//==========================================grafik total judul ======================================
+	function grafik_judul(){
+		$isi = array (
+			'jumlah_siswa'=>$this->Model_grafik->t_judul_siswa(),
+			'jumlah_dosen'=>$this->Model_grafik->t_judul_dosen()
+		);
+		$this->load->view('grafik/header');
+		$this->load->view('grafik/grafik_total_judul',$isi);
+		$this->load->view('grafik/footer');
+	}
+	
+	//==========================================grafik sebaran dosen ======================================
+
+	function grafik_dosen(){
+		$isi = array (
+			'dosen'=>$this->Model_grafik->sebaran_dosen()
+		);
+		$this->load->view('grafik/header');
+		$this->load->view('grafik/sebaran_dosen',$isi);
+		$this->load->view('grafik/footer');
+	
+	}
+
+	
 }
 	
   
