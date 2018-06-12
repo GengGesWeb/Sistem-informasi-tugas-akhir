@@ -3,10 +3,13 @@ class Dosen extends MY_Controller{
 
  public function __construct(){
   parent::__construct();
+  $this->cekLogin();
   $this->load->database();
+  $this->load->model('model_bimbingan');
+  $this->load->model('Model_koordinator');
+  $this->load->model('Model_grafik');
 
   //memanggil function dari controller MY_Controller
-  $this->cekLogin();
   $this->load->model('model_dosen');
   $id_user = $this->session->userdata('username');
   $dosen = $this->model_dosen->datadosen($id_user);
@@ -17,6 +20,9 @@ class Dosen extends MY_Controller{
      );
   $this->session->set_userdata($data_dosen);
   return TRUE;
+
+
+ 
 
   //validasi jika session dengan level manager mengakses halaman ini maka akan dialihkan ke halaman manager
     if ($this->session->userdata('status') == "mahasiswa") {
@@ -39,41 +45,13 @@ class Dosen extends MY_Controller{
       }
 
 //===================================================Controller CO==============================================
-      
-        public function pembimbingfix()
-          {
-
-            $this->db->query('SELECT * FROM tb_final');
-
-            // apakah ada pencarian data spesifik dengan kata kunci tertentu?
-            $search = $this->input->get('search');
-              if (!empty($search)) {
-                $this->db->like('NIM', $search, 'both'); 
-                $this->db->or_like('kategori', $search, 'both'); 
-        }
-
-        $pemfix = $this->db->get('tb_final');
-        $data['result'] = $pemfix->result_array();
-        $data['num_rows'] = $pemfix->num_rows();
-        
-            $this->load->view('Dosen/header');
-            $this->load->view('Dosen/v_pembimbingfix', $data); 
-            $this->load->view('Dosen/footer');
-          }
-
-          public function form_terima()
-            {
-              $this->load->view('Dosen/header');
-              $this->load->view('Dosen/v_formterima'); 
-              $this->load->view('Dosen/footer');
-            }
-
-            public function form_tolak()
-              {
-                $this->load->view('Dosen/header');
-                $this->load->view('Dosen/v_formtolak'); 
-                $this->load->view('Dosen/footer');
-              }
+     
+	  public function bimbingan()
+  {
+    $this->load->view('Dosen/header');
+    $this->load->view('Dosen/bimbingan');
+    $this->load->view('Dosen/footer');
+  }
 
 //===================================================Controller CO==============================================
       
@@ -86,6 +64,15 @@ class Dosen extends MY_Controller{
             $this->load->view('Dosen/footer');
           }
 
+	 public function lihat_bimbingan(){
+	
+		$where = array('id_dosen' =>$this->session->userdata('username'));
+		$data['bimbingan'] = $this->model_bimbingan->tampil_data($where)->result();
+		
+		
+		$this->load->view('dosen/bimbingan',$data);
+       
+}
 
                
 //==========================================PROSES INPUT JUDUL DOSEN ======================================
@@ -115,5 +102,70 @@ class Dosen extends MY_Controller{
       }
     
     }
-  }
+	
+		//==========================================PROSES mengatur jumlah kuota pembimbing ======================================
+	public function kuotadosen()
+      {
+		$data = array(
+				'list_kuota'=>$this->Model_koordinator->data_kuota(),
+				'list_data'=>$this->Model_koordinator->data_kuota_isi(),
+				'edit_data'=>$this->Model_koordinator->edit_kuota_isi(@$_GET['id'])
+				);
+        $this->load->view('Dosen/header');
+		if(isset($_GET['id']) && isset($_GET['r']) && $_GET['r'] =='1'){
+				$this->load->view('Dosen/v_edit_kuotadosen',$data); 
+		}elseif(isset($_GET['id']) && isset($_GET['r']) && $_GET['r'] =='0'){
+				$insert = $this->Model_koordinator->update_kuota(array(
+				'kuota_bimbingan' => 0
+            ), $_GET['id']);
+			redirect('Dosen/dosen/kuotadosen');
+		}
+		else{
+			$this->load->view('Dosen/v_kuotadosen',$data); 
+        }
+		$this->load->view('Dosen/v_isi_kuotadosen',$data); 
+        $this->load->view('Dosen/footer');
+      }
+	  public function isi_kuotadosen()
+      {
+       if(isset($_POST['submit'])){
+			$id = $this->input->post('nama');
+			$insert = $this->Model_koordinator->update_kuota(array(
+				'kuota_bimbingan' => $this->input->post('jumlah_kuota')
+            ), $id);
+			redirect('Dosen/dosen/kuotadosen');
+		}
+		else{
+			echo"gagal";
+		}
+      }
+	  public function edit_kuotadosen(){
+		if(isset($_POST['submit'])){
+			$id = $this->input->post('idya');
+			$insert = $this->Model_koordinator->update_kuota(array(
+				'kuota_bimbingan' => $this->input->post('jumlah_kuota')
+            ), $id);
+			redirect('Dosen/dosen/kuotadosen');
+		}
+		else{
+			echo"gagal";
+		}
+	  }
+	//==========================================grafik total usulan ======================================
+	
+	function grafik(){
+		$data = array(
+				'jumlah_siswa'=>$this->Model_grafik->jumlah_siswa(),
+				'jumlah_usulan'=>$this->Model_grafik->jumlah_usulan(), 
+				'belum_input'=>$this->Model_grafik->belum_input() 
+				);
+			//var_dump($data['jumlah_siswa']);
+		$this->load->view('grafik/header');
+		//$this->load->view('grafik/beranda');
+		$this->load->view('grafik/grafik_usulan',$data);
+		$this->load->view('grafik/footer');		
+	}
+}
+	
+  
 ?>
