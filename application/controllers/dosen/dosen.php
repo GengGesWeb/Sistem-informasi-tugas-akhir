@@ -155,7 +155,7 @@ class Dosen extends MY_Controller{
 		$this->load->view('grafik/grafik_usulan',$data);
 		$this->load->view('grafik/footer');		
 	}
-	//==========================================grafik total judul ======================================
+		//==========================================grafik total judul ======================================
 	function grafik_judul(){
 		$isi = array (
 			'jumlah_siswa'=>$this->Model_grafik->t_judul_siswa(),
