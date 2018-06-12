@@ -64,7 +64,7 @@
                     </li>
                     <li><a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Grafik & Cetak Laporan</span> </a>
                     </li>
-                    <li><a href="shortcodes.html"><i class="icon-user"></i><span>List Dosen</span> </a>
+                    <li><a href="<?php echo site_url('dosen/dosen/koordinator') ?>"><i class="icon-user"></i><span>List Dosen</span> </a>
                     </li>
                     
                 </ul>

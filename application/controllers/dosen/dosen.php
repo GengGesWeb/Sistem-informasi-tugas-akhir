@@ -53,6 +53,16 @@ class Dosen extends MY_Controller{
     $this->load->view('Dosen/footer');
   }
 
+//===================================================Controller CO==============================================
+      
+        public function koordinator()
+          {
+
+           $data['user'] = $this->model_dosen->tampil_data()->result();
+            $this->load->view('Dosen/header');
+            $this->load->view('Dosen/koordinator', $data); 
+            $this->load->view('Dosen/footer');
+          }
 
 	 public function lihat_bimbingan(){
 	
