@@ -54,17 +54,23 @@
         <div class="subnavbar-inner">
             <div class="container">
                 <ul class="mainnav">
-                    <li><a href="<?php echo site_url('dosen/dosen/index') ?>"><i class="icon-dashboard"></i><span>Beranda</span> </a>
+                    <li>
+                        <a href="<?php echo site_url('dosen/dosen/index') ?>"><i class="icon-dashboard"></i><span>Beranda</span> </a>
                     </li>
-                    <li><a href="<?php echo site_url('dosen/dosen/formjudul') ?>"><i class="icon-edit"></i><span>Input Judul</span> </a>
+                    <li>
+                        <a href="<?php echo site_url('dosen/dosen/formjudul') ?>"><i class="icon-edit"></i><span>Input Judul</span> </a>
                     </li>
-                    <li ><a href="guidely.html"><i class="icon-list-alt"></i><span>Usulan Judul</span>
-                    </a></li>
-                    <li ><a href="<?php echo site_url('dosen/dosen/lihat_bimbingan') ?>"><i class="icon-check"></i><span>Penentuan Bimbingan</span> </a>
+                    <li >
+                        <a href="guidely.html"><i class="icon-list-alt"></i><span>Usulan Judul</span> </a>
                     </li>
-                    <li><a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Grafik & Cetak Laporan</span> </a>
+                    <li >
+                        <a href="<?php echo site_url('dosen/dosen/lihat_bimbingan') ?>"><i class="icon-check"></i><span>Penentuan Bimbingan</span> </a>
                     </li>
-                    <li><a href="<?php echo site_url('dosen/dosen/koordinator') ?>"><i class="icon-user"></i><span>List Dosen</span> </a>
+                    <li>
+                        <a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Grafik & Cetak Laporan</span> </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('dosen/dosen/koordinator') ?>"><i class="icon-user"></i><span>List Dosen</span> </a>
                     </li>
                     
                 </ul>
