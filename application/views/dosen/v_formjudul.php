@@ -18,52 +18,49 @@
 <div class="widget-content">
           <div class="info-box">
             <div class="row-fluid stats-box">
-    <form>
+    <form action="<?php echo site_url('dosen/dosen/proses_inputjudul'); ?>" method="post">
       <fieldset>
 
-                  <div class="form-group">                     
-                    <label class="form-label" for="username">NIP</label>
-                      <div class="form">
-                        <input type="text" class="span6 disabled" id="username" value="<?php echo $this->session->userdata('username'); ?>" disabled>
-                        <p class="help-block">Your NIP is for logging in and cannot be changed.</p>
-                      </div> <!-- /form -->       
-                  </div> <!-- /form-group -->
-
-<br > 
 
                     <div class="form-group">                     
                       <label class="form-label" for="namadosen">Nama Dosen</label>
                         <div class="form">
-                          <input type="text" class="span6" id="namadosen"  value="" placeholder="Nama Dosen">
+                          <input type="text" class="span6" id="namadosen"  value="<?php echo $this->session->userdata('nama') ?>" placeholder="Nama Dosen" disabled>
                         </div> <!-- /form -->       
                     </div> <!-- /form-group -->
-
-
+ <br > 
+                  <div class="form-group">                     
+                    <label class="form-label" for="username">NIP</label>
+                      <div class="form">
+                        <input type="text" class="span6 disabled" id="username" name="username" value="<?php echo $this->session->userdata('NIP'); ?>">
+                        <p class="help-block">NIP Tidak Bisa Diubah</p>
+                      </div> <!-- /form -->       
+                  </div> <!-- /form-group -->
 
  <br > 
 
                     <div class="form-group">                     
-                      <label class="form-label" for="judul_usulan">Judul Usulan</label>
+                      <label class="form-label" for="judul_dosen">Judul Usulan</label>
                         <div class="form">
-                          <input type="text" class="span6" id="judul_usulan"   value="" placeholder="Judul Usulan">
+                          <input type="text" class="span6" id="judul_dosen" name="judul_dosen"  value="" placeholder="Judul Usulan">
                         </div> <!-- /form -->       
                     </div> <!-- /form-group -->
 
  <br > 
 
                     <div class="form-group">                     
-                      <label class="form-label">Program Studi</label>
-                         <div class="form">
+                      <label class="form-label" for="prodi">Program Studi</label>
+                         <div class="form" id="prodi" name="prodi">
                                             <label class="checkbox inline">
-                                              <input type="checkbox"> Manajemen Informatika
+                                              <input type="checkbox" id="prodi" name="prodi" value="Manajemen Informatika"> Manajemen Informatika
                                             </label>
 
                                             <label class="checkbox inline">
-                                              <input type="checkbox"> Teknik Komputer
+                                              <input type="checkbox" id="prodi" name="prodi" value="Teknik Komputer"> Teknik Komputer
                                             </label>
                                             
                                             <label class="checkbox inline">
-                                              <input type="checkbox"> Teknologi Informatika
+                                              <input type="checkbox" id="prodi" name="prodi" value="Teknik Informatika"> Teknik Informatika
                                             </label>
                          </div> <!-- /form -->       
                     </div> <!-- /form-group -->
@@ -71,9 +68,9 @@
  <br > 
 
                     <div class="form-group">                     
-                       <label class="form-label">Kuota Mahasiswa</label>
+                      <label for="kuota">Kuota Mahasiswa</label>
                           <div class="form">
-                             <select class="dropdown">
+                             <select class="dropdown" id="kuota" name="kuota">
                            <!--<a class="btn btn-primary" href="#">Pilih</a>
                            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>-->
                                  <option value"pilih">Pilih Jumlah Kuota</option>
@@ -87,11 +84,10 @@
 
 
  <br />                  
-                      
-                    <div class="form-actions">
-                      <button type="submit" class="btn btn-primary">Save</button> 
-                      <button class="btn">Cancel</button>
-                    </div> <!-- /form-actions -->
+                  <div class="form-actions">
+                 <button type="submit" class="btn btn-primary" name="submit" value="proses_inputjudul">Save</button> 
+                 <button class="btn"><a href='<?php echo site_url('dosen/dosen/index') ?>'>Cancel</a></button>
+              </div> <!-- /form-actions -->
         </fieldset>
      </form>
 </div>

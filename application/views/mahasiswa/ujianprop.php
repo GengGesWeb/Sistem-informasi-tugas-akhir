@@ -6,19 +6,14 @@
 
 
 <div class="main">
-	
-	<div class="main-inner">
-
-	    <div class="container">
-	
-	      <div class="row">
-	      	
-	      	<div class="span12">      		
-	      		
-	      		<div class="widget ">
+<div class="main-inner">
+<div class="container">
+<div class="row">
+<div class="span12">      		
+<div class="widget ">
 	      			
 	      			<div class="widget-header">
-	      				<i class="icon-user"></i>
+	      				<i class="icon-list-alt"></i>
 	      				<h3>Pendaftaran Ujian Proposal</h3>
 	  				</div> <!-- /widget-header -->
 					
@@ -31,84 +26,83 @@
 						  
 						
 										<fieldset>
-										
-										<div class="control-group">											
-											<label class="control-label" for="username">NIM</label>
+											<div class="control-group">											
+											<label class="control-label" for="">Upload file proposal Tugas Akhir (format : NIM_nama maks 1MB)</label>
 											<div class="controls">
-												<input type="text" class="span6 disabled" id="NIM" value="<?php echo $this->session->userdata('username'); ?>" disabled>
+
+
+											<?php echo $error;?> 
+  											<?php echo form_open_multipart('mahasiswa/mahasiswa/ujianproposal');?> 
+										    <input type="file" name="file" size="1024" />
+										    <input type="submit" name="filesubmit" value="upload"/> 
+											</form>
+  											
+
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group --> 
+										
+					<form action="<?php echo site_url('mahasiswa/mahasiswa/ujianproposal'); ?>" method="post">		
+										<div class="control-group">											
+											<label class="control-label" for="NIM">NIM</label>
+											<div class="controls">
+												<input type="text" class="span4" id="NIM" name="NIM" value="<?php echo $this->session->userdata('NIM'); ?>" readonly>
 												
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
 										
 										<div class="control-group">											
-											<label class="control-label" for="firstname">Nama</label>
+											<label class="control-label" for="nama">Nama</label>
 											<div class="controls">
-												<input type="text" class="span6" id="Nama" value="" placeholder="Nama">
+												<input type="text" class="span4" id="nama" name="nama" value="<?php echo $this->session->userdata('nama') ?>" placeholder="Nama" disabled>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
 										
-										<div class="control-group">											
-											<label class="control-label" for="lastname">Program Studi</label>
-											<div class="controls">
-												<input type="text" class="span6" id="Nama" value="" placeholder="Program Studi">
-											</div> <!-- /controls -->				
-										</div> <!-- /control-group -->
+										<div class="form-group">                     
+				                       <label class="form-label" for="prodi">Program Studi</label>
+				                          <div class="controls">
+				                             <input type="text" class="span4" id="prodi" name="prodi" value="<?php echo $this->session->userdata('prodi') ?>" placeholder="prodi" disabled>
+				                        </div> <!-- /form -->       
+				                    </div> <!-- /form-group -->
 										
 										
 										<div class="control-group">											
-											<label class="control-label" for="email">Golongan</label>
+											<label class="control-label" for="golongan">Golongan</label>
 											<div class="controls">
-												<input type="text" class="span6" id="Nama" value="" placeholder="Golongan">
+												<input type="text" class="span1" id="golongan" name="golongan" value="<?php echo $this->session->userdata('golongan'); ?>" placeholder="golongan" disabled>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 									
 										
 										<div class="control-group">											
-											<label class="control-label" for="password1">Judul Proposal</label>
+											<label class="control-label" for="judul">Judul Proposal</label>
 											<div class="controls">
-												<input type="text" class="span6" id="Nama" value="" placeholder="Judul Proposal">
+												<input type="text" class="span6" id="judul" name="judul" value="" placeholder="Judul Proposal" required>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
-										
-										
-										<div class="control-group">											
-											<label class="control-label" for="password2">Dosen Pembimbing</label>
-											 <div class="control-group">											
-											
-                                              <div class="btn-group">
-                                              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> Dosen Pembimbing</a>
-                                              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                                              <ul class="dropdown-menu">
-                                                <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-                                                <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-                                                <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#"><i class="i"></i> Make admin</a></li>
-                                              </ul>
-                                            </div>
-                                              </div>	<!-- /controls -->			
-										</div> <!-- /control-group -->
 
+										
+										
+										
+										<div class="form-group">                     
+                       					 <label class="form-label">Dosen Pembimbing</label>
+                          				  <div class="form">
+                             				<select class="dropdown span3" name="dospem" required>
+                                 				<option value"pilih">Pilih Dosen Pembimbing</option>
+                                  				<?php foreach ($data_dosen as $row) { ?>
+                                  				<option value="<?php echo $row['id_user']; ?>"> <?php echo $row['nama']; ?></option>';
+                             	  			<?php } ?>
+                                   			</select>
+                                  		  </div>
+                                  		</div>
+                                          
+                            
+                         
 										<br>
 
 
-										<div class="control-group">											
-											<label class="control-label" for="password1">Upload file proposal Tugas Akhir</label>
-											<div class="controls">
-												<form method="post" enctype="multipart/form-data">
-												 <div>
-												   <input type="file" id="file" name="file" multiple>
-												 </div>
-												 <div>
-												  <button type="submit" class="btn">Submit</button>
-												 </div>
-												</form>
-
-
-											</div> <!-- /controls -->				
-										</div> <!-- /control-group -->
+										
            
             
 									
@@ -116,14 +110,14 @@
 										
 											
 										<div class="form-actions">
-											<button type="submit" class="btn btn-primary">Kirim</button> 
+											<button type="submit" name="submit_proposal" class="btn btn-primary" value="daftar">Kirim</button> 
 											<button class="btn">Cancel</button>
 										</div> <!-- /form-actions -->
+						</form>				
 									</fieldset>
-								</form>
-								
-										</fieldset>
-									</form>
+																
+									</fieldset>
+									
 								</div>
 								
 							</div>
@@ -149,99 +143,10 @@
 	    </div> <!-- /container -->
 	    
 	</div> <!-- /main-inner -->
+
     
 </div> <!-- /main -->
-    
-    
-    
- 
-<div class="extra">
 
-	<div class="extra-inner">
-
-		<div class="container">
-
-			<div class="row">
-                    <div class="span3">
-                        <h4>
-                            About Free Admin Template</h4>
-                        <ul>
-                            <li><a href="javascript:;">EGrappler.com</a></li>
-                            <li><a href="javascript:;">Web Development Resources</a></li>
-                            <li><a href="javascript:;">Responsive HTML5 Portfolio Templates</a></li>
-                            <li><a href="javascript:;">Free Resources and Scripts</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                    <div class="span3">
-                        <h4>
-                            Support</h4>
-                        <ul>
-                            <li><a href="javascript:;">Frequently Asked Questions</a></li>
-                            <li><a href="javascript:;">Ask a Question</a></li>
-                            <li><a href="javascript:;">Video Tutorial</a></li>
-                            <li><a href="javascript:;">Feedback</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                    <div class="span3">
-                        <h4>
-                            Something Legal</h4>
-                        <ul>
-                            <li><a href="javascript:;">Read License</a></li>
-                            <li><a href="javascript:;">Terms of Use</a></li>
-                            <li><a href="javascript:;">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                    <div class="span3">
-                        <h4>
-                            Open Source jQuery Plugins</h4>
-                        <ul>
-                            <li><a href="http://www.egrappler.com">Open Source jQuery Plugins</a></li>
-                            <li><a href="http://www.egrappler.com;">HTML5 Responsive Tempaltes</a></li>
-                            <li><a href="http://www.egrappler.com;">Free Contact Form Plugin</a></li>
-                            <li><a href="http://www.egrappler.com;">Flat UI PSD</a></li>
-                        </ul>
-                    </div>
-                    <!-- /span3 -->
-                </div> <!-- /row -->
-
-		</div> <!-- /container -->
-
-	</div> <!-- /extra-inner -->
-
-</div> <!-- /extra -->
-
-
-    
-    
-<div class="footer">
-	
-	<div class="footer-inner">
-		
-		<div class="container">
-			
-			<div class="row">
-				
-    			<div class="span12">
-    				&copy; 2013 <a href="http://www.egrappler.com/">Bootstrap Responsive Admin Template</a>.
-    			</div> <!-- /span12 -->
-    			
-    		</div> <!-- /row -->
-    		
-		</div> <!-- /container -->
-		
-	</div> <!-- /footer-inner -->
-	
-</div> <!-- /footer -->
-    
-
-
-<script src="js/jquery-1.7.2.min.js"></script>
-	
-<script src="js/bootstrap.js"></script>
-<script src="js/base.js"></script>
 
 
   </body>

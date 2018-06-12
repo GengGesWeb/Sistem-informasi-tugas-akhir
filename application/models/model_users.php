@@ -2,13 +2,16 @@
   class Model_users extends CI_Model {
 
     //mengambil tabel users
-    public $table = 'tb_user';
+    public $table_user = 'tb_user';
+    public $table_mahasiswa = 'tb_mahasiswa';
+    public $table_dosen = 'tb_dosen';
 
     public function cekAkun($username, $password)
     {
+
       //cari username lalu lakukan validasi
       $this->db->where('id_user', $username);
-      $query = $this->db->get($this->table)->row();
+      $query = $this->db->get($this->table_user)->row();
 
       //jika bernilai 1 maka user tidak ditemukan
       if (!$query) return 1;
@@ -19,5 +22,9 @@
 
       return $query;
     }
+
+   
+
+
 
   }

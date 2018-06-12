@@ -35,7 +35,7 @@
                             </ul>
                         </li>
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                            class="icon-user"></i> <?php echo $this->session->userdata('username'); ?> <b class="caret"></b></a>
+                            class="icon-user"></i> <?php echo $this->session->userdata('nama'); ?> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                      
                                 <li><a href="<?php echo site_url('authentication/auth/logout'); ?>">Logout</a></li>
@@ -60,11 +60,11 @@
                     </li>
                     <li ><a href="guidely.html"><i class="icon-list-alt"></i><span>Usulan Judul</span>
                     </a></li>
-                    <li ><a href="charts.html"><i class="icon-check"></i><span>Penentuan Bimbingan</span> </a>
+                    <li ><a href="<?php echo site_url('dosen/dosen/pembimbingfix') ?>"><i class="icon-check"></i><span>Penentuan Bimbingan</span> </a>
                     </li>
                     <li><a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Grafik & Cetak Laporan</span> </a>
                     </li>
-                    <li><a href="shortcodes.html"><i class="icon-user"></i><span>List Dosen</span> </a>
+                    <li><a href="<?php echo site_url('dosen/dosen/koordinator') ?>"><i class="icon-user"></i><span>List Dosen</span> </a>
                     </li>
                     
                 </ul>
