@@ -9,6 +9,19 @@ class Dosen extends MY_Controller{
   $this->load->model('Model_koordinator');
   $this->load->model('Model_grafik');
 
+  //memanggil function dari controller MY_Controller
+  $this->load->model('model_dosen');
+  $id_user = $this->session->userdata('username');
+  $dosen = $this->model_dosen->datadosen($id_user);
+  $data_dosen = array(
+    'NIP' =>$dosen->id_dosen ,
+    'nama'=>$dosen->nama,
+    'hak_akses' =>$dosen->hak_akses
+     );
+  $this->session->set_userdata($data_dosen);
+  return TRUE;
+
+
  
 
   //validasi jika session dengan level manager mengakses halaman ini maka akan dialihkan ke halaman manager
