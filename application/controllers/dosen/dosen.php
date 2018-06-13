@@ -73,6 +73,29 @@ class Dosen extends MY_Controller{
 		$this->load->view('dosen/bimbingan',$data);
        
 }
+  function edit_hak_akses(){
+  $where = array('id_dosen' => $id_dosen);
+  $data['tb_dosen'] = $this->Model_koordinator->edit_hak_akses($where,'tb_dosen')->result();
+  $this->load->view('v_edit_hak_akses',$data);
+}
+   function update_hak_akses(){
+  $id_dosen = $this->input->post('id_dosen');
+  $nama = $this->input->post('nama');
+  $hak_akses = $this->input->post('hak_akses');
+ 
+  $data = array(
+    'id_dosen' => $id_dosen,
+    'nama' => $nama,
+    'hak_akses' => $hak_akses
+  );
+ 
+  $where = array(
+    'id_dosen' => $id_dosen
+  );
+ 
+  $this->Model_koordinator->update_hak_akses($where,$data,'tb_dosen');
+  redirect('Dosen/dosen/koordinator');
+}
 
                
 //==========================================PROSES INPUT JUDUL DOSEN ======================================
@@ -165,6 +188,8 @@ class Dosen extends MY_Controller{
 		$this->load->view('grafik/grafik_usulan',$data);
 		$this->load->view('grafik/footer');		
 	}
+//==========================================update koordinator ======================================
+
 }
 	
   

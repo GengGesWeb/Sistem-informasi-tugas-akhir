@@ -16,6 +16,15 @@ class Model_koordinator extends CI_Model {
 		$query = $this->db->query("SELECT * FROM tb_dosen WHERE id_dosen = '$id'");
 		return $query->result_array();
 	}
+	function edit_hak_akses($where,$table){		
+		return $this->db->get_where($table,$where);
+	}
+ 
+	function update_hak_akses($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}	
+	
 }
 
 ?>
