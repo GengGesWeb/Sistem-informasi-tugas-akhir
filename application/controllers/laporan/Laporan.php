@@ -42,7 +42,7 @@
 				$a++;
 			}
 			echo"</table>";
-		}
+		} 
 		function usulan_fik(){
 			header("Content-type:application/vnd.ms-excel");
 			header("Content-disposition:attachment; filename=daftar_usulan_judul_fik.xls");
