@@ -33,12 +33,12 @@ class Dosen extends MY_Controller{
 
 //===================================================Controller CO==============================================
      
-	  public function bimbingan()
+	  /*public function bimbingan()
   {
     $this->load->view('Dosen/header');
     $this->load->view('Dosen/bimbingan');
     $this->load->view('Dosen/footer');
-  }
+  }*/
 
 
 	 public function lihat_bimbingan(){
@@ -46,8 +46,9 @@ class Dosen extends MY_Controller{
 		$where = array('id_dosen' =>$this->session->userdata('username'));
 		$data['bimbingan'] = $this->model_bimbingan->tampil_data($where)->result();
 		
-		
+		$this->load->view('Dosen/header');
 		$this->load->view('dosen/bimbingan',$data);
+		$this->load->view('Dosen/footer');
        
 }
 

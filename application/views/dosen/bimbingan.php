@@ -18,7 +18,7 @@
 <div class="widget-content">
           <div class="info-box">
             <div class="row-fluid stats-box">
-    <form>
+    <form action="<?php echo site_url('dosen/dosen/lihat_bimbingan'); ?>" method="post">
       <fieldset>
 
                   <div class="form-group">                     
