@@ -21,8 +21,11 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		indexLabelFontSize: 16,
 		indexLabel: "{label} - {y}",
 		dataPoints: [
-			{ y: <?= $jumlah_siswa->id - $jumlah_usulan->id ?>, label: "Jumlah Siswa Belum Memasukan Usulan" },
-			{ y: <?= $jumlah_usulan->id ?>, label: "Jumlah Siswa Memasukan Usulan" },
+			<?php 
+				foreach ($dosen as $data){
+			?>
+			{ y: <?= $data->total ?>, label: "<?= $data->nama ?>" },
+			<?php } ?>
 			
 		]
 	}]
@@ -50,25 +53,23 @@ chart.render();
 			
 			<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
 			<br><br><br>
-			<h3>Data Mahasiswa Belum Mengajukan Judul</h3>
+			<h3>Data Sebaran Dosen Pembimbing</h3>
 			<table class="table table-sm">
 			  <thead>
 				<tr>
 				  <th scope="col">No</th>
-				  <th scope="col">NIM</th>
 				  <th scope="col">Nama</th>
-				  <th scope="col">Prodi / Golongan</th>
+				  <th scope="col">Total</th>
 				</tr>
 			  </thead>
 			  <tbody>
 			  <?php
 			  $no=1;
-			  foreach ($belum_input as $data1){
+			  foreach ($dosen as $data1){
 				echo"<tr>
 				  <td>$no</td>
-				  <td>$data1->NIM</td>
-				  <td>$data1->Nama</td>
-				  <td>$data1->prodi - $data1->golongan</td>
+				  <td>$data1->nama</td>
+				  <td>$data1->total</td>
 				  </tr>";
 				$no++;
 				}

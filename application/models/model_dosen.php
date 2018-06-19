@@ -13,6 +13,10 @@
       return $query;
     }
 
+    function tampil_data(){
+		return $this->db->get('tb_dosen');
+	}
+
  	
  }
 ?>

@@ -27,7 +27,7 @@ class Mahasiswa extends MY_Controller{
 
   public function index()
   {
-    $this->load->view('Mahasiswa/Header');
+    $this->load->view('Mahasiswa/Header',array('active' => "index"));
     $this->load->view('Mahasiswa/Beranda');
     $this->load->view('Mahasiswa/Footer');
   }
@@ -44,7 +44,7 @@ class Mahasiswa extends MY_Controller{
       );
       $this->model_mahasiswa->input_proposal($inputproposal);
       $dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen());
-      $this->load->view('Mahasiswa/Header',$dosen);
+      $this->load->view('Mahasiswa/Header',array('active'=>"proposal"));
       $this->load->view('Mahasiswa/alert',array('pesan' => "Proposal berhasil di upload"));
       $this->load->view('Mahasiswa/ujianprop',array('error' => '' )); 
       $this->load->view('Mahasiswa/Footer',$dosen);
@@ -65,7 +65,7 @@ class Mahasiswa extends MY_Controller{
                   if (!$this->upload->do_upload('file')) {
                      $dosen= array('data_dosen' => $this->model_mahasiswa->get_datadosen());
                      $error = array('error' => $this->upload->display_errors());
-                     $this->load->view('Mahasiswa/Header',$dosen);
+                     $this->load->view('Mahasiswa/Header',array('active'=>"proposal"));
                      $this->load->view('Mahasiswa/ujianprop',$error);
                      $this->load->view('Mahasiswa/Footer',$dosen);
                      
@@ -76,7 +76,7 @@ class Mahasiswa extends MY_Controller{
                     $data_file = array (
                       'proposal'=>$nama);
                     $this->session->set_userdata($data_file);
-                    $this->load->view('Mahasiswa/Header',$dosen);
+                    $this->load->view('Mahasiswa/Header',array('active'=>"proposal"));
                     $this->load->view('Mahasiswa/ujianprop',array('error' => "File Telah di Upload"));
                     $this->load->view('Mahasiswa/Footer',$dosen);                
                   }  
@@ -84,7 +84,7 @@ class Mahasiswa extends MY_Controller{
                 else 
                 {
                   $dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen());
-                  $this->load->view('Mahasiswa/Header',$dosen);
+                  $this->load->view('Mahasiswa/Header',array('active'=>"proposal"));
                   $this->load->view('Mahasiswa/ujianprop',array('error' => '' )); 
                   $this->load->view('Mahasiswa/Footer',$dosen);
                 }

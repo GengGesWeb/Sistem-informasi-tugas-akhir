@@ -9,6 +9,19 @@ class Dosen extends MY_Controller{
   $this->load->model('Model_koordinator');
   $this->load->model('Model_grafik');
 
+  //memanggil function dari controller MY_Controller
+  $this->load->model('model_dosen');
+  $id_user = $this->session->userdata('username');
+  $dosen = $this->model_dosen->datadosen($id_user);
+  $data_dosen = array(
+    'NIP' =>$dosen->id_dosen ,
+    'nama'=>$dosen->nama,
+    'hak_akses' =>$dosen->hak_akses
+     );
+  $this->session->set_userdata($data_dosen);
+  return TRUE;
+
+
  
 
   //validasi jika session dengan level manager mengakses halaman ini maka akan dialihkan ke halaman manager
@@ -40,6 +53,16 @@ class Dosen extends MY_Controller{
     $this->load->view('Dosen/footer');
   }*/
 
+//===================================================Controller CO==============================================
+      
+        public function koordinator()
+          {
+
+           $data['user'] = $this->model_dosen->tampil_data()->result();
+            $this->load->view('Dosen/header');
+            $this->load->view('Dosen/koordinator', $data); 
+            $this->load->view('Dosen/footer');
+          }
 
 	 public function lihat_bimbingan(){
 	
@@ -143,6 +166,30 @@ class Dosen extends MY_Controller{
 		$this->load->view('grafik/grafik_usulan',$data);
 		$this->load->view('grafik/footer');		
 	}
+		//==========================================grafik total judul ======================================
+	function grafik_judul(){
+		$isi = array (
+			'jumlah_siswa'=>$this->Model_grafik->t_judul_siswa(),
+			'jumlah_dosen'=>$this->Model_grafik->t_judul_dosen()
+		);
+		$this->load->view('grafik/header');
+		$this->load->view('grafik/grafik_total_judul',$isi);
+		$this->load->view('grafik/footer');
+	}
+	
+	//==========================================grafik sebaran dosen ======================================
+
+	function grafik_dosen(){
+		$isi = array (
+			'dosen'=>$this->Model_grafik->sebaran_dosen()
+		);
+		$this->load->view('grafik/header');
+		$this->load->view('grafik/sebaran_dosen',$isi);
+		$this->load->view('grafik/footer');
+	
+	}
+
+	
 }
 	
   
