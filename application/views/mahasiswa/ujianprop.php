@@ -86,13 +86,14 @@
 										
 										
 										<div class="form-group">                     
-                       					 <label class="form-label">Dosen Pembimbing</label>
+                       					 <label class="form-label" for="nama">Dosen Pembimbing</label>
                           				  <div class="form">
-                             				<select class="dropdown span3" name="dospem" required>
+                             				 <select class="dropdown span3" name="dospem" required>
                                  				<option value"pilih">Pilih Dosen Pembimbing</option>
-                                  				<?php foreach ($data_dosen as $row) { ?>
-                                  				<option value="<?php echo $row['id_user']; ?>"> <?php echo $row['nama']; ?></option>';
-                             	  			<?php } ?>
+                                  				<?php foreach ($nama as $row) 
+                                  				{
+                                  					echo y('nama', $tb_dosen, '');
+                                  				}?>
                                    			</select>
                                   		  </div>
                                   		</div>
