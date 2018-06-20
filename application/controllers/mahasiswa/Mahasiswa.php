@@ -32,6 +32,45 @@ class Mahasiswa extends MY_Controller{
     $this->load->view('Mahasiswa/Footer');
   }
 
+public function inputjudulmhs(){         /////////////////////////////////INPUT JUDUL MAHASISWA
+$this->load->helper("form");
+$this->load->view('Mahasiswa/Header',array('active' => "inputjdl"));
+$this->load->view('Mahasiswa/formjudulmhs');
+$this->load->view('Mahasiswa/Footer');
+}
+
+
+
+public function proses_inputjudulmhs()
+  {
+    if ($this->input->post('submit'))
+    {
+        $inputjudul= array(
+          'NIM' => $this->input->post('NIM') , 
+          'usulan_pembimbing1' => $this->input->post('judul_dosen'),
+          'usulan_pembimbing2' => $this->input->post('usulan_pembimbing2'),
+          'judul' => $this->input->post('judul'),
+          'dosen_pengusul' => $this->input->post('dosen_pengusul'),
+          'ringkasan' => $this->input->post('ringkasan'),
+          'kategori' => $this->input->post('kategori')
+        );
+
+        $this ->load-> model('m_mhsinput');
+        $this ->m_mhsinput->input_judul($inputjudul);
+        
+          $this->load->view('Mahasiswa/Header', array('active' => "inputjdl"));
+          $this->load->view('Mahasiswa/v_alerts');
+          $this->load->view('Mahasiswa/formjudulmhs'); 
+          $this->load->view('Mahasiswa/footer');
+      }
+      else {
+        $data['exist']=$exist;
+        $this->load->view('Mahasiswa/formjudulmhs',$data);
+      }
+    
+    }
+
+
   public function ujianproposal()
   { 
     if($this->input->post('submit_proposal'))
