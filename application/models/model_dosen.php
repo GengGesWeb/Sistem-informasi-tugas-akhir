@@ -13,18 +13,6 @@
       return $query;
     }
 
-    public function get_datadosen()
- 	{
- 		$result = $this->db->select('id_user, nama')->get('tb_dosen')->result_array(); 
- 
-        $nama = array(); 
-        foreach($result as $r) { 
-            $nama[$r['id_user']] = $r['nama']; 
-        } 
-        $nama[''] = 'Select job position...'; 
-        return $nama;
- 	}
-
     function tampil_data(){
 		return $this->db->get('tb_dosen');
 	}

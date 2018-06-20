@@ -25,8 +25,9 @@
  	
  	public function get_datadosen()
  	{
- 		$query = $this->db->query('SELECT nama FROM tb_dosen');
- 		return $query->result();
+ 		$query = $this->db->query('Select * from tb_dosen');
+ 		$result =  $query->result_array();
+ 		return $result;
  	}
 
  	public function input_proposal($inputproposal){
