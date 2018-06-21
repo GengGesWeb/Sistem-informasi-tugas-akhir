@@ -33,8 +33,8 @@ class Mahasiswa extends MY_Controller{
   }
 
 public function inputjudulmhs(){         /////////////////////////////////INPUT JUDUL MAHASISWA
-$this->load->helper("form");
-$this->load->view('Mahasiswa/Header',array('active' => "inputjdl"));
+$dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen(),'active'=>"inputjdl");
+$this->load->view('Mahasiswa/Header',$dosen);
 $this->load->view('Mahasiswa/formjudulmhs');
 $this->load->view('Mahasiswa/Footer');
 }
