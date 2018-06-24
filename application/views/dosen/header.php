@@ -70,7 +70,10 @@
                         <a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Grafik & Cetak Laporan</span> </a>
                     </li>
                     <li>
-                        <a href="<?php echo site_url('dosen/dosen/koordinator') ?>"><i class="icon-user"></i><span>List Dosen</span> </a>
+                        <a href="<?php echo site_url('dosen/dosen/dosen') ?>"><i class="icon-group"></i><span>List Dosen</span> </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('dosen/dosen/koordinator') ?>"><i class="icon-user"></i><span>Koordinator</span> </a>
                     </li>
                     
                 </ul>
