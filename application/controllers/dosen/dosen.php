@@ -189,11 +189,36 @@ class Dosen extends MY_Controller{
 	
 	}
 //============================================Halaman Koordinator========================================
-  public function koordinator(){
+  public function jadwal(){
+    $list = $this ->Model_koordinator ->get_jadwal()->result();
+    $data = array(
+                "list" => $list
+        );
     $this->load->view('dosen/header');
+    $this->load->view('dosen/tgl_proposal');
+    $this->load->view('dosen/listjadwal',$data);
     $this->load->view('dosen/footer');
 
   }
+  public function save_tglInput(){
+        $data = array(
+            'tgl_awal' => $this ->input ->post('tanggal_awal'),
+            'tgl_akhir' => $this ->input ->post('tanggal_akhir'),
+            'keterangan' => $this ->input ->post('ket')
+        );
+
+        $this ->db ->insert('tb_tanggal',$data);
+        redirect('dosen/dosen/jadwal');
+    }
+
+  public function delJadwal(){
+        $id = $this ->uri ->segment(4);
+        $this ->db ->where_in('id',$id);
+        $this ->db ->delete('tb_tanggal');
+        redirect('dosen/dosen/jadwal');
+    }  
+
+
 
 	
 }

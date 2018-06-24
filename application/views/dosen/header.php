@@ -61,10 +61,10 @@
                         <a href="<?php echo site_url('dosen/dosen/formjudul') ?>"><i class="icon-edit"></i><span>Input Judul</span> </a>
                     </li>
                     <li >
-                        <a href="guidely.html"><i class="icon-list-alt"></i><span>Usulan Judul</span> </a>
+                        <a href="<?php echo site_url('dosen/dosen/lihat_bimbingan') ?>"><i class="icon-check"></i><span>Penentuan Bimbingan</span> </a>
                     </li>
                     <li >
-                        <a href="<?php echo site_url('dosen/dosen/lihat_bimbingan') ?>"><i class="icon-check"></i><span>Penentuan Bimbingan</span> </a>
+                        <a href="guidely.html"><i class="icon-list-alt"></i><span>Usulan Judul</span> </a>
                     </li>
                     <li>
                         <a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Grafik & Cetak Laporan</span> </a>
@@ -72,9 +72,17 @@
                     <li>
                         <a href="<?php echo site_url('dosen/dosen/dosen') ?>"><i class="icon-group"></i><span>List Dosen</span> </a>
                     </li>
+
+                    <li class="dropdown"><a href="javascript:;" class="dropdown" data-toggle="dropdown"> <i class="icon-user"></i><span>Koordinator</span> </a>
+                        <ul class="dropdown-menu">
                     <li>
-                        <a href="<?php echo site_url('dosen/dosen/koordinator') ?>"><i class="icon-user"></i><span>Koordinator</span> </a>
+                        <a href="<?php echo site_url('dosen/dosen/jadwal') ?>"><i></i><span>Jadwal</span> </a>
                     </li>
+                    <li>
+                        <a href="<?php echo site_url('dosen/dosen/koordinator') ?>"><i></i><span>Koordinator</span> </a>
+                    </li>
+                        </ul>
+                    </li>    
                     
                 </ul>
             </div>
