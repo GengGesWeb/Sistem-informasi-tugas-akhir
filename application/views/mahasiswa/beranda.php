@@ -17,7 +17,7 @@
       
         <h2>Daftar Usulan Judul Tugas Akhir Dosen</h2><br />
 
-<table  border="1" cellpadding="1" >
+<table  class="table table-striped table-bordered table-hover" >
   <tr>
     <th>Nama Dosen</th>
     <th>Judul Usulan</th>
