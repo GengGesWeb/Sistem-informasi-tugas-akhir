@@ -95,7 +95,7 @@ class Dosen extends MY_Controller{
   );
  
   $this->Model_koordinator->update_hak_akses($where,$data,'tb_dosen');
-  redirect('Dosen/dosen/koordinator');
+  redirect('Dosen/dosen/dosen');
 }
 
                
@@ -189,31 +189,28 @@ class Dosen extends MY_Controller{
 		$this->load->view('grafik/grafik_usulan',$data);
 		$this->load->view('grafik/footer');		
 	}
-<<<<<<< HEAD
-//==========================================update koordinator ======================================
-=======
-		//==========================================grafik total judul ======================================
-	function grafik_judul(){
-		$isi = array (
-			'jumlah_siswa'=>$this->Model_grafik->t_judul_siswa(),
-			'jumlah_dosen'=>$this->Model_grafik->t_judul_dosen()
-		);
-		$this->load->view('grafik/header');
-		$this->load->view('grafik/grafik_total_judul',$isi);
-		$this->load->view('grafik/footer');
-	}
-	
-	//==========================================grafik sebaran dosen ======================================
+//==========================================grafik total judul ======================================
+  function grafik_judul(){
+    $isi = array (
+      'jumlah_siswa'=>$this->Model_grafik->t_judul_siswa(),
+      'jumlah_dosen'=>$this->Model_grafik->t_judul_dosen()
+    );
+    $this->load->view('grafik/header');
+    $this->load->view('grafik/grafik_total_judul',$isi);
+    $this->load->view('grafik/footer');
+  }
+  
+  //==========================================grafik sebaran dosen ======================================
 
-	function grafik_dosen(){
-		$isi = array (
-			'dosen'=>$this->Model_grafik->sebaran_dosen()
-		);
-		$this->load->view('grafik/header');
-		$this->load->view('grafik/sebaran_dosen',$isi);
-		$this->load->view('grafik/footer');
-	
-	}
+  function grafik_dosen(){
+    $isi = array (
+      'dosen'=>$this->Model_grafik->sebaran_dosen()
+    );
+    $this->load->view('grafik/header');
+    $this->load->view('grafik/sebaran_dosen',$isi);
+    $this->load->view('grafik/footer');
+  
+  }
 //============================================Halaman Koordinator========================================
   public function jadwal(){
     $list = $this ->Model_koordinator ->get_jadwal()->result();
@@ -245,9 +242,9 @@ class Dosen extends MY_Controller{
     }  
 
 
->>>>>>> 5ae200d5959971a23f37a468d14017033716a6bf
 
+  
 }
-	
+  
   
 ?>
