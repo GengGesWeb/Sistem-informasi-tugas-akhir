@@ -32,8 +32,62 @@ class Mahasiswa extends MY_Controller{
     $this->load->view('Mahasiswa/Footer');
   }
 
+public function inputjudulmhs(){         /////////////////////////////////INPUT JUDUL MAHASISWA
+$dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen(),'active'=>"inputjdl");
+$this->load->view('Mahasiswa/Header',$dosen);
+$this->load->view('Mahasiswa/formjudulmhs');
+$this->load->view('Mahasiswa/Footer');
+}
+
+
+
+public function proses_inputjudulmhs()
+  {
+    if ($this->input->post('submit'))
+    {
+        $inputjudul= array(
+          'NIM' => $this->input->post('NIM') , 
+          'usulan_pembimbing1' => $this->input->post('judul_dosen'),
+          'usulan_pembimbing2' => $this->input->post('usulan_pembimbing2'),
+          'judul' => $this->input->post('judul'),
+          'dosen_pengusul' => $this->input->post('dosen_pengusul'),
+          'ringkasan' => $this->input->post('ringkasan'),
+          'kategori' => $this->input->post('kategori')
+        );
+
+        $this ->load-> model('m_mhsinput');
+        $this ->m_mhsinput->input_judul($inputjudul);
+        
+          $this->load->view('Mahasiswa/Header', array('active' => "inputjdl"));
+          $this->load->view('Mahasiswa/v_alerts');
+          $this->load->view('Mahasiswa/formjudulmhs'); 
+          $this->load->view('Mahasiswa/footer');
+      }
+      else {
+        $data['exist']=$exist;
+        $this->load->view('Mahasiswa/formjudulmhs',$data);
+      }
+    
+    }
+
+
   public function ujianproposal()
   { 
+    $main="proposal";
+    $tgl_awal = $this ->model_mahasiswa->get_jadwal_awal($main);
+    $tgl_akhir =$this ->model_mahasiswa->get_jadwal_akhir($main);
+    date_default_timezone_set('Asia/Jakarta');
+            $y = date("Y");
+            $m=date("m");
+            $d=date("d");
+            $akhir = explode('-',$tgl_akhir['tgl_akhir']);
+            $awal = explode('-',$tgl_awal['tgl_awal']);
+            
+            if(($y-$awal[0]==0 && $m-$awal[1]==0 && $d-$awal[2]>=0)&&($y-$akhir[0]==0 && $m-$akhir[1]==0 && $d-$akhir[2]<=0)){
+              $l=1;
+            
+            
+
     if($this->input->post('submit_proposal'))
      {
       $inputproposal = array (
@@ -43,8 +97,8 @@ class Mahasiswa extends MY_Controller{
           'file' => $this->session->userdata('proposal')
       );
       $this->model_mahasiswa->input_proposal($inputproposal);
-      $dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen());
-      $this->load->view('Mahasiswa/Header',array('active'=>"proposal"));
+      $dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen(),'active'=>"proposal");
+      $this->load->view('Mahasiswa/Header',$dosen);
       $this->load->view('Mahasiswa/alert',array('pesan' => "Proposal berhasil di upload"));
       $this->load->view('Mahasiswa/ujianprop',array('error' => '' )); 
       $this->load->view('Mahasiswa/Footer',$dosen);
@@ -63,33 +117,40 @@ class Mahasiswa extends MY_Controller{
 
 
                   if (!$this->upload->do_upload('file')) {
-                     $dosen= array('data_dosen' => $this->model_mahasiswa->get_datadosen());
+                     $dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen(),'active'=>"proposal");
                      $error = array('error' => $this->upload->display_errors());
-                     $this->load->view('Mahasiswa/Header',array('active'=>"proposal"));
+                     $this->load->view('Mahasiswa/Header',$dosen);
                      $this->load->view('Mahasiswa/ujianprop',$error);
                      $this->load->view('Mahasiswa/Footer',$dosen);
                      
                   } else { 
-                    $dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen());
+                    $dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen(),'active'=>"proposal");
                     $data = array('upload_data' => $this->upload->data());
                     $nama = $this->upload->data('file_name');
                     $data_file = array (
                       'proposal'=>$nama);
                     $this->session->set_userdata($data_file);
-                    $this->load->view('Mahasiswa/Header',array('active'=>"proposal"));
+                    $this->load->view('Mahasiswa/Header',$dosen);
                     $this->load->view('Mahasiswa/ujianprop',array('error' => "File Telah di Upload"));
                     $this->load->view('Mahasiswa/Footer',$dosen);                
                   }  
                 }
                 else 
                 {
-                  $dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen());
-                  $this->load->view('Mahasiswa/Header',array('active'=>"proposal"));
+                  $dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen(),'active'=>"proposal");
+                  $this->load->view('Mahasiswa/Header',$dosen);
                   $this->load->view('Mahasiswa/ujianprop',array('error' => '' )); 
                   $this->load->view('Mahasiswa/Footer',$dosen);
                 }
                 }
-          }     
+          }
+          else {
+                $this->load->view('Mahasiswa/Header',array('active'=>'proposal'));
+                $this ->load->view('Mahasiswa/peringatan',array('pesan'=>'Belum waktunya upload proposal'));
+                $this->load->view('Mahasiswa/Footer');
+        }
+        }
+
     
 
 

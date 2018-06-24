@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2018 at 10:56 AM
+-- Generation Time: Jun 24, 2018 at 08:44 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -36,7 +36,50 @@ CREATE TABLE `tb_dosen` (
   `kuota_bimbingan` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_dosen`
+--
 
+INSERT INTO `tb_dosen` (`id_dosen`, `id_user`, `nama`, `hak_akses`, `kuota_bimbingan`) VALUES
+('197008311998031001', '197008311998031001', 'Moh. Munih Dian W, S.Kom.,M.T.', '', 5),
+('197009292003121001', '197009292003121001', 'Yogiswara, S.T., M.T.', '', 5),
+('197011282003121001', '197011282003121001', 'Hariyono Rakhmad, S.Pd., M.Kom.', '', 5),
+('197104082001121003', '197104082001121003', 'Wahyu Kurnia Dewanto, S.Kom., M.T.', '', 5),
+('197110092003121001', '197110092003121001', 'Denny Trias Utomo, S.Si., M.T.', '', 5),
+('197111151998021001', '197111151998021001', 'Adi Heru Utomo, S.Kom., M.Kom.', '', 5),
+('197308312008011003', '197308312008011003', 'Agus Purwadi, S.T., M.T.', '', 5),
+('197405192003121002', '197405192003121002', 'Nugroho Setyo Wibowo, S.T.,M.T.', '', 5),
+('197709292005011003', '197709292005011003', 'Didit Rahmat Hartadi S.Kom., M.T.', '', 5),
+('197808162005011002', '197808162005011002', 'Beni Widiawan, S.ST., M.T.', '', 5),
+('197808172003121005', '197808172003121005', 'Agus Hariyanto, S.T., M.Kom.', '', 5),
+('197808192005022001', '197808192005022001', 'Ika Widiastuti, S.ST., M.T.', '', 5),
+('197809082005011001', '197809082005011001', 'Denny Wijanarko, S.T.,M.T.', '', 5),
+('197810112005012002', '197810112005012002', 'Elly Antika, S.T., M.Kom', '', 5),
+('197907032003121001', '197907032003121001', 'Surateno, S.Kom.,M.Kom.', '', 5),
+('197909212005011001', '197909212005011001', 'I Putu Dody Lesmana, S.T.,M.T.', '', 5),
+('198005172008121002', '198005172008121002', 'Dwi Putro Sarwo S, S.Kom., M.Kom.', '', 5),
+('198012122005011001', '198012122005011001', 'Prawidya Destarianto, S.Kom.,M.T.', '', 5),
+('198101152005011001', '198101152005011001', 'Nurul Zainal Fanani, S.ST, M.T.', '', 5),
+('198106152006041002', '198106152006041002', 'Syamsul Arifin, S.Kom., M.Cs.', '', 5),
+('198301092018031001', '198301092018031001', 'Hermawan Arief Putranto, S.T., M.T.', '', 5),
+('198302032006041003', '198302032006041003', 'Hendra Yufit Riskiawan, S.Kom., M.Cs.', '', 5),
+('198406252015041004', '198406252015041004', 'Bekti Maryuni S., S.Pd.,M.Kom.', '', 5),
+('198510312018031001', '198510312018031001', 'Victor Phoa ST.,MCs.', '', 5),
+('198603192014031001', '198603192014031001', 'Fendik Eko Purnomo, S.Pd.,M.T.', '', 5),
+('198606092008122004', '198606092008122004', 'Nanik Anita M. ,S.ST.,M.T.', '', 5),
+('198608022015042002', '198608022015042002', 'Ratih Ayuninghemi, S.ST., M.Kom.', '', 5),
+('198807022016101001', '198807022016101001', 'Husin, S.Kom., M.MT.', '', 5),
+('198903292015031001', '198903292015031001', 'Taufiq Rizaldi', 'koordinator', 5),
+('198907102015091001', '198907102015091001', 'Ery Setiawan Julev Atmaji, S.Kom.,M.Cs.', 'default', 5),
+('199002272018032001', '199002272018032001', 'Trismayanti Dwi P, S.Kom., M,Cs.', '', 5),
+('199103152017031001', '199103152017031001', 'Syamsiar Kautsar, S.ST., M.T.', '', 5),
+('199104292017101001', '199104292017101001', 'Faisal Lutfi Afriansyah, S.Kom., M.T.', '', 5),
+('199112112018031001', '199112112018031001', 'Khafidurohman A., S.Pd., M.Eng.', '', 5),
+('199203022018032001', '199203022018032001', 'Zilvanhisna Emka Fitri, S.T., M.T.', '', 5),
+('199205282018032001', '199205282018032001', 'Bety Etikasari, S.Pd., M.Pd.', '', 5),
+('199205282018033001', '199205282018033001', 'Aji Seto Arfianto, S.ST., M.T.', '', 5);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `tb_final`
@@ -92,7 +135,8 @@ INSERT INTO `tb_judul_dosen` (`id_judul_dosen`, `id_dosen`, `judul_dosen`, `prod
 (5, '197008311998031001', 'sdfsdfdsfds', 'Manajemen Informatika', 4),
 (6, '197008311998031001', 'sdfsdfdsfds', 'Manajemen Informatika', 4),
 (7, '197008311998031001', 'sdfsdfdsfds', 'Manajemen Informatika', 4),
-(8, '197008311998031001', 'sdfsdfdsfds', 'Manajemen Informatika', 4);
+(8, '197008311998031001', 'sdfsdfdsfds', 'Manajemen Informatika', 4),
+(9, '199205282018033001', 'asdadwrwre', 'Teknik Informatika', 3);
 
 -- --------------------------------------------------------
 
@@ -104,7 +148,8 @@ CREATE TABLE `tb_judul_usulan` (
   `id_judul_usulan` int(10) NOT NULL,
   `NIM` varchar(25) NOT NULL,
   `judul` varchar(100) NOT NULL,
-  `deskripsi` text NOT NULL,
+  `id_dosen_pengusul` varchar(100) NOT NULL,
+  `ringkasan` text NOT NULL,
   `id_dosen_pembimbing` varchar(25) NOT NULL,
   `kategori` enum('individu','kelompok','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -129,6 +174,7 @@ CREATE TABLE `tb_mahasiswa` (
 
 INSERT INTO `tb_mahasiswa` (`NIM`, `id_user`, `Nama`, `prodi`, `golongan`) VALUES
 ('E31160170', 'dimas', 'Dimas Fatah Hilla', 'MIF', 'A'),
+('E31160328', 'E31160328', 'Avega Wira Pradana', 'MIF', 'A'),
 ('E31160570', 'E31160570', 'Sofyan As Tsauri', 'MIF', 'A');
 
 -- --------------------------------------------------------
@@ -174,7 +220,8 @@ CREATE TABLE `tb_proposal` (
 --
 
 INSERT INTO `tb_proposal` (`id_proposal`, `NIM`, `id_dosen`, `judul`, `file`) VALUES
-(2, 'E31160170', '197709292005011003', 'asdadasdasdasdasdasdsadee', 'DAFTAR_PUSTAKA-fix1.pdf');
+(2, 'E31160170', '197709292005011003', 'asdadasdasdasdasdasdsadee', 'DAFTAR_PUSTAKA-fix1.pdf'),
+(3, 'E31160170', '198005172008121002', 'adsadsad', 'BAB_I-REV2.pdf');
 
 -- --------------------------------------------------------
 
@@ -186,10 +233,29 @@ CREATE TABLE `tb_review` (
   `id_review` int(10) NOT NULL,
   `id_judul_usulan` int(10) NOT NULL,
   `id_dosen` varchar(25) NOT NULL,
-  `dosen_penerima` varchar(10) NOT NULL,
-  `dosen_penolak` varchar(10) NOT NULL,
+  `status` varchar(25) NOT NULL,
   `saran` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_tanggal`
+--
+
+CREATE TABLE `tb_tanggal` (
+  `id` int(11) NOT NULL,
+  `tgl_awal` date NOT NULL,
+  `tgl_akhir` date NOT NULL,
+  `keterangan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_tanggal`
+--
+
+INSERT INTO `tb_tanggal` (`id`, `tgl_awal`, `tgl_akhir`, `keterangan`) VALUES
+(1, '2018-06-25', '2018-06-26', 'input_judul');
 
 -- --------------------------------------------------------
 
@@ -247,54 +313,10 @@ INSERT INTO `tb_user` (`id_user`, `password`, `status`) VALUES
 ('199205282018033001', 'b9143915efe169ebe835dbf81366b545', 'dosen'),
 ('dimas', '50e32edc10706f237cfb4825eb08a64c', 'mahasiswa'),
 ('dosen', 'ce28eed1511f631af6b2a7bb0a85d636', 'dosen'),
+('E31160328', 'e6a21db1d51a891d72f6a71534a87244', 'mahasiswa'),
 ('E31160570', 'a43ea2f3c29ef3423c48d633d1a1909d', 'mahasiswa'),
 ('Fauzan', 'eacaf53cb2b533a68baa765faedf7e59', 'dosen'),
 ('mahasiswa', '5787be38ee03a9ae5360f54d9026465f', 'mahasiswa');
-
--- --------------------------------------------------------
-
---
--- Dumping data for table `tb_dosen`
---
-
-INSERT INTO `tb_dosen` (`id_dosen`, `id_user`, `nama`, `hak_akses`, `kuota_bimbingan`) VALUES
-('197008311998031001', '197008311998031001', 'Moh. Munih Dian W, S.Kom.,M.T.', '', 5),
-('197009292003121001', '197009292003121001', 'Yogiswara, S.T., M.T.', '', 5),
-('197011282003121001', '197011282003121001', 'Hariyono Rakhmad, S.Pd., M.Kom.', '', 5),
-('197104082001121003', '197104082001121003', 'Wahyu Kurnia Dewanto, S.Kom., M.T.', '', 5),
-('197110092003121001', '197110092003121001', 'Denny Trias Utomo, S.Si., M.T.', '', 5),
-('197111151998021001', '197111151998021001', 'Adi Heru Utomo, S.Kom., M.Kom.', '', 5),
-('197308312008011003', '197308312008011003', 'Agus Purwadi, S.T., M.T.', '', 5),
-('197405192003121002', '197405192003121002', 'Nugroho Setyo Wibowo, S.T.,M.T.', '', 5),
-('197709292005011003', '197709292005011003', 'Didit Rahmat Hartadi S.Kom., M.T.', '', 5),
-('197808162005011002', '197808162005011002', 'Beni Widiawan, S.ST., M.T.', '', 5),
-('197808172003121005', '197808172003121005', 'Agus Hariyanto, S.T., M.Kom.', '', 5),
-('197808192005022001', '197808192005022001', 'Ika Widiastuti, S.ST., M.T.', '', 5),
-('197809082005011001', '197809082005011001', 'Denny Wijanarko, S.T.,M.T.', '', 5),
-('197810112005012002', '197810112005012002', 'Elly Antika, S.T., M.Kom', '', 5),
-('197907032003121001', '197907032003121001', 'Surateno, S.Kom.,M.Kom.', '', 5),
-('197909212005011001', '197909212005011001', 'I Putu Dody Lesmana, S.T.,M.T.', '', 5),
-('198005172008121002', '198005172008121002', 'Dwi Putro Sarwo S, S.Kom., M.Kom.', '', 5),
-('198012122005011001', '198012122005011001', 'Prawidya Destarianto, S.Kom.,M.T.', '', 5),
-('198101152005011001', '198101152005011001', 'Nurul Zainal Fanani, S.ST, M.T.', '', 5),
-('198106152006041002', '198106152006041002', 'Syamsul Arifin, S.Kom., M.Cs.', '', 5),
-('198301092018031001', '198301092018031001', 'Hermawan Arief Putranto, S.T., M.T.', '', 5),
-('198302032006041003', '198302032006041003', 'Hendra Yufit Riskiawan, S.Kom., M.Cs.', '', 5),
-('198406252015041004', '198406252015041004', 'Bekti Maryuni S., S.Pd.,M.Kom.', '', 5),
-('198510312018031001', '198510312018031001', 'Victor Phoa ST.,MCs.', '', 5),
-('198603192014031001', '198603192014031001', 'Fendik Eko Purnomo, S.Pd.,M.T.', '', 5),
-('198606092008122004', '198606092008122004', 'Nanik Anita M. ,S.ST.,M.T.', '', 5),
-('198608022015042002', '198608022015042002', 'Ratih Ayuninghemi, S.ST., M.Kom.', '', 5),
-('198807022016101001', '198807022016101001', 'Husin, S.Kom., M.MT.', '', 5),
-('198903292015031001', '198903292015031001', 'Taufiq Rizaldi', 'koordinator', 5),
-('198907102015091001', '198907102015091001', 'Ery Setiawan Julev Atmaji, S.Kom.,M.Cs.', '', 5),
-('199002272018032001', '199002272018032001', 'Trismayanti Dwi P, S.Kom., M,Cs.', '', 5),
-('199103152017031001', '199103152017031001', 'Syamsiar Kautsar, S.ST., M.T.', '', 5),
-('199104292017101001', '199104292017101001', 'Faisal Lutfi Afriansyah, S.Kom., M.T.', '', 5),
-('199112112018031001', '199112112018031001', 'Khafidurohman A., S.Pd., M.Eng.', '', 5),
-('199203022018032001', '199203022018032001', 'Zilvanhisna Emka Fitri, S.T., M.T.', '', 5),
-('199205282018032001', '199205282018032001', 'Bety Etikasari, S.Pd., M.Pd.', '', 5),
-('199205282018033001', '199205282018033001', 'Aji Seto Arfianto, S.ST., M.T.', '', 5);
 
 -- --------------------------------------------------------
 
@@ -390,6 +412,12 @@ ALTER TABLE `tb_review`
   ADD KEY `id_judul_usulan` (`id_judul_usulan`);
 
 --
+-- Indexes for table `tb_tanggal`
+--
+ALTER TABLE `tb_tanggal`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
@@ -423,7 +451,7 @@ ALTER TABLE `tb_hasil`
 -- AUTO_INCREMENT for table `tb_judul_dosen`
 --
 ALTER TABLE `tb_judul_dosen`
-  MODIFY `id_judul_dosen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_judul_dosen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tb_judul_usulan`
@@ -447,13 +475,19 @@ ALTER TABLE `tb_pembimbing_fix`
 -- AUTO_INCREMENT for table `tb_proposal`
 --
 ALTER TABLE `tb_proposal`
-  MODIFY `id_proposal` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_proposal` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_review`
 --
 ALTER TABLE `tb_review`
   MODIFY `id_review` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_tanggal`
+--
+ALTER TABLE `tb_tanggal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_usulan_pembimbing`

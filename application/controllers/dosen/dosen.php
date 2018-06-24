@@ -46,16 +46,16 @@ class Dosen extends MY_Controller{
 
 //===================================================Controller CO==============================================
      
-	  public function bimbingan()
+	  /*public function bimbingan()
   {
     $this->load->view('Dosen/header');
     $this->load->view('Dosen/bimbingan');
     $this->load->view('Dosen/footer');
-  }
+  }*/
 
 //===================================================Controller CO==============================================
       
-        public function koordinator()
+        public function dosen()
           {
 
            $data['user'] = $this->model_dosen->tampil_data()->result();
@@ -69,8 +69,9 @@ class Dosen extends MY_Controller{
 		$where = array('id_dosen' =>$this->session->userdata('username'));
 		$data['bimbingan'] = $this->model_bimbingan->tampil_data($where)->result();
 		
-		
+		$this->load->view('Dosen/header');
 		$this->load->view('dosen/bimbingan',$data);
+		$this->load->view('Dosen/footer');
        
 }
   function edit_hak_akses(){
@@ -188,7 +189,63 @@ class Dosen extends MY_Controller{
 		$this->load->view('grafik/grafik_usulan',$data);
 		$this->load->view('grafik/footer');		
 	}
+<<<<<<< HEAD
 //==========================================update koordinator ======================================
+=======
+		//==========================================grafik total judul ======================================
+	function grafik_judul(){
+		$isi = array (
+			'jumlah_siswa'=>$this->Model_grafik->t_judul_siswa(),
+			'jumlah_dosen'=>$this->Model_grafik->t_judul_dosen()
+		);
+		$this->load->view('grafik/header');
+		$this->load->view('grafik/grafik_total_judul',$isi);
+		$this->load->view('grafik/footer');
+	}
+	
+	//==========================================grafik sebaran dosen ======================================
+
+	function grafik_dosen(){
+		$isi = array (
+			'dosen'=>$this->Model_grafik->sebaran_dosen()
+		);
+		$this->load->view('grafik/header');
+		$this->load->view('grafik/sebaran_dosen',$isi);
+		$this->load->view('grafik/footer');
+	
+	}
+//============================================Halaman Koordinator========================================
+  public function jadwal(){
+    $list = $this ->Model_koordinator ->get_jadwal()->result();
+    $data = array(
+                "list" => $list
+        );
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/tgl_proposal');
+    $this->load->view('dosen/listjadwal',$data);
+    $this->load->view('dosen/footer');
+
+  }
+  public function save_tglInput(){
+        $data = array(
+            'tgl_awal' => $this ->input ->post('tanggal_awal'),
+            'tgl_akhir' => $this ->input ->post('tanggal_akhir'),
+            'keterangan' => $this ->input ->post('ket')
+        );
+
+        $this ->db ->insert('tb_tanggal',$data);
+        redirect('dosen/dosen/jadwal');
+    }
+
+  public function delJadwal(){
+        $id = $this ->uri ->segment(4);
+        $this ->db ->where_in('id',$id);
+        $this ->db ->delete('tb_tanggal');
+        redirect('dosen/dosen/jadwal');
+    }  
+
+
+>>>>>>> 5ae200d5959971a23f37a468d14017033716a6bf
 
 }
 	

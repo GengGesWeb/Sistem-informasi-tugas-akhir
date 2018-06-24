@@ -53,6 +53,9 @@
         <div class="subnavbar-inner">
             <div class="container">
                 <ul class="mainnav">
+
+
+
                     <?php if ($active=="index") { ?>
                     <li class="active">
                     <?php } else {?>
@@ -60,9 +63,21 @@
                     <?php }?>    
                         <a href="<?php echo site_url ('mahasiswa/mahasiswa/index') ?>"><i class="icon-dashboard"></i><span>Beranda</span> </a>
                     </li>
+
+
+
+                   
+                <?php if ($active=="inputjdl") { ?>
+                    <li class="active">
+                    <?php } else {?>
                     <li>
-                        <a href="reports.html"><i class="icon-edit"></i><span>Input Judul Tugas Akhir</span> </a>
+                    <?php }?>   
+                        <a href="<?php echo site_url('mahasiswa/mahasiswa/inputjudulmhs') ?>"><i class="icon-edit"></i><span>Input Judul Tugas Akhir</span> </a>
                     </li>
+
+    
+
+
                     <?php if ($active=="proposal") { ?>
                     <li class="active">
                     <?php } else {?>
@@ -70,6 +85,9 @@
                     <?php }?> 
                         <a href="<?php echo site_url ('mahasiswa/mahasiswa/ujianproposal') ?>"><i class="icon-list-alt"></i><span>Pendaftaran Ujian Proposal</span>
                     </a></li>
+
+
+
                     <li><a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Hasil Review</span> </a>
                     </li>
                     <!--

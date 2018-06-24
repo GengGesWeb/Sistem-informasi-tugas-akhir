@@ -34,6 +34,37 @@
 		$this->db->insert('tb_proposal',$inputproposal);
 	}
 
+	public function get_jadwal_awal($main){
+        $this ->db ->select('tgl_awal');
+		$this ->db ->from('tb_tanggal');
+		$this ->db ->where('keterangan',$main);
+
+		$query = $this ->db ->get()->row_array();
+
+		return $query;
+    }
+
+    public function get_jadwal_akhir($main){
+        $this ->db ->select('tgl_akhir');
+		$this ->db ->from('tb_tanggal');
+		$this ->db ->where('keterangan',$main);
+
+		$query = $this ->db ->get()->row_array();
+
+		return $query;
+    }
+
+
+	public function inputjudulmhs ($data = array()){					//INPUT JUDUL MAHASISWA
+		$this->load->database();
+		return $this->db->insert("tb_judul_usulan", $data);
+	}
+
+
+	public function tampil_data(){												//BERANDA
+		return $this->db->get('tb_judul_dosen');
+	}
+	
 
  }
 ?>
