@@ -66,14 +66,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</style>
 </head>
 <body>
+<div class="container">
+	<h1>Data <small>Usulan</small></h1>
+	<table class="table table-bordered table-striped" id="mydata">
+		<thead>
+			<tr>
+				<td>Id Judul Usulan</td>
+				<td>NIM</td>
+				<td>Judul</td>
+				<td>deskripsi</td>
+				<td>Id Dosen Pembimbing</td>
+				<td>Kategori</td>
+			</tr>
+		</thead>
+		<tbody>
+			<?php 
+				$no = 1;
+			foreach($hasil as $i ) {?>
+			<tr>
+				<td><?php echo $no++ ?></td>
+				<td><?php echo $i['id_judul_usulan']?></td>
+				<td><?php echo $i['NIM']?></td>
+				<td><?php echo $i['judul']?></td>
+				<td><?php echo $i['deskripsi']?></td>
+				<td><?php echo $i['id_dosen_pembimbing']?></td>
+				<td><?php echo $i['kategori']?></td>
+				<td><a href="<?php echo site_url('komentar/form_terima')?>">komentar judul</a>
+				</td>
 
-<div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
-
-
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+			</tr>
+			<?php }?>
+		</tbody>
+	</table>
+	
 </div>
 
+
+	
+	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>1
 </body>
 </html>
