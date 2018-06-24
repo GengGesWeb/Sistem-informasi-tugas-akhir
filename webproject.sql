@@ -1,20 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2018 at 07:54 AM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Generation Time: Jun 24, 2018 at 08:44 AM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `webproject`
@@ -26,14 +28,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `tb_dosen`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_dosen` (
+CREATE TABLE `tb_dosen` (
   `id_dosen` varchar(25) NOT NULL,
   `id_user` varchar(25) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `hak_akses` enum('koordinator','reviewer','default','') NOT NULL,
-  `kuota_bimbingan` int(1) NOT NULL,
-  PRIMARY KEY (`id_dosen`),
-  KEY `id_user` (`id_user`)
+  `kuota_bimbingan` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -70,7 +70,7 @@ INSERT INTO `tb_dosen` (`id_dosen`, `id_user`, `nama`, `hak_akses`, `kuota_bimbi
 ('198608022015042002', '198608022015042002', 'Ratih Ayuninghemi, S.ST., M.Kom.', '', 5),
 ('198807022016101001', '198807022016101001', 'Husin, S.Kom., M.MT.', '', 5),
 ('198903292015031001', '198903292015031001', 'Taufiq Rizaldi', 'koordinator', 5),
-('198907102015091001', '198907102015091001', 'Ery Setiawan Julev Atmaji, S.Kom.,M.Cs.', '', 5),
+('198907102015091001', '198907102015091001', 'Ery Setiawan Julev Atmaji, S.Kom.,M.Cs.', 'default', 5),
 ('199002272018032001', '199002272018032001', 'Trismayanti Dwi P, S.Kom., M,Cs.', '', 5),
 ('199103152017031001', '199103152017031001', 'Syamsiar Kautsar, S.ST., M.T.', '', 5),
 ('199104292017101001', '199104292017101001', 'Faisal Lutfi Afriansyah, S.Kom., M.T.', '', 5),
@@ -85,18 +85,15 @@ INSERT INTO `tb_dosen` (`id_dosen`, `id_user`, `nama`, `hak_akses`, `kuota_bimbi
 -- Table structure for table `tb_final`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_final` (
-  `id_final` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tb_final` (
+  `id_final` int(10) NOT NULL,
   `NIM` varchar(25) NOT NULL,
   `judul` varchar(100) NOT NULL,
   `id_dosen` varchar(25) NOT NULL,
   `deskripsi` text NOT NULL,
   `kategori` enum('individu','kelompok','','') NOT NULL,
-  `saran` text NOT NULL,
-  PRIMARY KEY (`id_final`),
-  KEY `NIM` (`NIM`) USING BTREE,
-  KEY `id_dosen_pembimbing` (`id_dosen`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `saran` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -104,16 +101,13 @@ CREATE TABLE IF NOT EXISTS `tb_final` (
 -- Table structure for table `tb_hasil`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_hasil` (
-  `id_hasil` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tb_hasil` (
+  `id_hasil` int(10) NOT NULL,
   `id_review` int(10) NOT NULL,
   `NIM` varchar(25) NOT NULL,
   `status_hasil` enum('diterima','ditolak','','') NOT NULL,
-  `saran_hasil` text NOT NULL,
-  PRIMARY KEY (`id_hasil`),
-  KEY `id_review` (`id_review`),
-  KEY `NIM` (`NIM`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `saran_hasil` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -121,15 +115,13 @@ CREATE TABLE IF NOT EXISTS `tb_hasil` (
 -- Table structure for table `tb_judul_dosen`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_judul_dosen` (
-  `id_judul_dosen` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tb_judul_dosen` (
+  `id_judul_dosen` int(10) NOT NULL,
   `id_dosen` varchar(25) NOT NULL,
   `judul_dosen` varchar(100) NOT NULL,
   `prodi` varchar(100) NOT NULL,
-  `kuota` int(1) NOT NULL,
-  PRIMARY KEY (`id_judul_dosen`),
-  KEY `id_dosen` (`id_dosen`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `kuota` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_judul_dosen`
@@ -144,7 +136,7 @@ INSERT INTO `tb_judul_dosen` (`id_judul_dosen`, `id_dosen`, `judul_dosen`, `prod
 (6, '197008311998031001', 'sdfsdfdsfds', 'Manajemen Informatika', 4),
 (7, '197008311998031001', 'sdfsdfdsfds', 'Manajemen Informatika', 4),
 (8, '197008311998031001', 'sdfsdfdsfds', 'Manajemen Informatika', 4),
-(9, '197008311998031001', 'Sistem Informasi Job Placement Center Polije', 'Manajemen Informatika', 1);
+(9, '199205282018033001', 'asdadwrwre', 'Teknik Informatika', 3);
 
 -- --------------------------------------------------------
 
@@ -152,50 +144,15 @@ INSERT INTO `tb_judul_dosen` (`id_judul_dosen`, `id_dosen`, `judul_dosen`, `prod
 -- Table structure for table `tb_judul_usulan`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_judul_usulan` (
-  `id_judul_usulan` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tb_judul_usulan` (
+  `id_judul_usulan` int(10) NOT NULL,
   `NIM` varchar(25) NOT NULL,
   `judul` varchar(100) NOT NULL,
   `id_dosen_pengusul` varchar(100) NOT NULL,
   `ringkasan` text NOT NULL,
-  `id_dosen_pembimbing` varchar(100) NOT NULL,
-  `kategori` enum('individu','kelompok','','') NOT NULL,
-  PRIMARY KEY (`id_judul_usulan`),
-  KEY `NIM` (`NIM`),
-  KEY `id_dosen_pembimbing` (`id_dosen_pembimbing`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
-
---
--- Dumping data for table `tb_judul_usulan`
---
-
-INSERT INTO `tb_judul_usulan` (`id_judul_usulan`, `NIM`, `judul`, `id_dosen_pengusul`, `ringkasan`, `id_dosen_pembimbing`, `kategori`) VALUES
-(8, 'E31160419', 'Sistem Informasi', '197008311998031001', 'abc', '197008311998031001', ''),
-(9, 'E31160419', 'Pemanfaatan AR', '197008311998031001', 'def', '197008311998031001', ''),
-(10, 'E31160419', 'Game edukasi', '197009292003121001', 'fgh', '197009292003121001', ''),
-(11, 'E31160419', 'Sistem Informasi JPC', '197104082001121003', 'abc', '197104082001121003', ''),
-(12, 'E31160419', 'Pencarian rute terdekat', '197008311998031001', 'abc', '197008311998031001', ''),
-(13, 'E31160419', 'Pemanfaatan AR bahasa asing', '197110092003121001', 'abc', '197110092003121001', ''),
-(14, 'E31160419', 'abc', '197111151998021001', 'abc', '197008311998031001', ''),
-(15, 'E31160419', 'abc', '197111151998021001', 'sistem informasi repository', '197008311998031001', ''),
-(16, 'E31160419', 'Pemanfaatan AR bahasa arab', '197111151998021001', 'abc', '197111151998021001', ''),
-(17, 'E31160419', 'pemanfaatan iot', 'Pilih', 'abc', '197808162005011002', ''),
-(18, 'E31160419', 'Pemanfaatan AR', '197011282003121001', 'abc', '197011282003121001', ''),
-(19, 'E31160419', 'Pemanfaatan AR pengenalan organ tubuh', 'Pilih', 'abc', '197008311998031001', ''),
-(20, 'E31160419', 'Pemanfaatan AR', '198005172008121002', 'asd', '197907032003121001', ''),
-(21, 'E31160419', 'Pemanfaatan AR', '197810112005012002', 'jhfjnvyz', '197104082001121003', 'individu'),
-(22, 'E31160419', 'abc', '197008311998031001', 'abc', '197008311998031001', 'individu'),
-(23, 'E31160419', 'abc', '197008311998031001', 'abc', '197008311998031001', 'individu'),
-(24, 'E31160419', 'abghk', '197110092003121001', 'bcnvjvj', '197405192003121002', 'individu'),
-(25, 'E31160419', ' fasfskglg', 'Pilih', 'gkdsfjfl', '197008311998031001', 'individu'),
-(26, 'E31160419', 'Pemanfaatan AR1', '-', 'abc', '197008311998031001', 'individu'),
-(27, 'E31160419', 'Game edukasi abc', '197008311998031001', 'abc', '197008311998031001', 'individu'),
-(28, 'E31160419', 'Pemanfaatan AR bahasa arab11', '197009292003121001', 'abc', '197009292003121001', 'individu'),
-(29, 'E31160419', 'Pemanfaatan AR3333', '197008311998031001', 'abc', '197008311998031001', 'individu'),
-(30, 'E31160419', 'Sistem Informasi Geografis', '197008311998031001', 'abc', '197008311998031001', 'individu'),
-(31, 'E31160419', 'Sistem Informasi Geografis', '197008311998031001', 'abc', '197008311998031001', 'individu'),
-(32, 'E31160419', 'Pemanfaatan AR 99999', '197008311998031001', 'abc', '197008311998031001', 'individu'),
-(33, 'E31160419', 'Pemanfaatan AR bahasa jawa', '197008311998031001', 'abc', '197008311998031001', 'individu');
+  `id_dosen_pembimbing` varchar(25) NOT NULL,
+  `kategori` enum('individu','kelompok','','') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -203,14 +160,12 @@ INSERT INTO `tb_judul_usulan` (`id_judul_usulan`, `NIM`, `judul`, `id_dosen_peng
 -- Table structure for table `tb_mahasiswa`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_mahasiswa` (
+CREATE TABLE `tb_mahasiswa` (
   `NIM` varchar(25) NOT NULL,
   `id_user` varchar(25) NOT NULL,
   `Nama` varchar(50) NOT NULL,
   `prodi` varchar(50) NOT NULL,
-  `golongan` varchar(1) NOT NULL,
-  PRIMARY KEY (`NIM`),
-  KEY `id_user` (`id_user`)
+  `golongan` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -219,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `tb_mahasiswa` (
 
 INSERT INTO `tb_mahasiswa` (`NIM`, `id_user`, `Nama`, `prodi`, `golongan`) VALUES
 ('E31160170', 'dimas', 'Dimas Fatah Hilla', 'MIF', 'A'),
-('E31160419', 'E31160419', 'Meliana Monica Devi', 'MIF', 'A'),
+('E31160328', 'E31160328', 'Avega Wira Pradana', 'MIF', 'A'),
 ('E31160570', 'E31160570', 'Sofyan As Tsauri', 'MIF', 'A');
 
 -- --------------------------------------------------------
@@ -228,13 +183,11 @@ INSERT INTO `tb_mahasiswa` (`NIM`, `id_user`, `Nama`, `prodi`, `golongan`) VALUE
 -- Table structure for table `tb_mhs_ditolak`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_mhs_ditolak` (
-  `id_mhs_ditolak` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tb_mhs_ditolak` (
+  `id_mhs_ditolak` int(10) NOT NULL,
   `NIM` varchar(25) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_mhs_ditolak`),
-  KEY `NIM` (`NIM`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `judul` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -242,14 +195,11 @@ CREATE TABLE IF NOT EXISTS `tb_mhs_ditolak` (
 -- Table structure for table `tb_pembimbing_fix`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_pembimbing_fix` (
-  `id_pembimbing_fix` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tb_pembimbing_fix` (
+  `id_pembimbing_fix` int(10) NOT NULL,
   `id_dosen` varchar(25) NOT NULL,
-  `NIM` varchar(25) NOT NULL,
-  PRIMARY KEY (`id_pembimbing_fix`),
-  KEY `id_dosen` (`id_dosen`),
-  KEY `NIM` (`NIM`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `NIM` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -257,23 +207,21 @@ CREATE TABLE IF NOT EXISTS `tb_pembimbing_fix` (
 -- Table structure for table `tb_proposal`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_proposal` (
-  `id_proposal` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tb_proposal` (
+  `id_proposal` int(10) NOT NULL,
   `NIM` varchar(25) NOT NULL,
   `id_dosen` varchar(25) NOT NULL,
   `judul` varchar(100) NOT NULL,
-  `file` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_proposal`),
-  KEY `NIM` (`NIM`),
-  KEY `id_dosen` (`id_dosen`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `file` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_proposal`
 --
 
 INSERT INTO `tb_proposal` (`id_proposal`, `NIM`, `id_dosen`, `judul`, `file`) VALUES
-(2, 'E31160170', '197709292005011003', 'asdadasdasdasdasdasdsadee', 'DAFTAR_PUSTAKA-fix1.pdf');
+(2, 'E31160170', '197709292005011003', 'asdadasdasdasdasdasdsadee', 'DAFTAR_PUSTAKA-fix1.pdf'),
+(3, 'E31160170', '198005172008121002', 'adsadsad', 'BAB_I-REV2.pdf');
 
 -- --------------------------------------------------------
 
@@ -281,17 +229,33 @@ INSERT INTO `tb_proposal` (`id_proposal`, `NIM`, `id_dosen`, `judul`, `file`) VA
 -- Table structure for table `tb_review`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_review` (
-  `id_review` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tb_review` (
+  `id_review` int(10) NOT NULL,
   `id_judul_usulan` int(10) NOT NULL,
   `id_dosen` varchar(25) NOT NULL,
-  `dosen_penerima` varchar(10) NOT NULL,
-  `dosen_penolak` varchar(10) NOT NULL,
-  `saran` text NOT NULL,
-  PRIMARY KEY (`id_review`),
-  KEY `id_dosen_pembimbing` (`id_dosen`),
-  KEY `id_judul_usulan` (`id_judul_usulan`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `status` varchar(25) NOT NULL,
+  `saran` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_tanggal`
+--
+
+CREATE TABLE `tb_tanggal` (
+  `id` int(11) NOT NULL,
+  `tgl_awal` date NOT NULL,
+  `tgl_akhir` date NOT NULL,
+  `keterangan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_tanggal`
+--
+
+INSERT INTO `tb_tanggal` (`id`, `tgl_awal`, `tgl_akhir`, `keterangan`) VALUES
+(1, '2018-06-25', '2018-06-26', 'input_judul');
 
 -- --------------------------------------------------------
 
@@ -299,11 +263,10 @@ CREATE TABLE IF NOT EXISTS `tb_review` (
 -- Table structure for table `tb_user`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_user` (
+CREATE TABLE `tb_user` (
   `id_user` varchar(25) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `status` enum('mahasiswa','dosen','','') NOT NULL,
-  PRIMARY KEY (`id_user`)
+  `status` enum('mahasiswa','dosen','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -350,7 +313,7 @@ INSERT INTO `tb_user` (`id_user`, `password`, `status`) VALUES
 ('199205282018033001', 'b9143915efe169ebe835dbf81366b545', 'dosen'),
 ('dimas', '50e32edc10706f237cfb4825eb08a64c', 'mahasiswa'),
 ('dosen', 'ce28eed1511f631af6b2a7bb0a85d636', 'dosen'),
-('E31160419', '2c662ccd8020bccaa619dab8dfa20851', 'mahasiswa'),
+('E31160328', 'e6a21db1d51a891d72f6a71534a87244', 'mahasiswa'),
 ('E31160570', 'a43ea2f3c29ef3423c48d633d1a1909d', 'mahasiswa'),
 ('Fauzan', 'eacaf53cb2b533a68baa765faedf7e59', 'dosen'),
 ('mahasiswa', '5787be38ee03a9ae5360f54d9026465f', 'mahasiswa');
@@ -361,22 +324,176 @@ INSERT INTO `tb_user` (`id_user`, `password`, `status`) VALUES
 -- Table structure for table `tb_usulan_pembimbing`
 --
 
-CREATE TABLE IF NOT EXISTS `tb_usulan_pembimbing` (
-  `id_usulan_pemb` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tb_usulan_pembimbing` (
+  `id_usulan_pemb` int(10) NOT NULL,
   `NIM` varchar(25) NOT NULL,
   `id_dosen` varchar(25) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_usulan_pemb`),
-  KEY `NIM` (`NIM`),
-  KEY `id_dosen` (`id_dosen`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `judul` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_usulan_pembimbing`
+-- Indexes for dumped tables
 --
 
-INSERT INTO `tb_usulan_pembimbing` (`id_usulan_pemb`, `NIM`, `id_dosen`, `judul`) VALUES
-(1, 'E31160419', '197008311998031001', 'Pemanfaatan Augmented Reality sebagai Media Pembelajaran Kosa Kata Bahasa Inggris');
+--
+-- Indexes for table `tb_dosen`
+--
+ALTER TABLE `tb_dosen`
+  ADD PRIMARY KEY (`id_dosen`),
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `tb_final`
+--
+ALTER TABLE `tb_final`
+  ADD PRIMARY KEY (`id_final`),
+  ADD KEY `NIM` (`NIM`) USING BTREE,
+  ADD KEY `id_dosen_pembimbing` (`id_dosen`);
+
+--
+-- Indexes for table `tb_hasil`
+--
+ALTER TABLE `tb_hasil`
+  ADD PRIMARY KEY (`id_hasil`),
+  ADD KEY `id_review` (`id_review`),
+  ADD KEY `NIM` (`NIM`);
+
+--
+-- Indexes for table `tb_judul_dosen`
+--
+ALTER TABLE `tb_judul_dosen`
+  ADD PRIMARY KEY (`id_judul_dosen`),
+  ADD KEY `id_dosen` (`id_dosen`);
+
+--
+-- Indexes for table `tb_judul_usulan`
+--
+ALTER TABLE `tb_judul_usulan`
+  ADD PRIMARY KEY (`id_judul_usulan`),
+  ADD KEY `NIM` (`NIM`),
+  ADD KEY `id_dosen_pembimbing` (`id_dosen_pembimbing`);
+
+--
+-- Indexes for table `tb_mahasiswa`
+--
+ALTER TABLE `tb_mahasiswa`
+  ADD PRIMARY KEY (`NIM`),
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `tb_mhs_ditolak`
+--
+ALTER TABLE `tb_mhs_ditolak`
+  ADD PRIMARY KEY (`id_mhs_ditolak`),
+  ADD KEY `NIM` (`NIM`);
+
+--
+-- Indexes for table `tb_pembimbing_fix`
+--
+ALTER TABLE `tb_pembimbing_fix`
+  ADD PRIMARY KEY (`id_pembimbing_fix`),
+  ADD KEY `id_dosen` (`id_dosen`),
+  ADD KEY `NIM` (`NIM`);
+
+--
+-- Indexes for table `tb_proposal`
+--
+ALTER TABLE `tb_proposal`
+  ADD PRIMARY KEY (`id_proposal`),
+  ADD KEY `NIM` (`NIM`),
+  ADD KEY `id_dosen` (`id_dosen`);
+
+--
+-- Indexes for table `tb_review`
+--
+ALTER TABLE `tb_review`
+  ADD PRIMARY KEY (`id_review`),
+  ADD KEY `id_dosen_pembimbing` (`id_dosen`),
+  ADD KEY `id_judul_usulan` (`id_judul_usulan`);
+
+--
+-- Indexes for table `tb_tanggal`
+--
+ALTER TABLE `tb_tanggal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_user`
+--
+ALTER TABLE `tb_user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- Indexes for table `tb_usulan_pembimbing`
+--
+ALTER TABLE `tb_usulan_pembimbing`
+  ADD PRIMARY KEY (`id_usulan_pemb`),
+  ADD KEY `NIM` (`NIM`),
+  ADD KEY `id_dosen` (`id_dosen`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tb_final`
+--
+ALTER TABLE `tb_final`
+  MODIFY `id_final` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_hasil`
+--
+ALTER TABLE `tb_hasil`
+  MODIFY `id_hasil` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_judul_dosen`
+--
+ALTER TABLE `tb_judul_dosen`
+  MODIFY `id_judul_dosen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `tb_judul_usulan`
+--
+ALTER TABLE `tb_judul_usulan`
+  MODIFY `id_judul_usulan` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_mhs_ditolak`
+--
+ALTER TABLE `tb_mhs_ditolak`
+  MODIFY `id_mhs_ditolak` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_pembimbing_fix`
+--
+ALTER TABLE `tb_pembimbing_fix`
+  MODIFY `id_pembimbing_fix` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_proposal`
+--
+ALTER TABLE `tb_proposal`
+  MODIFY `id_proposal` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tb_review`
+--
+ALTER TABLE `tb_review`
+  MODIFY `id_review` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_tanggal`
+--
+ALTER TABLE `tb_tanggal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tb_usulan_pembimbing`
+--
+ALTER TABLE `tb_usulan_pembimbing`
+  MODIFY `id_usulan_pemb` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -453,6 +570,7 @@ ALTER TABLE `tb_review`
 ALTER TABLE `tb_usulan_pembimbing`
   ADD CONSTRAINT `tb_usulan_pembimbing_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tb_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tb_usulan_pembimbing_ibfk_2` FOREIGN KEY (`NIM`) REFERENCES `tb_mahasiswa` (`NIM`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
