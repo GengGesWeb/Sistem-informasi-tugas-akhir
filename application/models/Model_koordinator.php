@@ -28,6 +28,9 @@ class Model_koordinator extends CI_Model {
 		$query = $this->db->query("SELECT tb_pembimbing_fix.nim,tb_mahasiswa.nama,tb_mahasiswa.prodi,tb_mahasiswa.golongan,tb_dosen.nama as pembimbing FROM tb_pembimbing_fix inner join tb_mahasiswa on tb_pembimbing_fix.nim = tb_mahasiswa.nim inner join tb_dosen on tb_pembimbing_fix.id_dosen = tb_dosen.id_dosen where tb_pembimbing_fix.nim ='$id'");
 		return $query->result();
 	}
+	public function get_jadwal(){
+		return $this ->db ->get('tb_tanggal');
+	}
 }
 
 ?>

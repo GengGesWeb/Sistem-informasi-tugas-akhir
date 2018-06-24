@@ -34,6 +34,26 @@
 		$this->db->insert('tb_proposal',$inputproposal);
 	}
 
+	public function get_jadwal_awal($main){
+        $this ->db ->select('tgl_awal');
+		$this ->db ->from('tb_tanggal');
+		$this ->db ->where('keterangan',$main);
+
+		$query = $this ->db ->get()->row_array();
+
+		return $query;
+    }
+
+    public function get_jadwal_akhir($main){
+        $this ->db ->select('tgl_akhir');
+		$this ->db ->from('tb_tanggal');
+		$this ->db ->where('keterangan',$main);
+
+		$query = $this ->db ->get()->row_array();
+
+		return $query;
+    }
+
 
  }
 ?>
