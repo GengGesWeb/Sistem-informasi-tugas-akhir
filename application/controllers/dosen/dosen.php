@@ -55,7 +55,7 @@ class Dosen extends MY_Controller{
 
 //===================================================Controller CO==============================================
       
-        public function koordinator()
+        public function dosen()
           {
 
            $data['user'] = $this->model_dosen->tampil_data()->result();
@@ -188,6 +188,12 @@ class Dosen extends MY_Controller{
 		$this->load->view('grafik/footer');
 	
 	}
+//============================================Halaman Koordinator========================================
+  public function koordinator(){
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/footer');
+
+  }
 
 	
 }
