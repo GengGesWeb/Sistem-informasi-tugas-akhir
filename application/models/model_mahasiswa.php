@@ -55,5 +55,16 @@
     }
 
 
+	public function inputjudulmhs ($data = array()){					//INPUT JUDUL MAHASISWA
+		$this->load->database();
+		return $this->db->insert("tb_judul_usulan", $data);
+	}
+
+
+	public function tampil_data(){												//BERANDA
+		return $this->db->get('tb_judul_dosen');
+	}
+	
+
  }
 ?>
