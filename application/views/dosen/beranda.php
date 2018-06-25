@@ -12,11 +12,38 @@
           <div class="info-box">
 
             <div class="row-fluid stats-box">
+
       <center>
-        <h1>Silahkan replace file ini jika sudah punya desain</h1><br />
-        <h2>SELAMAT DATANG ANDA TELAH BERHASIL LOGIN SEBAGAI Dosen</h2>
-        <h3> Username Anda Adalah <?php echo $this->session->userdata('username'); ?></h3><br /><br />
-        <a href="<?php echo site_url('authentication/auth/logout'); ?>">Keluar</a>
+      
+        <h2>Daftar Usulan Judul Tugas Akhir Dosen</h2><br />
+
+<table  class="table table-striped table-bordered table-hover" >
+  <tr>
+    <th>Nama Dosen</th>
+    <th>Judul Usulan</th>
+    <th>Prodi</th>
+    <th>Kuota</th>
+  </tr>
+
+  <?php
+  foreach ($judul_dosen as $row){       
+  ?>
+
+  <tr>
+  <td><?php echo $row->nama ?></td>
+  <td><?php echo $row->judul_dosen ?></td>
+  <td><?php echo $row->prodi ?></td>
+  <td><?php echo $row->kuota ?></td>
+</tr>
+
+<?php
+  }
+  ?>
+  
+</table>
+
+
+       
       </center>
             </div>
          </div>
