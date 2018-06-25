@@ -102,10 +102,15 @@
 <!-- KALAU NGODING YANG RAPI YA :)) -->
                     <div class="form-group">                     
                       <label class="form-label" for="kategori">Individual / Kelompok *</label>
-                          
+                       
+                      <input type="hidden" name="kategori1" value="individu"/>
+                      <input type="hidden" name="kategori1" value="kelompok"/>
+
+
+
                         <!-- iki disamakan karo type data enum e itu lho -->
-                        <input type="radio"  name="kategori1" value="individu"/> &nbsp; Individual &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="radio"  name="kategori1" value="kelompok">&nbsp;Kelompok
+                        <input type="radio"  name="individu" value="individu"/> &nbsp; Individual &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio"  name="kelompok" value="kelompok">&nbsp;Kelompok
                         
                     </div> <!-- /form-group -->
 
@@ -113,7 +118,7 @@
 
                     
                   <div class="form-actions">
-                 <button type="submit" class="btn btn-primary" name="submit" value="proses_inputjudulmhs">Save</button> 
+                 <button type="submit" class="btn btn-primary" name="submit" value="inputjudulmhs">Save</button> 
                  <button class="btn"><a href='<?php echo site_url('mahasiswa/mahasiswa/index') ?>'>Cancel</a></button>
               </div> <!-- /form-actions -->
         </fieldset>

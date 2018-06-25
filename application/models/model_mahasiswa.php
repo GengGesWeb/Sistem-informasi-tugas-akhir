@@ -62,6 +62,8 @@
 
 
 	public function tampil_data(){												//BERANDA
+		$this->db->select('tb_judul_dosen.judul_dosen, tb_judul_dosen.prodi, tb_judul_dosen.kuota, tb_dosen.nama')
+			->join('tb_dosen', 'tb_dosen.id_dosen=tb_judul_dosen.id_dosen');
 		return $this->db->get('tb_judul_dosen');
 	}
 	

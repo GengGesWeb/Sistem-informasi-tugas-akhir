@@ -28,7 +28,8 @@ class Mahasiswa extends MY_Controller{
   public function index()
   {
     $this->load->view('Mahasiswa/Header',array('active' => "index"));
-    $this->load->view('Mahasiswa/Beranda');
+    $data['judul_dosen'] = $this->model_mahasiswa->tampil_data()->result();
+    $this->load->view('Mahasiswa/Beranda', $data);
     $this->load->view('Mahasiswa/Footer');
   }
 
@@ -47,19 +48,18 @@ public function proses_inputjudulmhs()
     {
         $inputjudul= array(
           'NIM' => $this->input->post('NIM') , 
-          'usulan_pembimbing1' => $this->input->post('judul_dosen'),
-          'usulan_pembimbing2' => $this->input->post('usulan_pembimbing2'),
           'judul' => $this->input->post('judul'),
-          'dosen_pengusul' => $this->input->post('dosen_pengusul'),
+          'id_dosen_pengusul' => $this->input->post('dosen_pengusul'),
           'ringkasan' => $this->input->post('ringkasan'),
-          'kategori' => $this->input->post('kategori')
+          'id_dosen_pembimbing' => $this->input->post('usulan_pembimbing1'),         
+          'kategori' => $this->input->post('kategori1')
         );
 
         $this ->load-> model('m_mhsinput');
         $this ->m_mhsinput->input_judul($inputjudul);
         
           $this->load->view('Mahasiswa/Header', array('active' => "inputjdl"));
-          $this->load->view('Mahasiswa/v_alerts');
+          $this->load->view('Mahasiswa/notif_input');
           $this->load->view('Mahasiswa/formjudulmhs'); 
           $this->load->view('Mahasiswa/footer');
       }

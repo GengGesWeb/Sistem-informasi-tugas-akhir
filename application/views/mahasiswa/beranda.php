@@ -26,11 +26,11 @@
   </tr>
 
   <?php
-  foreach ($tb_judul_usulan as $row){        // ini eror
+  foreach ($judul_dosen as $row){       
   ?>
 
   <tr>
-  <td><?php echo $row->id_dosen ?></td>
+  <td><?php echo $row->nama ?></td>
   <td><?php echo $row->judul_dosen ?></td>
   <td><?php echo $row->prodi ?></td>
   <td><?php echo $row->kuota ?></td>
