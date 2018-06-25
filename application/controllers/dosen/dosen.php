@@ -184,7 +184,7 @@ class Dosen extends MY_Controller{
 				'belum_input'=>$this->Model_grafik->belum_input() 
 				);
 			//var_dump($data['jumlah_siswa']);
-		$this->load->view('grafik/header');
+		$this->load->view('dosen/header');
 		//$this->load->view('grafik/beranda');
 		$this->load->view('grafik/grafik_usulan',$data);
 		$this->load->view('grafik/footer');		
@@ -195,7 +195,7 @@ class Dosen extends MY_Controller{
       'jumlah_siswa'=>$this->Model_grafik->t_judul_siswa(),
       'jumlah_dosen'=>$this->Model_grafik->t_judul_dosen()
     );
-    $this->load->view('grafik/header');
+    $this->load->view('dosen/header');
     $this->load->view('grafik/grafik_total_judul',$isi);
     $this->load->view('grafik/footer');
   }
@@ -206,7 +206,7 @@ class Dosen extends MY_Controller{
     $isi = array (
       'dosen'=>$this->Model_grafik->sebaran_dosen()
     );
-    $this->load->view('grafik/header');
+    $this->load->view('dosen/header');
     $this->load->view('grafik/sebaran_dosen',$isi);
     $this->load->view('grafik/footer');
   
