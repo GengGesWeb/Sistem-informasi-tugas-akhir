@@ -68,12 +68,38 @@
 
                    
                 <?php if ($active=="inputjdl") { ?>
-                    <li class="active">
-                    <?php } else {?>
-                    <li>
-                    <?php }?>   
-                        <a href="<?php echo site_url('mahasiswa/mahasiswa/inputjudulmhs') ?>"><i class="icon-edit"></i><span>Input Judul Tugas Akhir</span> </a>
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown" data-toggle="dropdown"><i class="icon-edit"></i>
+                        <span>Input Judul Tugas Akhir</span>
+                        <ul class ="dropdown-menu">
+                    <li> 
+                        <a href="<?php echo site_url('mahasiswa/mahasiswa/inputjudulmhs') ?>"><i></i><span>Usulan Judul</span> </a>
                     </li>
+
+                    <li>
+                     
+                        <a href="<?php echo site_url('mahasiswa/mahasiswa/inputjudulfinal') ?>"><i></i><span>Judul Final</span> </a>
+                    </li>
+                        </ul> 
+                    </li>       
+                    <?php } else {?>
+                    
+                     <li class="dropdown">
+                        <a href="javascript:;" class="dropdown" data-toggle="dropdown"><i class="icon-edit"></i>
+                        <span>Input Judul Tugas Akhir</span>
+                        <ul class ="dropdown-menu">
+                    <li> 
+                        <a href="<?php echo site_url('mahasiswa/mahasiswa/inputjudulmhs') ?>"><i></i><span>Usulan Judul</span> </a>
+                    </li>
+
+                    <li>
+                     
+                        <a href="<?php echo site_url('mahasiswa/mahasiswa/inputjudulfinal') ?>"><i></i><span>Judul Final</span> </a>
+                    </li>
+                        </ul>   
+
+                    </li>
+                    <?php } ?>
 
     
 
