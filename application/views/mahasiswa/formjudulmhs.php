@@ -103,15 +103,10 @@
 <!-- KALAU NGODING YANG RAPI YA :)) -->
                     <div class="form-group">                     
                       <label class="form-label" for="kategori">Individual / Kelompok *</label>
-                       
-                      <input type="hidden" name="kategori1" value="individu"/>
-                      <input type="hidden" name="kategori1" value="kelompok"/>
-
-
-
+                     
                         <!-- iki disamakan karo type data enum e itu lho -->
-                        <input type="radio"  name="individu" value="individu"/> &nbsp; Individual &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="radio"  name="kelompok" value="kelompok">&nbsp;Kelompok
+                        <input type="radio"  name="kategori1" value="individu"/> &nbsp; Individu &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio"  name="kategori1" value="kelompok">&nbsp;Kelompok
                         
                     </div> <!-- /form-group -->
 
