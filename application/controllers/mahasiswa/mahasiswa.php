@@ -48,6 +48,13 @@ $this->load->view('Mahasiswa/formjudulmhs');
 $this->load->view('Mahasiswa/Footer');
 }
 
+public function inputjudulfinal(){         /////////////////////////////////INPUT JUDUL MAHASISWA
+$dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen(),'active'=>"inputjdl");
+$this->load->view('Mahasiswa/Header',$dosen);
+$this->load->view('Mahasiswa/formjudulfinal');
+$this->load->view('Mahasiswa/Footer');
+}
+
 
 
 public function proses_inputjudulmhs()
@@ -74,6 +81,40 @@ public function proses_inputjudulmhs()
       else {
         $data['exist']=$exist;
         $this->load->view('Mahasiswa/formjudulmhs',$data);
+      }
+    
+    }
+
+  public function proses_inputjudulfinal()
+  {
+    if ($this->input->post('submit'))
+    {
+        $inputjudul= array(
+          'NIM' => $this->input->post('NIM') , 
+          'judul' => $this->input->post('judul'),
+          'id_dosen' => $this->input->post('dosen_pembimbing'),
+          'deskripsi' => $this->input->post('ringkasan'),
+          'kategori' => $this->input->post('kategori1'), 
+          'saran' => $this->input->post('saran')
+        );
+        $inputusulan = array(
+          'NIM' =>$this->input->post('NIM') ,
+          'id_dosen' =>$this->input->post('dosen_pembimbing'),
+          'judul' =>$this->input->post('judul') 
+        );
+
+        $this ->load-> model('m_mhsinput');
+        $this ->m_mhsinput->input_judulfinal($inputjudul);
+        $this ->m_mhsinput->inputusulanpemb($inputusulan);
+        
+          $this->load->view('Mahasiswa/Header', array('active' => "inputjdl"));
+          $this->load->view('Mahasiswa/notif_input');
+          $this->load->view('Mahasiswa/formjudulfinal'); 
+          $this->load->view('Mahasiswa/footer');
+      }
+      else {
+        $data['exist']=$exist;
+        $this->load->view('Mahasiswa/formjudulfinal',$data);
       }
     
     }

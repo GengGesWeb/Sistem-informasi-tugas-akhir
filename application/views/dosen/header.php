@@ -68,8 +68,29 @@
                     <li >
                         <a href="guidely.html"><i class="icon-list-alt"></i><span>Usulan Judul</span> </a>
                     </li>
+					<li class="dropdown"><a href="javascript:;" class="dropdown" data-toggle="dropdown"> <i class="icon-bar-chart"></i><span>Grafik</span> </a>
+                        <ul class="dropdown-menu">
                     <li>
-                        <a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Grafik & Cetak Laporan</span> </a>
+                        <a href="<?php echo site_url('dosen/dosen/grafik') ?>"><i></i><span>Grafik Usulan Judul</span> </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('dosen/dosen/grafik_judul') ?>"><i></i><span>Grafik Jumlah Total Usulan Judul</span> </a>
+                    </li>
+					<li>
+                        <a href="<?php echo site_url('dosen/dosen/grafik_dosen') ?>"><i></i><span>Grafik Sebaran Dosen Pembimbing</span> </a>
+                    </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="javascript:;" class="dropdown" data-toggle="dropdown"> <i class="icon-bar-chart"></i><span>Laporan</span> </a>
+                        <ul class="dropdown-menu">
+                    <li>
+                        <a href="<?php echo site_url('laporan/laporan/usulan') ?>"><i></i><span>Laporan Daftar Usulan</span> </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('laporan/laporan/usulan_fik') ?>"><i></i><span>Laporan Daftar Usulan Fix</span> </a>
+                    </li>
+					
+                        </ul>
                     </li>
                     <li>
                         <a href="<?php echo site_url('dosen/dosen/dosen') ?>"><i class="icon-group"></i><span>List Dosen</span> </a>
