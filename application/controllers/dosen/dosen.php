@@ -55,7 +55,7 @@ class Dosen extends MY_Controller{
 
 //===================================================Controller CO==============================================
       
-        public function dosen()
+         public function dosen()
           {
 
            $data['user'] = $this->model_dosen->tampil_data()->result();
@@ -66,8 +66,8 @@ class Dosen extends MY_Controller{
 
 	 public function lihat_bimbingan(){
 	
-		$where = array('id_dosen' =>$this->session->userdata('username'));
-		$data['bimbingan'] = $this->model_bimbingan->tampil_data($where)->result();
+		$where = $this->session->userdata('username');
+		$data['bimbingan'] = $this->model_bimbingan->tampil_data($where);
 		
 		$this->load->view('Dosen/header');
 		$this->load->view('dosen/bimbingan',$data);
