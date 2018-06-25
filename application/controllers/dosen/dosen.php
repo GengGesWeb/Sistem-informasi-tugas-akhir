@@ -48,29 +48,39 @@ class Dosen extends MY_Controller{
       }
 
       //Controller TerimaTolak
-
-      public function proses_terimatolak()
-      { if ($this->input->post('Terima'))
-    {
-        $inputterima= array(
-          'NIM' => $this->input->post('NIM') , 
-          'id_dosen' => $this->input->post('id_dosen'),
-          );
-
-        $this ->load-> model('model_bimbingan');
-        $this ->model_bimbingan->input_diterima($inputterima);
-
+      public function lihat_bimbingan(){
+  
+        $where = $this->session->userdata('NIP');
+        $data['bimbingan'] = $this->model_bimbingan->tampil_data($where);
+        
         $this->load->view('Dosen/header');
-        $this->load->view('Dosen/v_alerts');
-        $this->load->view('Dosen/lihat_bimbingan'); 
+        $this->load->view('dosen/bimbingan',$data);
         $this->load->view('Dosen/footer');
-
-        }
-      else {
-        $data['exist']=$exist;
-        $this->load->view('Mahasiswa/lihat_bimbingan',$data);
+       
       }
 
+      public function terima(){
+        $data = array(
+            'NIM' => $this->uri->segment(4),
+            'id_dosen' => $this ->session ->userdata('NIP'),
+        );
+        $id= $this->uri->segment(4);
+        $this ->db ->insert('tb_pembimbing_fix',$data);
+        $this ->db ->where_in('NIM',$id);
+        $this ->db ->delete('tb_usulan_pembimbing');
+        redirect('dosen/dosen/lihat_bimbingan');
+      }
+
+      public function tolak(){
+        $data = array(
+            'NIM' => $this->uri->segment(4),
+            'judul' => $this->uri->segment(5),
+        );
+        $id= $this->uri->segment(4);
+        $this ->db ->insert('tb_mhs_ditolak',$data);
+        $this ->db ->where_in('NIM',$id);
+        $this ->db ->delete('tb_usulan_pembimbing');
+        redirect('dosen/dosen/lihat_bimbingan');
       }
 
 //===================================================Controller CO==============================================
@@ -84,28 +94,20 @@ class Dosen extends MY_Controller{
 
 //===================================================Controller CO==============================================
       
-         public function dosen()
-          {
-
-           $data['user'] = $this->model_dosen->tampil_data()->result();
+          public function dosen()
+          { 
+            $where = $this->uri->segment(4);
+            $data['user'] = $this->model_dosen->data_dosen()->result();
+            $data['dosen'] = $this->Model_koordinator->edit_akses($where);
             $this->load->view('Dosen/header');
             $this->load->view('Dosen/koordinator', $data); 
             $this->load->view('Dosen/footer');
           }
 
-	 public function lihat_bimbingan(){
-	
-		$where = $this->session->userdata('username');
-		$data['bimbingan'] = $this->model_bimbingan->tampil_data($where);
-		
-		$this->load->view('Dosen/header');
-		$this->load->view('dosen/bimbingan',$data);
-		$this->load->view('Dosen/footer');
-       
-}
+	 
   function edit_hak_akses(){
-  $where = array('id_dosen' => $id_dosen);
-  $data['tb_dosen'] = $this->Model_koordinator->edit_hak_akses($where,'tb_dosen')->result();
+  $where = $this->uri->segment(4);
+  $data['tb_dosen'] = $this->Model_koordinator->edit_akses($where,'tb_dosen')->result();
   $this->load->view('v_edit_hak_akses',$data);
 }
    function update_hak_akses(){

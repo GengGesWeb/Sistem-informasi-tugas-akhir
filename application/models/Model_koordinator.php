@@ -20,6 +20,14 @@ class Model_koordinator extends CI_Model {
 	function edit_hak_akses($where,$table){		
 		return $this->db->get_where($table,$where);
 	}
+
+	public function edit_akses($where){
+        $this ->db ->select('*');
+		$this ->db ->from('tb_dosen');
+		$this ->db ->where('id_dosen',$where);
+		$query = $this ->db ->get();
+		return $query;
+    }
  
 	function update_hak_akses($where,$data,$table){
 		$this->db->where($where);

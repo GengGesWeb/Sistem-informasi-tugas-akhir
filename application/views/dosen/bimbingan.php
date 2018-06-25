@@ -30,19 +30,15 @@
                   </div> <!-- /form-group -->
 
 <br > 
-					<div class="row">
-					<div class="col-lg-8">
-					<div class="panel panel-default">
-					<div class="panel-body">
+					
 						<table class="table table-striped table-bordered table-hover">
 						<thead>
 						<tr>
 							
-							<th width="40px" name="action" style="text-align: center ;">Action</th>
-							<th width="40px" name="nama" style="text-align: center ;">Nama</th>
-							<th width="40px" name="NIM" style="text-align: center ;">NIM</th>
-							<th width="40px" nama="id_dosen" style="text-align: center ;">id_dosen</th>
-							<th width="40px" nama="judul" style="text-align: center ;">Judul</th>
+							<th name="action" style="text-align: center ;">Action</th>
+							<th name="nama" style="text-align: center ;">Nama</th>
+							<th name="NIM" style="text-align: center ;">NIM</th>
+							<th nama="judul" style="text-align: center ;">Judul</th>
 						</tr>
 						<?php 
 						$no = 1;
@@ -51,22 +47,20 @@
 						<tr>
 							
 							<td>
-								
-                 <button class="btn" name="Terima" value="proses_terimatolak">Terima</button> 
-                 <button class="btn" name="Tolak" value="proses_terimatolak">Tolak</button>
+						<?php 
+                        echo anchor('dosen/dosen/terima/'.$row->NIM,'Terima','id="btnTest" type="button" class="btn btn-bordered waves-effect w-md waves-light " '); ?>
+                        <?php
+                        echo anchor('dosen/dosen/tolak/'.$row->NIM.'/'.$row->judul,'Tolak','id="btnTest" type="button" class="btn btn-danger waves-effect w-md waves-light " '); ?>				
               
-							</td>
+						</td>
 						<td name="nama"><?php echo $row->Nama ?></td>
 						<td name="NIM"><?php echo $row->NIM ?></td>
-						<td name="id_dosen"><?php echo $row->id_dosen ?></td>
 						<td name="judul"><?php echo $row->judul ?></td>
 						</tr>
 						<?php } ?>
 						</thead>
 						
 						</table>
-						</div>
-						</div>
 						</div>
 						</div>
 
