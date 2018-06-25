@@ -44,6 +44,32 @@ class Dosen extends MY_Controller{
         $this->load->view('Dosen/footer');
       }
 
+      //Controller TerimaTolak
+
+      public function proses_terimatolak()
+      { if ($this->input->post('Terima'))
+    {
+        $inputterima= array(
+          'NIM' => $this->input->post('NIM') , 
+          'id_dosen' => $this->input->post('id_dosen'),
+          );
+
+        $this ->load-> model('model_bimbingan');
+        $this ->model_bimbingan->input_diterima($inputterima);
+
+        $this->load->view('Dosen/header');
+        $this->load->view('Dosen/v_alerts');
+        $this->load->view('Dosen/lihat_bimbingan'); 
+        $this->load->view('Dosen/footer');
+
+        }
+      else {
+        $data['exist']=$exist;
+        $this->load->view('Mahasiswa/lihat_bimbingan',$data);
+      }
+
+      }
+
 //===================================================Controller CO==============================================
      
 	  /*public function bimbingan()

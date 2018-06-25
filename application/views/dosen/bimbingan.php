@@ -18,7 +18,7 @@
 <div class="widget-content">
           <div class="info-box">
             <div class="row-fluid stats-box">
-    <form action="<?php echo site_url('dosen/dosen/lihat_bimbingan'); ?>" method="post">
+    <form action="<?php echo site_url('dosen/dosen/proses_terimatolak'); ?>" method="post">
       <fieldset>
 
                   <div class="form-group">                     
@@ -38,11 +38,11 @@
 						<thead>
 						<tr>
 							
-							<th width="40px" style="text-align: center ;">Action</th>
-							<th width="40px" style="text-align: center ;">Nama</th>
-							<th width="40px" style="text-align: center ;">NIM</th>
-							<th width="40px" style="text-align: center ;">id_dosen</th>
-							<th width="40px" style="text-align: center ;">Judul</th>
+							<th width="40px" name="action" style="text-align: center ;">Action</th>
+							<th width="40px" name="nama" style="text-align: center ;">Nama</th>
+							<th width="40px" name="NIM" style="text-align: center ;">NIM</th>
+							<th width="40px" nama="id_dosen" style="text-align: center ;">id_dosen</th>
+							<th width="40px" nama="judul" style="text-align: center ;">Judul</th>
 						</tr>
 						<?php 
 						$no = 1;
@@ -51,13 +51,15 @@
 						<tr>
 							
 							<td>
-								<?php echo anchor(''.$row-> id_dosen,'Terima');?>
-								<?php echo anchor(''.$row-> id_dosen,'Tolak');?>
+								
+                 <button class="btn" name="Terima" value="proses_terimatolak">Terima</button> 
+                 <button class="btn" name="Tolak" value="proses_terimatolak">Tolak</button>
+              
 							</td>
-						<td><?php echo $row->Nama ?></td>
-						<td><?php echo $row->NIM ?></td>
-						<td><?php echo $row->id_dosen ?></td>
-						<td><?php echo $row->judul ?></td>
+						<td name="nama"><?php echo $row->Nama ?></td>
+						<td name="NIM"><?php echo $row->NIM ?></td>
+						<td name="id_dosen"><?php echo $row->id_dosen ?></td>
+						<td name="judul"><?php echo $row->judul ?></td>
 						</tr>
 						<?php } ?>
 						</thead>
