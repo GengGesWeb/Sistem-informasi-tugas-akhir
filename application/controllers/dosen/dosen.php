@@ -32,10 +32,13 @@ class Dosen extends MY_Controller{
 
   public function index()
   {
-    $this->load->view('Dosen/header');
-    $this->load->view('Dosen/Beranda');
+    $this->load->view('Dosen/header',array('active' => "index"));
+    $data['judul_dosen'] = $this->model_dosen->tampil_data()->result();
+    $this->load->view('Dosen/Beranda', $data);
     $this->load->view('Dosen/footer');
   }
+
+
 
    public function formjudul()
       {
