@@ -23,6 +23,20 @@
         </select></td>
             </tr>
             <tr>
+                <td>Kuota Bimbingan</td>
+                <td><select name="kuota_bimbingan">
+                    <option value="<?php echo $u->kuota_bimbingan ?>"><?php echo $u->kuota_bimbingan ?></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+
+                </select></td>
+            </tr>
+            <tr>
                 <td></td>
                 <td><input type="submit" value="Simpan"></td>
             </tr>

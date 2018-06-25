@@ -21,7 +21,6 @@ class Dosen extends MY_Controller{
   $this->session->set_userdata($data_dosen);
   return TRUE;
 
-
  
 
   //validasi jika session dengan level manager mengakses halaman ini maka akan dialihkan ke halaman manager
@@ -107,18 +106,20 @@ class Dosen extends MY_Controller{
 	 
   function edit_hak_akses(){
   $where = $this->uri->segment(4);
-  $data['tb_dosen'] = $this->Model_koordinator->edit_akses($where,'tb_dosen')->result();
+  $data['tb_dosen'] = $this->Model_koordinator->edit_hak_akses($where,'tb_dosen')->result();
   $this->load->view('v_edit_hak_akses',$data);
 }
    function update_hak_akses(){
   $id_dosen = $this->input->post('id_dosen');
   $nama = $this->input->post('nama');
   $hak_akses = $this->input->post('hak_akses');
+  $kuota = $this->input->post('kuota_bimbingan');
  
   $data = array(
     'id_dosen' => $id_dosen,
     'nama' => $nama,
-    'hak_akses' => $hak_akses
+    'hak_akses' => $hak_akses,
+    'kuota_bimbingan' => $kuota
   );
  
   $where = array(
@@ -209,6 +210,9 @@ class Dosen extends MY_Controller{
 	//==========================================grafik total usulan ======================================
 	
 	function grafik(){
+    $hak_akses=$this->session->userdata('hak_akses');
+    if($hak_akses == "koordinator") {
+
 		$data = array(
 				'jumlah_siswa'=>$this->Model_grafik->jumlah_siswa(),
 				'jumlah_usulan'=>$this->Model_grafik->jumlah_usulan(), 
@@ -218,10 +222,20 @@ class Dosen extends MY_Controller{
 		$this->load->view('dosen/header');
 		//$this->load->view('grafik/beranda');
 		$this->load->view('grafik/grafik_usulan',$data);
-		$this->load->view('grafik/footer');		
+		$this->load->view('grafik/footer');
+
+    }else{
+
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
+    $this->load->view('dosen/footer');  
+    }		
 	}
 //==========================================grafik total judul ======================================
   function grafik_judul(){
+    $hak_akses=$this->session->userdata('hak_akses');
+    if($hak_akses == "koordinator") {
+
     $isi = array (
       'jumlah_siswa'=>$this->Model_grafik->t_judul_siswa(),
       'jumlah_dosen'=>$this->Model_grafik->t_judul_dosen()
@@ -229,21 +243,40 @@ class Dosen extends MY_Controller{
     $this->load->view('dosen/header');
     $this->load->view('grafik/grafik_total_judul',$isi);
     $this->load->view('grafik/footer');
+
+    }else{
+
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
+    $this->load->view('dosen/footer');  
+    }   
   }
   
   //==========================================grafik sebaran dosen ======================================
 
   function grafik_dosen(){
+    $hak_akses=$this->session->userdata('hak_akses');
+    if($hak_akses == "koordinator") {
     $isi = array (
       'dosen'=>$this->Model_grafik->sebaran_dosen()
     );
     $this->load->view('dosen/header');
     $this->load->view('grafik/sebaran_dosen',$isi);
     $this->load->view('grafik/footer');
+
+    }else{
+
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
+    $this->load->view('dosen/footer');  
+    }   
   
   }
 //============================================Halaman Koordinator========================================
   public function jadwal(){
+    $hak_akses=$this->session->userdata('hak_akses');
+    if($hak_akses == "koordinator") {
+
     $list = $this ->Model_koordinator ->get_jadwal()->result();
     $data = array(
                 "list" => $list
@@ -252,6 +285,13 @@ class Dosen extends MY_Controller{
     $this->load->view('dosen/tgl_proposal');
     $this->load->view('dosen/listjadwal',$data);
     $this->load->view('dosen/footer');
+
+    }else{
+
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
+    $this->load->view('dosen/footer');  
+    }   
 
   }
   public function save_tglInput(){
