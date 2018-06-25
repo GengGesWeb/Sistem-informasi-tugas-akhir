@@ -25,13 +25,21 @@ class Mahasiswa extends MY_Controller{
  }
 }
 
-  public function index()
-  {
+  public function index(){
     $this->load->view('Mahasiswa/Header',array('active' => "index"));
     $data['judul_dosen'] = $this->model_mahasiswa->tampil_data()->result();
     $this->load->view('Mahasiswa/Beranda', $data);
     $this->load->view('Mahasiswa/Footer');
   }
+
+
+public function hasilreview(){         /////////////////////////////////HASIL REVIEW 
+  $NIM = $this->session->userdata('NIM');
+$this->load->view('Mahasiswa/Header',array('active' => "hasilreview"));  
+ $data['h_review'] = $this->model_mahasiswa->hasilreview($NIM)->result();
+    $this->load->view('Mahasiswa/hasilreview', $data);
+    $this->load->view('Mahasiswa/Footer');
+}
 
 public function inputjudulmhs(){         /////////////////////////////////INPUT JUDUL MAHASISWA
 $dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen(),'active'=>"inputjdl");

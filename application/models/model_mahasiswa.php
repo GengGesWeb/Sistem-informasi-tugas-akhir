@@ -68,5 +68,12 @@
 	}
 	
 
+	public function hasilreview ($NIM){					//HASIL REVIEW
+		$this->db->select('tb_hasil.status, tb_hasil.saran, tb_judul_usulan.judul')
+			->join('tb_judul_usulan', 'tb_judul_usulan.id_judul_usulan=tb_hasil.id_judul_usulan');
+			$this->db->where('tb_hasil.NIM', $NIM);
+		return $this->db->get('tb_hasil');
+		
+	}
  }
 ?>

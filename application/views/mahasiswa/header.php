@@ -88,8 +88,14 @@
 
 
 
-                    <li><a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Hasil Review</span> </a>
-                    </li>
+                    <?php if ($active=="hasilreview") { ?>
+                    <li class="active">
+                    <?php } else {?>
+                    <li>
+                    <?php }?> 
+                        <a href="<?php echo site_url ('mahasiswa/mahasiswa/hasilreview') ?>"><i class="icon-bar-chart"></i><span>Hasil Review</span>
+                    </a></li>
+
                     <!--
                     <li ><a href="charts.html"><i class="icon-check"></i><span>Penentuan Bimbingan</span> </a>
                     </li>
