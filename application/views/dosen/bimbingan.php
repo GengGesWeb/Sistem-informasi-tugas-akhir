@@ -37,9 +37,9 @@
 						<table class="table table-striped table-bordered table-hover">
 						<thead>
 						<tr>
-							<th width="40px" style="text-align: center ;">No</th>
+							
 							<th width="40px" style="text-align: center ;">Action</th>
-							<th width="40px" style="text-align: center ;">id_usulan_pemb</th>
+							<th width="40px" style="text-align: center ;">Nama</th>
 							<th width="40px" style="text-align: center ;">NIM</th>
 							<th width="40px" style="text-align: center ;">id_dosen</th>
 							<th width="40px" style="text-align: center ;">Judul</th>
@@ -49,12 +49,12 @@
 						foreach($bimbingan as $row){ 
 						?>
 						<tr>
-							<td><?php echo $no++ ?> </td>
+							
 							<td>
 								<?php echo anchor(''.$row-> id_dosen,'Terima');?>
 								<?php echo anchor(''.$row-> id_dosen,'Tolak');?>
 							</td>
-						<td><?php echo $row->id_usulan_pemb ?></td>
+						<td><?php echo $row->Nama ?></td>
 						<td><?php echo $row->NIM ?></td>
 						<td><?php echo $row->id_dosen ?></td>
 						<td><?php echo $row->judul ?></td>
