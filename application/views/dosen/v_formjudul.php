@@ -70,7 +70,7 @@
                     <div class="form-group">                     
                       <label for="kuota">Kuota Mahasiswa</label>
                           <div class="form">
-                             <select class="dropdown" id="kuota" name="kuota">
+                             <select class="dropdown" id="kuota" name="kuota"> 
                            <!--<a class="btn btn-primary" href="#">Pilih</a>
                            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>-->
                                  <option value"pilih">Pilih Jumlah Kuota</option>
@@ -86,7 +86,7 @@
  <br />                  
                   <div class="form-actions">
                  <button type="submit" class="btn btn-primary" name="submit" value="proses_inputjudul">Save</button> 
-                 <button class="btn"><a href='<?php echo site_url('dosen/dosen/index') ?>'>Cancel</a></button>
+                 <button class="btn btn-danger">Cancel</button>
               </div> <!-- /form-actions -->
         </fieldset>
      </form>
