@@ -295,6 +295,24 @@ class Dosen extends MY_Controller{
         $this->load->view('dosen/footer');
     }
 
+public function proses_inputpemfix()
+  {
+    
+        $inputdospem= array(
+          'id_dosen' => $this->input->post('id_dosen'), 
+          'NIM' => $this->input->post('NIM')
+        );
+
+        $this ->load-> model('Model_koordinator');
+        $this ->Model_koordinator->input_dospem_mhs_tolak($inputdospem);
+        
+          $this->load->view('Dosen/header');
+          $this->load->view('Dosen/v_alerts');
+          $this->load->view('Dosen/v_bimbing_mhs_tolak'); 
+          $this->load->view('Dosen/footer');
+
+  }
+  
   public function jadwal(){
     $hak_akses=$this->session->userdata('hak_akses');
     if($hak_akses == "koordinator") {
