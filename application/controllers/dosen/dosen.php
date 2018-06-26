@@ -21,7 +21,6 @@ class Dosen extends MY_Controller{
   $this->session->set_userdata($data_dosen);
   return TRUE;
 
-
  
 
   //validasi jika session dengan level manager mengakses halaman ini maka akan dialihkan ke halaman manager
@@ -32,16 +31,55 @@ class Dosen extends MY_Controller{
 
   public function index()
   {
-    $this->load->view('Dosen/header');
-    $this->load->view('Dosen/Beranda');
+    $this->load->view('Dosen/header',array('active' => "index"));
+    $data['judul_dosen'] = $this->model_dosen->tampil_data()->result();
+    $this->load->view('Dosen/Beranda', $data);
     $this->load->view('Dosen/footer');
   }
+
+
 
    public function formjudul()
       {
         $this->load->view('Dosen/header');
         $this->load->view('Dosen/v_formjudul'); 
         $this->load->view('Dosen/footer');
+      }
+
+      //Controller TerimaTolak
+      public function lihat_bimbingan(){
+  
+        $where = $this->session->userdata('NIP');
+        $data['bimbingan'] = $this->model_bimbingan->tampil_data($where);
+        
+        $this->load->view('Dosen/header');
+        $this->load->view('dosen/bimbingan',$data);
+        $this->load->view('Dosen/footer');
+       
+      }
+
+      public function terima(){
+        $data = array(
+            'NIM' => $this->uri->segment(4),
+            'id_dosen' => $this ->session ->userdata('NIP'),
+        );
+        $id= $this->uri->segment(4);
+        $this ->db ->insert('tb_pembimbing_fix',$data);
+        $this ->db ->where_in('NIM',$id);
+        $this ->db ->delete('tb_usulan_pembimbing');
+        redirect('dosen/dosen/lihat_bimbingan');
+      }
+
+      public function tolak(){
+        $data = array(
+            'NIM' => $this->uri->segment(4),
+            'judul' => $this->uri->segment(5),
+        );
+        $id= $this->uri->segment(4);
+        $this ->db ->insert('tb_mhs_ditolak',$data);
+        $this ->db ->where_in('NIM',$id);
+        $this ->db ->delete('tb_usulan_pembimbing');
+        redirect('dosen/dosen/lihat_bimbingan');
       }
 
 //===================================================Controller CO==============================================
@@ -55,24 +93,41 @@ class Dosen extends MY_Controller{
 
 //===================================================Controller CO==============================================
       
-        public function dosen()
-          {
-
-           $data['user'] = $this->model_dosen->tampil_data()->result();
+          public function dosen()
+          { 
+            $where = $this->uri->segment(4);
+            $data['user'] = $this->model_dosen->data_dosen()->result();
+            $data['dosen'] = $this->Model_koordinator->edit_akses($where);
             $this->load->view('Dosen/header');
             $this->load->view('Dosen/koordinator', $data); 
             $this->load->view('Dosen/footer');
           }
 
-	 public function lihat_bimbingan(){
-	
-		$where = array('id_dosen' =>$this->session->userdata('username'));
-		$data['bimbingan'] = $this->model_bimbingan->tampil_data($where)->result();
-		
-		$this->load->view('Dosen/header');
-		$this->load->view('dosen/bimbingan',$data);
-		$this->load->view('Dosen/footer');
-       
+	 
+  function edit_hak_akses(){
+  $where = $this->uri->segment(4);
+  $data['tb_dosen'] = $this->Model_koordinator->edit_hak_akses($where,'tb_dosen')->result();
+  $this->load->view('v_edit_hak_akses',$data);
+}
+   function update_hak_akses(){
+  $id_dosen = $this->input->post('id_dosen');
+  $nama = $this->input->post('nama');
+  $hak_akses = $this->input->post('hak_akses');
+  $kuota = $this->input->post('kuota_bimbingan');
+ 
+  $data = array(
+    'id_dosen' => $id_dosen,
+    'nama' => $nama,
+    'hak_akses' => $hak_akses,
+    'kuota_bimbingan' => $kuota
+  );
+ 
+  $where = array(
+    'id_dosen' => $id_dosen
+  );
+ 
+  $this->Model_koordinator->update_hak_akses($where,$data,'tb_dosen');
+  redirect('Dosen/dosen/dosen');
 }
 
                
@@ -158,41 +213,71 @@ class Dosen extends MY_Controller{
 	//==========================================grafik total usulan ======================================
 	
 	function grafik(){
+    $hak_akses=$this->session->userdata('hak_akses');
+    if($hak_akses == "koordinator") {
+
 		$data = array(
 				'jumlah_siswa'=>$this->Model_grafik->jumlah_siswa(),
 				'jumlah_usulan'=>$this->Model_grafik->jumlah_usulan(), 
 				'belum_input'=>$this->Model_grafik->belum_input() 
 				);
 			//var_dump($data['jumlah_siswa']);
-		$this->load->view('grafik/header');
+		$this->load->view('dosen/header');
 		//$this->load->view('grafik/beranda');
 		$this->load->view('grafik/grafik_usulan',$data);
-		$this->load->view('grafik/footer');		
-	}
-		//==========================================grafik total judul ======================================
-	function grafik_judul(){
-		$isi = array (
-			'jumlah_siswa'=>$this->Model_grafik->t_judul_siswa(),
-			'jumlah_dosen'=>$this->Model_grafik->t_judul_dosen()
-		);
-		$this->load->view('grafik/header');
-		$this->load->view('grafik/grafik_total_judul',$isi);
 		$this->load->view('grafik/footer');
-	}
-	
-	//==========================================grafik sebaran dosen ======================================
 
-	function grafik_dosen(){
-		$isi = array (
-			'dosen'=>$this->Model_grafik->sebaran_dosen()
-		);
-		$this->load->view('grafik/header');
-		$this->load->view('grafik/sebaran_dosen',$isi);
-		$this->load->view('grafik/footer');
-	
+    }else{
+
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
+    $this->load->view('dosen/footer');  
+    }		
 	}
-//============================================Halaman Koordinator========================================
-  public function koordinator() 
+//==========================================grafik total judul ======================================
+  function grafik_judul(){
+    $hak_akses=$this->session->userdata('hak_akses');
+    if($hak_akses == "koordinator") {
+
+    $isi = array (
+      'jumlah_siswa'=>$this->Model_grafik->t_judul_siswa(),
+      'jumlah_dosen'=>$this->Model_grafik->t_judul_dosen()
+    );
+    $this->load->view('dosen/header');
+    $this->load->view('grafik/grafik_total_judul',$isi);
+    $this->load->view('grafik/footer');
+
+    }else{
+
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
+    $this->load->view('dosen/footer');  
+    }   
+  }
+  
+  //==========================================grafik sebaran dosen ======================================
+
+  function grafik_dosen(){
+    $hak_akses=$this->session->userdata('hak_akses');
+    if($hak_akses == "koordinator") {
+    $isi = array (
+      'dosen'=>$this->Model_grafik->sebaran_dosen()
+    );
+    $this->load->view('dosen/header');
+    $this->load->view('grafik/sebaran_dosen',$isi);
+    $this->load->view('grafik/footer');
+
+    }else{
+
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
+    $this->load->view('dosen/footer');  
+    }   
+  
+  }
+//============================================Halaman Koordinator====================================
+
+ public function koordinator() 
   {
   	$tampil = array (
 			'judul'=>$this->Model_koordinator->pembimbing_mhs_ditolak(),
@@ -210,33 +295,46 @@ class Dosen extends MY_Controller{
         $this->load->view('dosen/footer');
     }
 
-      public function proses_inputpemfix()
-  {
-    if ($this->input->post('submit'))
-    {
-        $inputdospem= array(
-          'id_dosen' => $this->input->post('id_dosen'), 
-          'NIM' => $this->input->post('NIM')
+  public function jadwal(){
+    $hak_akses=$this->session->userdata('hak_akses');
+    if($hak_akses == "koordinator") {
+
+    $list = $this ->Model_koordinator ->get_jadwal()->result();
+    $data = array(
+                "list" => $list
+        );
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/tgl_proposal');
+    $this->load->view('dosen/listjadwal',$data);
+    $this->load->view('dosen/footer');
+
+    }else{
+
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
+    $this->load->view('dosen/footer');  
+    }   
+
+  }
+  public function save_tglInput(){
+        $data = array(
+            'tgl_awal' => $this ->input ->post('tanggal_awal'),
+            'tgl_akhir' => $this ->input ->post('tanggal_akhir'),
+            'keterangan' => $this ->input ->post('ket')
         );
 
-        $this ->load-> model('Model_koordinator');
-        $this ->Model_koordinator->input_dospem_mhs_tolak($inputdospem);
-        
-          $this->load->view('Dosen/header');
-          $this->load->view('Dosen/v_alerts');
-          $this->load->view('Dosen/v_bimbing_mhs_tolak'); 
-          $this->load->view('Dosen/footer');
-
-      } 
-      else {
-        $this->load->view('Dosen/header');
-          $this->load->view('Dosen/v_alerts_gagal');
-          $this->load->view('Dosen/v_bimbing_mhs_tolak'); 
-          $this->load->view('Dosen/footer');
-      }
-    
+        $this ->db ->insert('tb_tanggal',$data);
+        redirect('dosen/dosen/jadwal');
     }
+
+  public function delJadwal(){
+        $id = $this ->uri ->segment(4);
+        $this ->db ->where_in('id',$id);
+        $this ->db ->delete('tb_tanggal');
+        redirect('dosen/dosen/jadwal');
+    }  
+
 }
-	
+  
   
 ?>
