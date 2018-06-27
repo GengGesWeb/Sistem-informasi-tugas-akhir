@@ -42,7 +42,7 @@
                         <td><?php echo $row->nama ?></td>
                         <td><?php echo $row->hak_akses ?></td>
                         <td>
-                        <?php echo anchor('dosen/dosen/edit_hak_akses/'.$row->id_dosen,'<button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">Edit</button>'); ?>
+                  <?php echo anchor('crud/edit/'.$row->id_dosen,'Edit'); ?>
             </td>
                         </tr>
                         <?php } ?>
@@ -53,28 +53,6 @@
                       
                    
      </form>
-       <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog" >
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"> Silahkan Edit</h4>
-        </div>
-        <div class="modal-body">
-          <p>
-          <?php $this->load->view('dosen/v_edit_hak_akses');?>
-          
-     </p>
-        </div>
-        </div>
-      
-    </div>
-  </div>
-  
-     
 </div>
 </div>
 </div>

@@ -18,7 +18,7 @@
 <div class="widget-content">
           <div class="info-box">
             <div class="row-fluid stats-box">
-    <form action="<?php echo site_url('dosen/dosen/proses_terimatolak'); ?>" method="post">
+    <form action="<?php echo site_url('dosen/dosen/lihat_bimbingan'); ?>" method="post">
       <fieldset>
 
                   <div class="form-group">                     
@@ -30,37 +30,41 @@
                   </div> <!-- /form-group -->
 
 <br > 
-					
+					<div class="row">
+					<div class="col-lg-8">
+					<div class="panel panel-default">
+					<div class="panel-body">
 						<table class="table table-striped table-bordered table-hover">
 						<thead>
 						<tr>
-							
-							<th name="action" style="text-align: center ;">Action</th>
-							<th name="nama" style="text-align: center ;">Nama</th>
-							<th name="NIM" style="text-align: center ;">NIM</th>
-							<th nama="judul" style="text-align: center ;">Judul</th>
+							<th width="40px" style="text-align: center ;">No</th>
+							<th width="40px" style="text-align: center ;">Action</th>
+							<th width="40px" style="text-align: center ;">id_usulan_pemb</th>
+							<th width="40px" style="text-align: center ;">NIM</th>
+							<th width="40px" style="text-align: center ;">id_dosen</th>
+							<th width="40px" style="text-align: center ;">Judul</th>
 						</tr>
 						<?php 
 						$no = 1;
 						foreach($bimbingan as $row){ 
 						?>
 						<tr>
-							
+							<td><?php echo $no++ ?> </td>
 							<td>
-						<?php 
-                        echo anchor('dosen/dosen/terima/'.$row->NIM,'Terima','id="btnTest" type="button" class="btn btn-bordered waves-effect w-md waves-light " '); ?>
-                        <?php
-                        echo anchor('dosen/dosen/tolak/'.$row->NIM.'/'.$row->judul,'Tolak','id="btnTest" type="button" class="btn btn-danger waves-effect w-md waves-light " '); ?>				
-              
-						</td>
-						<td name="nama"><?php echo $row->Nama ?></td>
-						<td name="NIM"><?php echo $row->NIM ?></td>
-						<td name="judul"><?php echo $row->judul ?></td>
+								<?php echo anchor(''.$row-> id_dosen,'Terima');?>
+								<?php echo anchor(''.$row-> id_dosen,'Tolak');?>
+							</td>
+						<td><?php echo $row->id_usulan_pemb ?></td>
+						<td><?php echo $row->NIM ?></td>
+						<td><?php echo $row->id_dosen ?></td>
+						<td><?php echo $row->judul ?></td>
 						</tr>
 						<?php } ?>
 						</thead>
 						
 						</table>
+						</div>
+						</div>
 						</div>
 						</div>
 

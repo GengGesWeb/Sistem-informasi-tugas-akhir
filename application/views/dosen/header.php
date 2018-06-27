@@ -11,8 +11,6 @@
         rel="stylesheet">
     <link href="<?php echo base_url('assets/css/font-awesome.css')?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/style.css') ?>" rel="stylesheet">
-
-
     
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -63,49 +61,20 @@
                         <a href="<?php echo site_url('dosen/dosen/formjudul') ?>"><i class="icon-edit"></i><span>Input Judul</span> </a>
                     </li>
                     <li >
-                        <a href="<?php echo site_url('dosen/dosen/lihat_bimbingan') ?>"><i class="icon-check"></i><span>Penentuan Bimbingan</span> </a>
-                    </li>
-                    <li >
                         <a href="guidely.html"><i class="icon-list-alt"></i><span>Usulan Judul</span> </a>
                     </li>
-					<li class="dropdown"><a href="javascript:;" class="dropdown" data-toggle="dropdown"> <i class="icon-bar-chart"></i><span>Grafik</span> </a>
-                        <ul class="dropdown-menu">
-                    <li>
-                        <a href="<?php echo site_url('dosen/dosen/grafik') ?>"><i></i><span>Grafik Usulan Judul</span> </a>
+                    <li >
+                        <a href="<?php echo site_url('dosen/dosen/lihat_bimbingan') ?>"><i class="icon-check"></i><span>Penentuan Bimbingan</span> </a>
                     </li>
                     <li>
-                        <a href="<?php echo site_url('dosen/dosen/grafik_judul') ?>"><i></i><span>Grafik Jumlah Total Usulan Judul</span> </a>
-                    </li>
-					<li>
-                        <a href="<?php echo site_url('dosen/dosen/grafik_dosen') ?>"><i></i><span>Grafik Sebaran Dosen Pembimbing</span> </a>
-                    </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a href="javascript:;" class="dropdown" data-toggle="dropdown"> <i class="icon-bar-chart"></i><span>Laporan</span> </a>
-                        <ul class="dropdown-menu">
-                    <li>
-                        <a href="<?php echo site_url('laporan/laporan/usulan') ?>"><i></i><span>Laporan Daftar Usulan</span> </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo site_url('laporan/laporan/usulan_fik') ?>"><i></i><span>Laporan Daftar Usulan Fix</span> </a>
-                    </li>
-					
-                        </ul>
+                        <a href="shortcodes.html"><i class="icon-bar-chart"></i><span>Grafik & Cetak Laporan</span> </a>
                     </li>
                     <li>
                         <a href="<?php echo site_url('dosen/dosen/dosen') ?>"><i class="icon-group"></i><span>List Dosen</span> </a>
                     </li>
-
-                    <li class="dropdown"><a href="javascript:;" class="dropdown" data-toggle="dropdown"> <i class="icon-user"></i><span>Koordinator</span> </a>
-                        <ul class="dropdown-menu">
                     <li>
-                        <a href="<?php echo site_url('dosen/dosen/jadwal') ?>"><i></i><span>Jadwal</span> </a>
+                        <a href="<?php echo site_url('dosen/dosen/koordinator') ?>"><i class="icon-user"></i><span>Koordinator</span> </a>
                     </li>
-                    <li>
-                        <a href="<?php echo site_url('dosen/dosen/koordinator') ?>"><i></i><span>Koordinator</span> </a>
-                    </li>
-                        </ul>
-                    </li>    
                     
                 </ul>
             </div>

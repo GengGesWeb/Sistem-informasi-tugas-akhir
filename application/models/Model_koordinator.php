@@ -46,6 +46,21 @@ class Model_koordinator extends CI_Model {
 		$query = $this->db->query("SELECT tb_pembimbing_fix.nim,tb_mahasiswa.nama,tb_mahasiswa.prodi,tb_mahasiswa.golongan,tb_dosen.nama as pembimbing FROM tb_pembimbing_fix inner join tb_mahasiswa on tb_pembimbing_fix.nim = tb_mahasiswa.nim inner join tb_dosen on tb_pembimbing_fix.id_dosen = tb_dosen.id_dosen where tb_pembimbing_fix.nim ='$id'");
 		return $query->result();
 	}
+
+	function pembimbing_mhs_ditolak(){
+		 $query = $this->db->query("SELECT * FROM tb_mhs_ditolak");
+		 return $query->result();
+	}
+
+	function nama_dospem(){
+		 $query = $this->db->query("SELECT id_dosen,nama FROM tb_dosen");
+		 return $query->result();
+	}
+
+	function input_dospem_mhs_tolak($inputdospem){
+		$this->db->insert('tb_pembimbing_fix',$inputdospem);
+	}
+
 	public function get_jadwal(){
 		return $this ->db ->get('tb_tanggal');
 	}

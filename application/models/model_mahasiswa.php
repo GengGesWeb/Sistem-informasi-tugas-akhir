@@ -34,46 +34,6 @@
 		$this->db->insert('tb_proposal',$inputproposal);
 	}
 
-	public function get_jadwal_awal($main){
-        $this ->db ->select('tgl_awal');
-		$this ->db ->from('tb_tanggal');
-		$this ->db ->where('keterangan',$main);
 
-		$query = $this ->db ->get()->row_array();
-
-		return $query;
-    }
-
-    public function get_jadwal_akhir($main){
-        $this ->db ->select('tgl_akhir');
-		$this ->db ->from('tb_tanggal');
-		$this ->db ->where('keterangan',$main);
-
-		$query = $this ->db ->get()->row_array();
-
-		return $query;
-    }
-
-
-	public function inputjudulmhs ($data = array()){					//INPUT JUDUL MAHASISWA
-		$this->load->database();
-		return $this->db->insert("tb_judul_usulan", $data);
-	}
-
-
-	public function tampil_data(){												//BERANDA
-		$this->db->select('tb_judul_dosen.judul_dosen, tb_judul_dosen.prodi, tb_judul_dosen.kuota, tb_dosen.nama')
-			->join('tb_dosen', 'tb_dosen.id_dosen=tb_judul_dosen.id_dosen');
-		return $this->db->get('tb_judul_dosen');
-	}
-	
-
-	public function hasilreview ($NIM){					//HASIL REVIEW
-		$this->db->select('tb_hasil.status, tb_hasil.saran, tb_judul_usulan.judul')
-			->join('tb_judul_usulan', 'tb_judul_usulan.id_judul_usulan=tb_hasil.id_judul_usulan');
-			$this->db->where('tb_hasil.NIM', $NIM);
-		return $this->db->get('tb_hasil');
-		
-	}
  }
 ?>
