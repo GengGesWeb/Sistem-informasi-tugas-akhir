@@ -9,13 +9,18 @@
           
           <div class="span12">
         
-          <div class="info-box">
+          <div class="widget">
+            <div class="widget-header">
+                        <i class="icon-list"></i>
+                        <h3>LIST Usulan Judul dari dosen</h3>
+                    </div> <!-- /widget-header -->
+                  <div class="widget-content">
+                    <div class="tabbable">
 
-            <div class="row-fluid stats-box">
+            
 
       <center>
       
-        <h2>Daftar Usulan Judul Tugas Akhir Dosen</h2><br />
 
 <table  class="table table-striped table-bordered table-hover" >
   <tr>
@@ -51,6 +56,7 @@
         </div>
       </div>
   </div>
+</div>
 </div>    
     </form>
   </body>

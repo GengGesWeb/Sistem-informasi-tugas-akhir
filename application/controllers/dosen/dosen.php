@@ -16,7 +16,8 @@ class Dosen extends MY_Controller{
   $data_dosen = array(
     'NIP' =>$dosen->id_dosen ,
     'nama'=>$dosen->nama,
-    'hak_akses' =>$dosen->hak_akses
+    'hak_akses' =>$dosen->hak_akses,
+    'kuota' =>$dosen->kuota_bimbingan
      );
   $this->session->set_userdata($data_dosen);
   return TRUE;
@@ -92,16 +93,26 @@ class Dosen extends MY_Controller{
   }*/
 
 //===================================================Controller CO==============================================
+  
       
-          public function dosen()
-          { 
-            $where = $this->uri->segment(4);
-            $data['user'] = $this->model_dosen->data_dosen()->result();
-            $data['dosen'] = $this->Model_koordinator->edit_akses($where);
-            $this->load->view('Dosen/header');
-            $this->load->view('Dosen/koordinator', $data); 
-            $this->load->view('Dosen/footer');
-          }
+    public function dosen()
+          {
+            $hak_akses=$this->session->userdata('hak_akses');
+            if($hak_akses = 'koordinator'){ 
+              $where = $this->uri->segment(4);
+              $data['user'] = $this->model_dosen->data_dosen()->result();
+              $data['dosen'] = $this->Model_koordinator->edit_akses($where);
+              $this->load->view('Dosen/header');
+              $this->load->view('Dosen/koordinator', $data); 
+              $this->load->view('Dosen/footer');
+            }else{
+              $this->load->view('dosen/header');
+              $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
+              $this->load->view('dosen/footer');
+              } 
+    }     
+
+    
 
 	 
   function edit_hak_akses(){
@@ -129,13 +140,22 @@ class Dosen extends MY_Controller{
   $this->Model_koordinator->update_hak_akses($where,$data,'tb_dosen');
   redirect('Dosen/dosen/dosen');
 }
-
-public function lihat_usulan(){
+  
+  public function lihat_usulan(){
+    $hak_akses=$this->session->userdata('hak_akses');
+            if($hak_akses = 'koordinator' || 'reviewer'){
             $data['user'] = $this->model_dosen->data_usulan()->result();
             $this->load->view('Dosen/header');
             $this->load->view('Dosen/v_usulan_mahasiswa', $data); 
             $this->load->view('Dosen/footer');
+  }else{
+            $this->load->view('dosen/header');
+            $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator dan Reviewer"));
+            $this->load->view('dosen/footer'); 
   }
+}
+
+
   function review_judul(){
   $where = $this->uri->segment(4);
   $data['tb_dosen'] = $this->Model_koordinator->edit_hak_akses($where,'tb_dosen')->result();
@@ -339,6 +359,9 @@ public function lihat_usulan(){
 
 public function koordinator() 
   {
+   $hak_akses=$this->session->userdata('hak_akses');
+    if($hak_akses == "koordinator") {
+ 
   	$tampil = array (
 			'judul'=>$this->Model_koordinator->pembimbing_mhs_ditolak(),
 			'nama'=>$this->Model_koordinator->nama_dospem()
@@ -353,25 +376,14 @@ public function koordinator()
         $this->load->view('dosen/header');
         $this->load->view('dosen/v_bimbing_mhs_tolak', $data);
         $this->load->view('dosen/footer');
-    }
+    }else{
 
-public function proses_inputpemfix()
-  {
-    
-        $inputdospem= array(
-          'id_dosen' => $this->input->post('id_dosen'), 
-          'NIM' => $this->input->post('NIM')
-        );
-
-        $this ->load-> model('Model_koordinator');
-        $this ->Model_koordinator->input_dospem_mhs_tolak($inputdospem);
-        
-          $this->load->view('Dosen/header');
-          $this->load->view('Dosen/v_alerts');
-          $this->load->view('Dosen/v_bimbing_mhs_tolak'); 
-          $this->load->view('Dosen/footer');
-
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
+    $this->load->view('dosen/footer');  
+    }   
   }
+
 
   public function mhs_ditolak_diterima(){
     $data = array(
