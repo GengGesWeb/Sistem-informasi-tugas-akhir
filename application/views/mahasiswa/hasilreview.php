@@ -15,25 +15,23 @@
 
       <center>
       
-        <h2>Daftar Usulan Judul Tugas Akhir Dosen</h2><br />
+        <h2>Hasil Review Judul Tugas Akhir</h2><br />
 
 <table  class="table table-striped table-bordered table-hover" >
   <tr>
-    <th>Nama Dosen</th>
     <th>Judul Usulan</th>
-    <th>Prodi</th>
-    <th>Kuota</th>
+    <th>Status</th>
+    <th>Saran</th>
   </tr>
 
   <?php
-  foreach ($judul_dosen as $row){       
+  foreach ($h_review as $row){       
   ?>
 
   <tr>
-  <td><?php echo $row->nama ?></td>
-  <td><?php echo $row->judul_dosen ?></td>
-  <td><?php echo $row->prodi ?></td>
-  <td><?php echo $row->kuota ?></td>
+  <td><?php echo $row->judul ?></td>
+  <td><?php echo $row->status ?></td>
+  <td><?php echo $row->saran ?></td>
 </tr>
 
 <?php

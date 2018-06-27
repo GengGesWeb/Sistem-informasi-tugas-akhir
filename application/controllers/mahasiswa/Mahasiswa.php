@@ -25,18 +25,71 @@ class Mahasiswa extends MY_Controller{
  }
 }
 
-  public function index()
-  {
+  public function index(){
     $this->load->view('Mahasiswa/Header',array('active' => "index"));
-    $this->load->view('Mahasiswa/Beranda');
+    $data['judul_dosen'] = $this->model_mahasiswa->tampil_data()->result();
+    $this->load->view('Mahasiswa/Beranda', $data);
     $this->load->view('Mahasiswa/Footer');
   }
 
+
+public function hasilreview(){         /////////////////////////////////HASIL REVIEW 
+  $NIM = $this->session->userdata('NIM');
+$this->load->view('Mahasiswa/Header',array('active' => "hasilreview"));  
+ $data['h_review'] = $this->model_mahasiswa->hasilreview($NIM)->result();
+    $this->load->view('Mahasiswa/hasilreview', $data);
+    $this->load->view('Mahasiswa/Footer');
+}
+
 public function inputjudulmhs(){         /////////////////////////////////INPUT JUDUL MAHASISWA
+  $main="usulan";
+    $tgl_awal = $this ->model_mahasiswa->get_jadwal_awal($main);
+    $tgl_akhir =$this ->model_mahasiswa->get_jadwal_akhir($main);
+    date_default_timezone_set('Asia/Jakarta');
+            $y = date("Y");
+            $m=date("m");
+            $d=date("d");
+            $akhir = explode('-',$tgl_akhir['tgl_akhir']);
+            $awal = explode('-',$tgl_awal['tgl_awal']);
+            
+            if(($y-$awal[0]==0 && $m-$awal[1]==0 && $d-$awal[2]>=0)&&($y-$akhir[0]==0 && $m-$akhir[1]==0 && $d-$akhir[2]<=0)){
+              $l=1;
 $dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen(),'active'=>"inputjdl");
 $this->load->view('Mahasiswa/Header',$dosen);
 $this->load->view('Mahasiswa/formjudulmhs');
 $this->load->view('Mahasiswa/Footer');
+}
+else {
+                $this->load->view('Mahasiswa/Header',array('active'=>'inputjdl'));
+                $this ->load->view('Mahasiswa/peringatan',array('pesan'=>' Belum waktunya upload Judul Usulan'));
+                $this->load->view('Mahasiswa/Footer');
+        }    
+
+}
+
+public function inputjudulfinal(){         /////////////////////////////////INPUT JUDUL MAHASISWA
+$main="final";
+    $tgl_awal = $this ->model_mahasiswa->get_jadwal_awal($main);
+    $tgl_akhir =$this ->model_mahasiswa->get_jadwal_akhir($main);
+    date_default_timezone_set('Asia/Jakarta');
+            $y = date("Y");
+            $m=date("m");
+            $d=date("d");
+            $akhir = explode('-',$tgl_akhir['tgl_akhir']);
+            $awal = explode('-',$tgl_awal['tgl_awal']);
+            
+            if(($y-$awal[0]==0 && $m-$awal[1]==0 && $d-$awal[2]>=0)&&($y-$akhir[0]==0 && $m-$akhir[1]==0 && $d-$akhir[2]<=0)){
+              $l=1;  
+$dosen = array('data_dosen' => $this->model_mahasiswa->get_datadosen(),'active'=>"inputjdl");
+$this->load->view('Mahasiswa/Header',$dosen);
+$this->load->view('Mahasiswa/formjudulfinal');
+$this->load->view('Mahasiswa/Footer');
+            }
+      else {
+                $this->load->view('Mahasiswa/Header',array('active'=>'inputjdl'));
+                $this ->load->view('Mahasiswa/peringatan',array('pesan'=>' Belum waktunya upload Judul Final'));
+                $this->load->view('Mahasiswa/Footer');
+        }      
 }
 
 
@@ -47,19 +100,18 @@ public function proses_inputjudulmhs()
     {
         $inputjudul= array(
           'NIM' => $this->input->post('NIM') , 
-          'usulan_pembimbing1' => $this->input->post('judul_dosen'),
-          'usulan_pembimbing2' => $this->input->post('usulan_pembimbing2'),
           'judul' => $this->input->post('judul'),
-          'dosen_pengusul' => $this->input->post('dosen_pengusul'),
+          'id_dosen_pengusul' => $this->input->post('dosen_pengusul'),
           'ringkasan' => $this->input->post('ringkasan'),
-          'kategori' => $this->input->post('kategori')
+          'id_dosen_pembimbing' => $this->input->post('usulan_pembimbing1'),         
+          'kategori' => $this->input->post('kategori1')
         );
 
         $this ->load-> model('m_mhsinput');
         $this ->m_mhsinput->input_judul($inputjudul);
         
           $this->load->view('Mahasiswa/Header', array('active' => "inputjdl"));
-          $this->load->view('Mahasiswa/v_alerts');
+          $this->load->view('Mahasiswa/notif_input');
           $this->load->view('Mahasiswa/formjudulmhs'); 
           $this->load->view('Mahasiswa/footer');
       }
@@ -70,9 +122,62 @@ public function proses_inputjudulmhs()
     
     }
 
+  public function proses_inputjudulfinal()
+  {
+    
+    if ($this->input->post('submit'))
+    {
+        $inputjudul= array(
+          'NIM' => $this->input->post('NIM') , 
+          'judul' => $this->input->post('judul'),
+          'id_dosen' => $this->input->post('dosen_pembimbing'),
+          'deskripsi' => $this->input->post('ringkasan'),
+          'kategori' => $this->input->post('kategori1'), 
+          'saran' => $this->input->post('saran')
+        );
+        $inputusulan = array(
+          'NIM' =>$this->input->post('NIM') ,
+          'id_dosen' =>$this->input->post('dosen_pembimbing'),
+          'judul' =>$this->input->post('judul') 
+        );
+
+        $this ->load-> model('m_mhsinput');
+        $this ->m_mhsinput->input_judulfinal($inputjudul);
+        $this ->m_mhsinput->inputusulanpemb($inputusulan);
+        
+          $this->load->view('Mahasiswa/Header', array('active' => "inputjdl"));
+          $this->load->view('Mahasiswa/notif_input');
+          $this->load->view('Mahasiswa/formjudulfinal'); 
+          $this->load->view('Mahasiswa/footer');
+      }
+      else {
+        $data['exist']=$exist;
+        $this->load->view('Mahasiswa/formjudulfinal',$data);
+      }
+
+    
+    
+    
+    }
+
 
   public function ujianproposal()
   { 
+    $main="proposal";
+    $tgl_awal = $this ->model_mahasiswa->get_jadwal_awal($main);
+    $tgl_akhir =$this ->model_mahasiswa->get_jadwal_akhir($main);
+    date_default_timezone_set('Asia/Jakarta');
+            $y = date("Y");
+            $m=date("m");
+            $d=date("d");
+            $akhir = explode('-',$tgl_akhir['tgl_akhir']);
+            $awal = explode('-',$tgl_awal['tgl_awal']);
+            
+            if(($y-$awal[0]==0 && $m-$awal[1]==0 && $d-$awal[2]>=0)&&($y-$akhir[0]==0 && $m-$akhir[1]==0 && $d-$akhir[2]<=0)){
+              $l=1;
+            
+            
+
     if($this->input->post('submit_proposal'))
      {
       $inputproposal = array (
@@ -128,7 +233,14 @@ public function proses_inputjudulmhs()
                   $this->load->view('Mahasiswa/Footer',$dosen);
                 }
                 }
-          }     
+          }
+          else {
+                $this->load->view('Mahasiswa/Header',array('active'=>'proposal'));
+                $this ->load->view('Mahasiswa/peringatan',array('pesan'=>'Belum waktunya upload proposal'));
+                $this->load->view('Mahasiswa/Footer');
+        }
+        }
+
     
 
 

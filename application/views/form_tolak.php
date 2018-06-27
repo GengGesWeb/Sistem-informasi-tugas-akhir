@@ -67,10 +67,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
+	
+	
 <div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
+	<h1>Review Judul Usulan</h1>
 
+	<div id="body">
+		<form name="form1" method="POST" action="<?php echo site_url('komentar/tolak')?>">
+	<table align="center">
+	<td colspan="3" align="center">form tolak judul usulan</td>
+	<tr>
+		<td>Id Judul Usulan</td>
+		<td>:</td>
+		<td><input type="text" name="id_judul_usulan" placeholder="input id judul usulan"></input></td>
+	</tr>
+	<tr>
+		<td>Id Dosen</td>
+		<td>:</td>
+		<td><input type="text" name="id_dosen" placeholder="input id dosen"></input></td>
+	</tr>
+	<tr>
+		<td>Nama Dosen Penolak</td>
+		<td>:</td>
+		<td><input type="text" name="dosen_penolak" placeholder="input nama dosen"></input></td>
+	</tr>
+	<tr>
+		<td>Saran</td>
+		<td>:</td>
+		<td><textarea name="saran" rows="6" cols="60"></textarea></td>
+	</tr>
+<tr>
+		
+		<td colspan="3" align="center"><input type="submit" name="kirim" value="kirim"></input></td>
+	</tr>
+	</table>
 
+</form>
+	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
