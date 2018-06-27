@@ -12,6 +12,7 @@
             <tr>
                 <td>Nama</td>
                 <td><input type="text" name="nama" value="<?php echo $u->nama ?>"></td>
+               
             </tr>
             <tr>
                 <td>Status</td>

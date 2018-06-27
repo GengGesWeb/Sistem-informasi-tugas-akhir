@@ -402,6 +402,7 @@ public function koordinator()
     $hak_akses=$this->session->userdata('hak_akses');
     if($hak_akses == "koordinator") {
   }else{
+    
 
     $this->load->view('dosen/header');
     $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));

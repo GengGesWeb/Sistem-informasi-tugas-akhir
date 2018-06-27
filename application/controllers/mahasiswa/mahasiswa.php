@@ -241,8 +241,62 @@ public function proses_inputjudulmhs()
         }
         }
 
-    
+        public function list_usulan(){
+          $NIM = $this->session->userdata('NIM');
+          $data['usulan'] = $this->model_mahasiswa->usulan($NIM);
 
+          $this->load->view('Mahasiswa/Header',array('active'=>'inputjdl'));
+          $this->load->view('Mahasiswa/v_usulan',$data);
+          $this->load->view('Mahasiswa/Footer');
+        }
+
+        public function edit_usulan(){
+          $id= $this->uri->segment(4);
+          $ctr= $this->model_mahasiswa->cek_review($id);
+          //bisa edit
+          if($ctr===1){
+          $data['tb_usulan'] = $this->model_mahasiswa->ambil_usulan($id);
+          $data = array('data_dosen' => $this->model_mahasiswa->get_datadosen(),
+                        'active'=>"inputjdl",
+                        'tb_usulan'=>  $this->model_mahasiswa->ambil_usulan($id)
+                      );  
+          $this->load->view('Mahasiswa/Header',array('active'=>'inputjdl'));
+          $this->load->view('Mahasiswa/v_edit_usulan',$data);
+          $this->load->view('Mahasiswa/Footer');
+          }else{
+            $error="Usulan ini tidak dapat diedit lagi";
+            $NIM = $this->session->userdata('NIM');
+            $data['usulan'] = $this->model_mahasiswa->usulan($NIM);
+            $data['error'] = $error;
+            $this->load->view('Mahasiswa/Header',array('active'=>'inputjdl'));
+            $this->load->view('Mahasiswa/peringatan',array('pesan'=>'Usulan judul anda tidak dapat diedit lagi'));
+            $this->load->view('Mahasiswa/v_usulan',$data);
+            $this->load->view('Mahasiswa/Footer');
+          }
+          
+        }
+
+        public function update_judul(){
+          $id_judul_usulan = $this->input->post('id_judul_usulan');
+          
+        
+          $data= array(
+          'id_judul_usulan' => $this->input->post('id_judul_usulan'),
+          'NIM' => $this->input->post('NIM') , 
+          'judul' => $this->input->post('judul'),
+          'id_dosen_pengusul' => $this->input->post('dosen_pengusul'),
+          'ringkasan' => $this->input->post('ringkasan'),
+          'id_dosen_pembimbing' => $this->input->post('usulan_pembimbing'),         
+          'kategori' => $this->input->post('kategori1')
+        );
+         
+          $where = array(
+            'id_judul_usulan' => $id_judul_usulan
+          );
+         
+          $this->model_mahasiswa->update_hak_akses($where,$data,'tb_judul_usulan');
+          redirect('mahasiswa/mahasiswa/list_usulan');
+        }
 
 
 } //class
