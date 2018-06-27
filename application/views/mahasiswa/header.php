@@ -73,6 +73,9 @@
                         <span>Input Judul Tugas Akhir</span>
                         <ul class ="dropdown-menu">
                     <li> 
+                        <a href="<?php echo site_url('mahasiswa/mahasiswa/list_usulan') ?>"><i></i><span>Usulan Anda</span> </a>
+                    </li>        
+                    <li> 
                         <a href="<?php echo site_url('mahasiswa/mahasiswa/inputjudulmhs') ?>"><i></i><span>Usulan Judul</span> </a>
                     </li>
 
@@ -88,6 +91,9 @@
                         <a href="javascript:;" class="dropdown" data-toggle="dropdown"><i class="icon-edit"></i>
                         <span>Input Judul Tugas Akhir</span>
                         <ul class ="dropdown-menu">
+                    <li> 
+                        <a href="<?php echo site_url('mahasiswa/mahasiswa/list_usulan') ?>"><i></i><span>Usulan Anda</span> </a>
+                    </li>         
                     <li> 
                         <a href="<?php echo site_url('mahasiswa/mahasiswa/inputjudulmhs') ?>"><i></i><span>Usulan Judul</span> </a>
                     </li>

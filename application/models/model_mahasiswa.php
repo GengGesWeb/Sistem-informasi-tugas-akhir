@@ -75,5 +75,36 @@
 		return $this->db->get('tb_hasil');
 		
 	}
+	public function usulan ($NIM){
+        $this ->db ->select('*');
+		$this ->db ->from('tb_judul_usulan');
+		$this ->db ->where('NIM',$NIM);
+		$query = $this ->db ->get()->result();
+		return $query;
+    
+	}
+	public function cek_review($id){
+		$this ->db ->select('*');
+		$this ->db ->from('tb_review');
+		$this->db->where('id_judul_usulan', $id);
+      	$query = $this->db->get()->row();
+      	//jika bernilai 1 maka user tidak ditemukan
+      	if (!$query) return 1;
+	}
+
+	public function ambil_usulan($id){
+		$this ->db ->select('*');
+		$this ->db ->from('tb_judul_usulan');
+		$this ->db ->where('id_judul_usulan',$id);
+		$query = $this ->db ->get()->row_array();
+		return $query;	
+	}
+
+	public function update_hak_akses($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}	
+
+
  }
 ?>

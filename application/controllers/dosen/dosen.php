@@ -410,7 +410,12 @@ public function koordinator()
 		$this->load->view('dosen/final_review',$data);
 		$this->load->view('dosen/footer');  
   }else{
+<<<<<<< HEAD
 	
+=======
+    
+
+>>>>>>> f79dac8374f2bf8da62a48f0b1c50d97e71d6f3e
     $this->load->view('dosen/header');
     $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
     $this->load->view('dosen/footer');  
