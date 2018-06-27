@@ -350,6 +350,19 @@ public function proses_inputpemfix()
 
   }
 
+  public function mhs_ditolak_diterima(){
+    $data = array(
+            'nim' => $this ->input ->post('nim'),
+            'id_dosen' => $this ->input ->post('id_dosen'),
+        );
+    $nim = $this ->input ->post('nim');
+    $this ->db ->insert('tb_pembimbing_fix',$data);
+    $this ->db ->where_in('nim',$nim);
+    $this ->db ->delete('tb_mhs_ditolak');
+
+        redirect('dosen/dosen/koordinator');
+  }
+
   
 }
   
