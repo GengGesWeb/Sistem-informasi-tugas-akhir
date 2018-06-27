@@ -86,7 +86,7 @@
  <br />                  
                   <div class="form-actions">
                  <button type="submit" class="btn btn-primary" name="submit" value="proses_inputjudul">Save</button> 
-                 <button class="btn"><a href='<?php echo site_url('dosen/dosen/index') ?>'>Cancel</a></button>
+                 <button class="btn btn-danger">Cancel</a></button>
               </div> <!-- /form-actions -->
         </fieldset>
      </form>

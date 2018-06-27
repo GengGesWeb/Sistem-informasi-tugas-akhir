@@ -153,8 +153,10 @@ class Dosen extends MY_Controller{
           $this->load->view('Dosen/footer');
       }
       else {
-        $data['exist']=$exist;
-        $this->load->view('dosen/v_formjudul',$data);
+       	  $this->load->view('Dosen/header');
+          $this->load->view('Dosen/v_alerts_gagal');
+          $this->load->view('Dosen/v_formjudul'); 
+          $this->load->view('Dosen/footer');
       }
     
     }
