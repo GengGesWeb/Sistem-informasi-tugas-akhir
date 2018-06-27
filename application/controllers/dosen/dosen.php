@@ -312,7 +312,41 @@ class Dosen extends MY_Controller{
         redirect('dosen/dosen/jadwal');
     }  
 
+public function koordinator() 
+  {
+  	$tampil = array (
+			'judul'=>$this->Model_koordinator->pembimbing_mhs_ditolak(),
+			'nama'=>$this->Model_koordinator->nama_dospem()
+		);
+        
 
+        $pemfix = $this->db->get('tb_mhs_ditolak');
+        $namados = $this->db->get('tb_dosen');
+        $data['result'] = $pemfix->result_array();
+        $data['result2'] = $namados->result_array();
+        $data['num_rows'] = $pemfix->num_rows();
+        $this->load->view('dosen/header');
+        $this->load->view('dosen/v_bimbing_mhs_tolak', $data);
+        $this->load->view('dosen/footer');
+    }
+
+public function proses_inputpemfix()
+  {
+    
+        $inputdospem= array(
+          'id_dosen' => $this->input->post('id_dosen'), 
+          'NIM' => $this->input->post('NIM')
+        );
+
+        $this ->load-> model('Model_koordinator');
+        $this ->Model_koordinator->input_dospem_mhs_tolak($inputdospem);
+        
+          $this->load->view('Dosen/header');
+          $this->load->view('Dosen/v_alerts');
+          $this->load->view('Dosen/v_bimbing_mhs_tolak'); 
+          $this->load->view('Dosen/footer');
+
+  }
 
   
 }

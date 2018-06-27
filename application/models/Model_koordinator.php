@@ -50,6 +50,21 @@ class Model_koordinator extends CI_Model {
 		return $this ->db ->get('tb_tanggal');
 	}
 
+	function pembimbing_mhs_ditolak(){
+		 $query = $this->db->query("SELECT * FROM tb_mhs_ditolak");
+		 return $query->result();
+	}
+
+	function nama_dospem(){
+		 $query = $this->db->query("SELECT id_dosen,nama FROM tb_dosen");
+		 return $query->result();
+	}
+
+	function input_dospem_mhs_tolak($inputdospem){
+		$this->db->insert('tb_pembimbing_fix',$inputdospem);
+	}
+
+
 }
 
 ?>
