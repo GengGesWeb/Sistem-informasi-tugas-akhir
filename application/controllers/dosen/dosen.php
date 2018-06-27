@@ -130,6 +130,29 @@ class Dosen extends MY_Controller{
   redirect('Dosen/dosen/dosen');
 }
 
+public function lihat_usulan(){
+            $data['user'] = $this->model_dosen->data_usulan()->result();
+            $this->load->view('Dosen/header');
+            $this->load->view('Dosen/v_usulan_mahasiswa', $data); 
+            $this->load->view('Dosen/footer');
+  }
+  function review_judul(){
+  $where = $this->uri->segment(4);
+  $data['tb_dosen'] = $this->Model_koordinator->edit_hak_akses($where,'tb_dosen')->result();
+  $this->load->view('v_review_judul',$data);
+  }
+
+  function proses_review(){
+  $data = array(
+  'id_dosen'=> $this->input->post('id_dosen'),
+  'id_judul_usulan' => $this ->input->post('id_judul_usulan'),
+  'status'=> $this->input->post('status'),
+  'saran'=> $this->input->post('saran')
+ );
+ $this ->db ->insert('tb_review',$data);
+ redirect('dosen/dosen/lihat_usulan');
+}
+
                
 //==========================================PROSES INPUT JUDUL DOSEN ======================================
 
@@ -362,6 +385,8 @@ public function proses_inputpemfix()
 
         redirect('dosen/dosen/koordinator');
   }
+
+  
 
   
 }

@@ -23,6 +23,10 @@
     return $this->db->get('tb_dosen');
   }
 
+  public function data_usulan(){
+    return $this->db->get('tb_judul_usulan');
+  }
+
 
 	
 
