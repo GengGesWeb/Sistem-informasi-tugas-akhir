@@ -111,7 +111,10 @@
                         <a href="<?php echo site_url('dosen/dosen/final_review') ?>"><i></i><span>Final Review</span> </a>
                     </li>
                         </ul>
-                    </li>    
+                    </li>  
+						<li>
+                        <a href="<?php echo site_url('dosen/dosen/kuotadosen') ?>"><i class="icon-group"></i><span>Kuota Dosen</span> </a>
+                    </li>
                     
                 </ul>
             </div>

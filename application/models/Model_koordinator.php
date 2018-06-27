@@ -76,6 +76,22 @@ class Model_koordinator extends CI_Model {
 		$query = $this->db->query("SELECT * FROM tb_review group by id_judul_usulan");
 		return $query->result();
 	}
+	function tampil_review_kd(){
+		$query = $this->db->query("SELECT tb_review.*,tb_judul_usulan.judul,tb_dosen.nama,tb_mahasiswa.nim FROM tb_review join tb_judul_usulan on tb_judul_usulan.id_judul_usulan=tb_review.id_judul_usulan join tb_dosen on tb_review.id_dosen=tb_dosen.id_dosen join tb_mahasiswa on tb_mahasiswa.nim=tb_judul_usulan.nim WHERE NOT EXISTS (SELECT * FROM tb_hasil WHERE tb_review.id_judul_usulan = tb_hasil.id_judul_usulan)");
+		return $query->result();
+	}
+	function total_review_kd(){
+		$query = $this->db->query("SELECT count(tb_review.id_dosen) as total,tb_review.id_judul_usulan FROM `tb_review` group by id_judul_usulan");
+		return $query->result();
+	}
+	function unik_review_kd(){
+		$query = $this->db->query("SELECT DISTINCT (tb_review.id_judul_usulan) FROM tb_review WHERE NOT EXISTS (SELECT NULL FROM tb_hasil WHERE tb_review.id_judul_usulan=tb_hasil.id_judul_usulan)");
+		return $query->result();
+	}
+	function is_review($id){
+		$this->db->insert('tb_hasil',$id);
+	}
+	
 
 
 

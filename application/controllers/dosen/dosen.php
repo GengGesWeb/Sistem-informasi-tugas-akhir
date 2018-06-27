@@ -401,12 +401,40 @@ public function koordinator()
   public function final_review(){
     $hak_akses=$this->session->userdata('hak_akses');
     if($hak_akses == "koordinator") {
+	$data = array(
+            'list' => $this->Model_koordinator->tampil_review_kd(),
+            'jumlah' => $this->Model_koordinator->total_review_kd(),
+            'unik' => $this->Model_koordinator->unik_review_kd(),
+        );
+		$this->load->view('dosen/header');
+		$this->load->view('dosen/final_review',$data);
+		$this->load->view('dosen/footer');  
   }else{
-
+	
     $this->load->view('dosen/header');
     $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
     $this->load->view('dosen/footer');  
     }   
+  }
+  public function ksp_review(){
+	if(isset($_GET['r'])){
+		$data = array(
+          'id_judul_usulan' => $this->input->get('id') , 
+          'nim' => $this->input->get('r'),
+		  );
+		$this->load->view('dosen/header');
+		$this->load->view('dosen/kesimpulan_review',$data);
+		$this->load->view('dosen/footer');  
+	}
+	if(isset($_POST['submit'])){
+		$insert = $this->Model_koordinator->is_review(array(
+				'NIM' => $this->input->post('nim'),
+				'status' => $this->input->post('status'),
+				'saran' => $this->input->post('saran'),
+				'id_judul_usulan' => $this->input->post('id')
+            ), $id);
+			redirect('Dosen/dosen/final_review');
+	}
   }
 
   
