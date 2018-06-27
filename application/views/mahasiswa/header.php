@@ -121,7 +121,40 @@
                     <?php }?> 
                         <a href="<?php echo site_url ('mahasiswa/mahasiswa/hasilreview') ?>"><i class="icon-bar-chart"></i><span>Hasil Review</span>
                     </a></li>
+					
+					<?php if ($active=="kartu") { ?>
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown" data-toggle="dropdown"><i class="icon-edit"></i>
+                        <span>Laporan</span>
+                        <ul class ="dropdown-menu">
+                    <li> 
+                        <a href="<?php echo site_url('laporan/laporan/kartu') ?>"><i></i><span>Print Kartu Bimbingan</span> </a>
+                    </li>
 
+                    <li>
+                     
+                        <a href="<?php echo site_url('laporan/laporan/daftar_bimbingan') ?>"><i></i><span>Daftar Bimbingan</span> </a>
+                    </li>
+                        </ul> 
+                    </li>       
+                    <?php } else {?>
+                    
+                     <li class="dropdown">
+                        <a href="javascript:;" class="dropdown" data-toggle="dropdown"><i class="icon-edit"></i>
+                        <span>Laporan</span>
+                        <ul class ="dropdown-menu">
+                    <li> 
+                        <a href="<?php echo site_url('laporan/laporan/kartu') ?>"><i></i><span>Print Kartu Bimbingan</span> </a>
+                    </li>
+
+                    <li>
+                     
+                        <a href="<?php echo site_url('laporan/laporan/daftar_bimbingan') ?>"><i></i><span>Daftar Bimbingan</span> </a>
+                    </li>
+                        </ul>   
+
+                    </li>
+                    <?php } ?>
                     <!--
                     <li ><a href="charts.html"><i class="icon-check"></i><span>Penentuan Bimbingan</span> </a>
                     </li>

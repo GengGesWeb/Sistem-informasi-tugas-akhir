@@ -89,6 +89,9 @@
                     <li>
                         <a href="<?php echo site_url('laporan/laporan/usulan_fik') ?>"><i></i><span>Laporan Daftar Usulan Fix</span> </a>
                     </li>
+					<li>
+                        <a href="<?php echo site_url('laporan/laporan/daftar_bimbingan') ?>"><i></i><span>Laporan Daftar Bimbingan</span> </a>
+                    </li>
 					
                         </ul>
                     </li>
