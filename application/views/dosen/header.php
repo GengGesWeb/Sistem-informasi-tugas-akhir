@@ -105,7 +105,10 @@
                         <a href="<?php echo site_url('dosen/dosen/jadwal') ?>"><i></i><span>Jadwal</span> </a>
                     </li>
                     <li>
-                        <a href="<?php echo site_url('dosen/dosen/koordinator') ?>"><i></i><span>Koordinator</span> </a>
+                        <a href="<?php echo site_url('dosen/dosen/koordinator') ?>"><i></i><span>Penentuan Dospem</span> </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('dosen/dosen/final_review') ?>"><i></i><span>Final Review</span> </a>
                     </li>
                         </ul>
                     </li>    
