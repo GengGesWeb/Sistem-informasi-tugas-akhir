@@ -6,8 +6,38 @@
 		$this->load->model('Model_koordinator');
 		}
 		
-		function kartu_bimbingan(){
-			
+		function daftar_bimbingan(){
+			$data = $this->Model_koordinator->daftar_bimbingan();
+		//echo $data[0]->nama;
+		$pdf = new FPDF('p','mm','A4');
+		// membuat halaman baru
+        $pdf->AddPage();
+        // setting jenis font yang akan digunakan
+        $pdf->SetFont('Arial','B',14);
+		// mencetak string 
+        $pdf->Cell(190,7,'Daftar Bimbingan',0,1,'C');
+		$pdf->SetFont('Arial','',8);
+		$pdf->Cell(10,6,' NO',1,0);
+		$pdf->Cell(20,6,'     NIM',1,0);
+		$pdf->Cell(29,6,'Nama',1,0);
+		$pdf->Cell(12,6,'Prodi',1,0);
+		$pdf->Cell(9,6,'Gol',1,0);
+		$pdf->Cell(50,6,'Pembimbing',1,0);
+		$pdf->Cell(65,6,' Usulan Judul Tugas Akhir',1,1);
+		$t=1;
+		foreach($data as $row){
+			$pdf->Cell(10,6,$t,1,0);
+		$pdf->Cell(20,6,$row->NIM,1,0);
+		$pdf->Cell(29,6,$row->Nama,1,0);
+		$pdf->Cell(12,6,$row->prodi,1,0);
+		$pdf->Cell(9,6,$row->golongan,1,0);
+		$pdf->Cell(50,6,$row->nama,1,0);
+		$pdf->Cell(65,6,$row->judul,1,1);
+		$t++;
+		}
+		$pdf->Output();
+		
+		
 		}
 		function usulan(){
 			header("Content-type:application/vnd.ms-excel");

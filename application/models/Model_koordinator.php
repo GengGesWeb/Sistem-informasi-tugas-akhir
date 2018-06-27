@@ -63,7 +63,10 @@ class Model_koordinator extends CI_Model {
 	function input_dospem_mhs_tolak($inputdospem){
 		$this->db->insert('tb_pembimbing_fix',$inputdospem);
 	}
-
+	function daftar_bimbingan(){
+		$query = $this->db->query("SELECT tb_mahasiswa.*,tb_final.judul,tb_pembimbing_fix.id_dosen,tb_dosen.nama FROM `tb_final` join tb_mahasiswa on tb_final.nim=tb_mahasiswa.nim join tb_pembimbing_fix on tb_final.nim=tb_pembimbing_fix.nim join tb_dosen on tb_pembimbing_fix.id_dosen=tb_dosen.id_dosen");
+		return $query->result();
+	}
 
 }
 
