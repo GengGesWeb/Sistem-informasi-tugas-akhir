@@ -77,7 +77,7 @@ class Model_koordinator extends CI_Model {
 		return $query->result();
 	}
 	function tampil_review_kd(){
-		$query = $this->db->query("SELECT tb_review.*,tb_judul_usulan.judul,tb_dosen.nama,tb_mahasiswa.nim FROM tb_review join tb_judul_usulan on tb_judul_usulan.id_judul_usulan=tb_review.id_judul_usulan join tb_dosen on tb_review.id_dosen=tb_dosen.id_dosen join tb_mahasiswa on tb_mahasiswa.nim=tb_judul_usulan.nim WHERE NOT EXISTS (SELECT * FROM tb_hasil WHERE tb_review.id_judul_usulan = tb_hasil.id_judul_usulan)");
+		$query = $this->db->query("SELECT tb_review.*,tb_judul_usulan.judul,tb_dosen.nama,tb_mahasiswa.nim FROM tb_review join tb_judul_usulan on tb_judul_usulan.id_judul_usulan=tb_review.id_judul_usulan join tb_dosen on tb_review.id_dosen=tb_dosen.id_dosen join tb_mahasiswa on tb_mahasiswa.nim=tb_judul_usulan.nim WHERE NOT EXISTS (SELECT * FROM tb_hasil WHERE tb_review.id_judul_usulan = tb_hasil.id_judul_usulan) ORDER BY `tb_review`.`id_judul_usulan` ASC");
 		return $query->result();
 	}
 	function total_review_kd(){
