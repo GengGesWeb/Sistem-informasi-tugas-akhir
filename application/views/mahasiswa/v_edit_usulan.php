@@ -90,7 +90,7 @@
 
                     <div class="form-group">                     
                       <label class="form-label" for="ringkasan">Ringkasan *</label>
-                      <textarea name="ringkasan" required="required"><?php echo $tb_usulan['judul']; ?></textarea>
+                      <textarea name="ringkasan" required="required"><?php echo $tb_usulan['ringkasan']; ?></textarea>
                      
 
                       <!--  <div class="form">

@@ -98,7 +98,7 @@ class Dosen extends MY_Controller{
     public function dosen()
           {
             $hak_akses=$this->session->userdata('hak_akses');
-            if($hak_akses = 'koordinator'){ 
+            if($hak_akses == "koordinator") {
               $where = $this->uri->segment(4);
               $data['user'] = $this->model_dosen->data_dosen()->result();
               $data['dosen'] = $this->Model_koordinator->edit_akses($where);
@@ -142,8 +142,8 @@ class Dosen extends MY_Controller{
 }
   
   public function lihat_usulan(){
-    $hak_akses=$this->session->userdata('hak_akses');
-            if($hak_akses = 'koordinator' || 'reviewer'){
+          $hak_akses=$this->session->userdata('hak_akses');
+            if($hak_akses == 'koordinator' || $hak_akses ==  'reviewer'){
             $data['user'] = $this->model_dosen->data_usulan()->result();
             $this->load->view('Dosen/header');
             $this->load->view('Dosen/v_usulan_mahasiswa', $data); 
@@ -207,6 +207,8 @@ class Dosen extends MY_Controller{
 		//==========================================PROSES mengatur jumlah kuota pembimbing ======================================
 	public function kuotadosen()
       {
+    $hak_akses=$this->session->userdata('hak_akses');
+    if($hak_akses == "koordinator") {    
 		$data = array(
 				'list_kuota'=>$this->Model_koordinator->data_kuota(),
 				'list_data'=>$this->Model_koordinator->data_kuota_isi(),
@@ -226,7 +228,13 @@ class Dosen extends MY_Controller{
         }
 		$this->load->view('Dosen/v_isi_kuotadosen',$data); 
         $this->load->view('Dosen/footer');
-      }
+      }else{
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
+    $this->load->view('dosen/footer');  
+    } }
+
+
 	  public function isi_kuotadosen()
       {
        if(isset($_POST['submit'])){
@@ -410,18 +418,14 @@ public function koordinator()
 		$this->load->view('dosen/final_review',$data);
 		$this->load->view('dosen/footer');  
   }else{
-<<<<<<< HEAD
-	
-=======
-    
-
->>>>>>> f79dac8374f2bf8da62a48f0b1c50d97e71d6f3e
     $this->load->view('dosen/header');
     $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
     $this->load->view('dosen/footer');  
     }   
   }
   public function ksp_review(){
+  $hak_akses=$this->session->userdata('hak_akses');
+    if($hak_akses == "koordinator") {  
 	if(isset($_GET['r'])){
 		$data = array(
           'id_judul_usulan' => $this->input->get('id') , 
@@ -440,7 +444,12 @@ public function koordinator()
             ), $id);
 			redirect('Dosen/dosen/final_review');
 	}
+  }else{
+    $this->load->view('dosen/header');
+    $this->load->view('dosen/peringatan',array('pesan' => " Halaman Ini hanya bisa diakses oleh koordinator"));
+    $this->load->view('dosen/footer');  
   }
+}
 
   
 
